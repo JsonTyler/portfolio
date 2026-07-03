@@ -3,25 +3,29 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
 }
 
 interface ButtonLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   href: string;
   external?: boolean;
 }
 
 const baseStyles =
-  'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
+  'inline-flex items-center justify-center font-medium rounded-lg transition-standard focus-ring disabled:opacity-50 disabled:cursor-not-allowed';
 
 const variants = {
-  primary: 'bg-slate-900 text-white hover:bg-slate-800 focus-visible:ring-slate-500',
+  primary:
+    'bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950',
   secondary:
-    'border border-slate-300 bg-white text-slate-900 hover:bg-slate-50 focus-visible:ring-slate-500',
-  tertiary: 'text-slate-900 hover:text-cyan-600 underline focus-visible:ring-cyan-500',
+    'border border-slate-300 bg-white text-slate-900 hover:bg-slate-50 active:bg-slate-100',
+  tertiary:
+    'text-slate-900 hover:text-slate-700 underline underline-offset-2',
+  ghost:
+    'text-slate-600 hover:text-slate-900 hover:bg-slate-100',
 };
 
 const sizes = {
@@ -42,7 +46,6 @@ export function Button({
         baseStyles,
         variants[variant],
         sizes[size],
-        'disabled:opacity-50 disabled:cursor-not-allowed',
         className,
       )}
       {...props}

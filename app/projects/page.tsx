@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { projects } from '@/content/projects';
 import { ButtonLink } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -11,50 +12,60 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
-      <section className="section-padding bg-slate-50 border-b border-slate-200">
-        <div className="container-max">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">My Work</h1>
-          <p className="text-lg text-slate-600 max-w-2xl">
+      <section className="gradient-bg text-white section-padding-lg border-b">
+        <div className="container-max max-w-4xl">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">My Work</h1>
+          <p className="text-lg md:text-xl text-slate-100 max-w-3xl">
             A collection of projects that demonstrate my engineering, design, and product thinking abilities.
           </p>
         </div>
       </section>
 
-      <section className="section-padding">
+      <section className="section-padding-lg">
         <div className="container-max">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project) => (
-              <div
+              <Card
                 key={project.slug}
-                className="bg-white border border-slate-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                as="article"
+                variant="default"
+                hover
+                className="flex flex-col"
               >
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
+                <CardHeader>
+                  <div className="flex items-start justify-between gap-4 mb-2">
                     <div>
-                      <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                        {project.title}
-                      </h2>
-                      <p className="text-slate-600">{project.tagline}</p>
+                      <CardTitle>{project.title}</CardTitle>
+                      <CardDescription>{project.tagline}</CardDescription>
                     </div>
                     <Badge
                       variant={project.status === 'active' ? 'primary' : 'secondary'}
+                      size="sm"
                     >
                       {project.status}
                     </Badge>
                   </div>
+                </CardHeader>
+                <CardContent className="flex-1">
                   <p className="text-slate-700 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="accent">
+                      <Badge key={tech} variant="accent" size="sm">
                         {tech}
                       </Badge>
                     ))}
                   </div>
-                  <ButtonLink href={`/projects/${project.slug}`} variant="primary" size="sm">
-                    View Case Study
+                </CardContent>
+                <CardFooter>
+                  <ButtonLink
+                    href={`/projects/${project.slug}`}
+                    variant="primary"
+                    size="sm"
+                  >
+                    View Case Study →
                   </ButtonLink>
-                </div>
-              </div>
+                </CardFooter>
+              </Card>
             ))}
           </div>
         </div>
