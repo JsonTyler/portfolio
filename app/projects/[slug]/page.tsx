@@ -41,22 +41,26 @@ export default async function ProjectPage({ params }: Props) {
   // Import the case study component based on slug
   let caseStudyComponent = null;
   switch (slug) {
-    case 'datadustr':
+    case 'datadustr': {
       const { DataDustrCaseStudy } = await import('@/content/case-studies/datadustr');
       caseStudyComponent = <DataDustrCaseStudy />;
       break;
-    case 'datadustr-tools':
+    }
+    case 'datadustr-tools': {
       const { DataDustrToolsCaseStudy } = await import('@/content/case-studies/datadustr-tools');
       caseStudyComponent = <DataDustrToolsCaseStudy />;
       break;
-    case 'timely':
+    }
+    case 'timely': {
       const { TimelyCaseStudy } = await import('@/content/case-studies/timely');
       caseStudyComponent = <TimelyCaseStudy />;
       break;
-    case 'design-library':
+    }
+    case 'design-library': {
       const { DesignLibraryCaseStudy } = await import('@/content/case-studies/design-library');
       caseStudyComponent = <DesignLibraryCaseStudy />;
       break;
+    }
   }
 
   return (
