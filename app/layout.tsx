@@ -1,13 +1,18 @@
 import type { Metadata, Viewport } from 'next';
+import { URL } from 'node:url';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SITE_METADATA } from '@/lib/constants';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_METADATA.siteUrl),
   title: {
     default: SITE_METADATA.title,
     template: `%s | ${SITE_METADATA.title}`,
+  },
+  alternates: {
+    canonical: '/',
   },
   description: SITE_METADATA.description,
   authors: [{ name: SITE_METADATA.author }],
@@ -31,7 +36,7 @@ export const metadata: Metadata = {
     description: SITE_METADATA.description,
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: SITE_METADATA.title,
     description: SITE_METADATA.description,
   },
@@ -42,7 +47,6 @@ export const metadata: Metadata = {
     'max-snippet': -1,
     'max-video-preview': -1,
   },
-  manifest: '/manifest.json',
 };
 
 export const viewport: Viewport = {
@@ -60,12 +64,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="theme-color" content="#1e293b" />
-        <meta name="description" content={SITE_METADATA.description} />
-      </head>
       <body>
         <div className="flex flex-col min-h-screen bg-slate-50">
           <Header />

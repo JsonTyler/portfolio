@@ -13,14 +13,15 @@ export const SITE_METADATA: SiteMetadata = {
 };
 
 export const NAVIGATION = [
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Work', href: '/projects' },
   { label: 'Experience', href: '/experience' },
+  { label: 'Resume', href: '/resume' },
   { label: 'Contact', href: '/contact' },
 ];
 
 export const SOCIAL_LINKS = [
   { label: 'GitHub', href: SITE_METADATA.github },
   { label: 'LinkedIn', href: SITE_METADATA.linkedin },
-  { label: 'Email', href: `mailto:${SITE_METADATA.email}` },
 ];

@@ -32,7 +32,7 @@ export const projects: Project[] = [
     title: 'Timely',
     tagline: 'Digital forensics data visualization tool',
     description:
-      'Research project: Chain of Custody data visualizer for digital forensic investigators. Published at IEEE Southeast Con 2019. Demonstrates research rigor and data visualization expertise.',
+      'Research project: Chain of Custody data visualizer for digital forensic investigators. Published at IEEE SoutheastCon 2019. Demonstrates research rigor and data visualization expertise.',
     image: '/images/projects/timely.jpg',
     technologies: ['JavaScript', 'Vis.js', 'HTML5', 'CSS', 'Bootstrap', 'Git'],
     status: 'archived',

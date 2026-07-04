@@ -6,31 +6,168 @@ export function DataDustrToolsCaseStudy() {
   return (
     <>
       {/* Overview Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Overview</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
-            DataDustrTools is the commercial product built under the DataDustr brand. It's the production realization of the architectural thinking from DataDustr—a sophisticated application that brings together email and file organization capabilities into a cohesive product. This case study focuses on the technical architecture, engineering decisions, and how this product evolved through real-world usage.
+            DataDustrTools is the product application under the DataDustr brand. It packages the architecture explored in DataDustr into a working tool for email and file cleanup. This case study focuses on technical decisions, tradeoffs, and how the code evolved through real usage.
           </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+            <Card variant="outlined" className="border-amber-300">
+              <h3 className="text-base font-bold text-slate-900 mt-0 mb-1">Live project</h3>
+              <a href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold">
+                tools.datadustr.com
+              </a>
+            </Card>
+            <Card variant="outlined" className="border-amber-300">
+              <h3 className="text-base font-bold text-slate-900 mt-0 mb-1">Source repository</h3>
+              <a href="https://github.com/JsonTyler/data-dustr-tools" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold">
+                github.com/JsonTyler/data-dustr-tools
+              </a>
+            </Card>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Status</h3>
-              <p className="text-slate-600">Feature complete, actively developed</p>
+              <h3 className="font-bold text-slate-900 mb-1">What was built</h3>
+              <p className="text-slate-600">Dual-module cleanup product: File Dustr + Inbox Dustr on web and desktop.</p>
             </Card>
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Real-World Test</h3>
-              <p className="text-slate-600">Successfully cleaned 30,000+ emails</p>
+              <h3 className="font-bold text-slate-900 mb-1">Key constraints</h3>
+              <p className="text-slate-600">Large datasets, destructive operations, provider API limits, and cross-platform parity.</p>
             </Card>
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Platform</h3>
-              <p className="text-slate-600">Web demo + desktop (Windows/macOS)</p>
+              <h3 className="font-bold text-slate-900 mb-1">Outcome signal</h3>
+              <p className="text-slate-600">Validated with a successful 30,000+ email cleanup in personal real-world usage.</p>
             </Card>
           </div>
         </div>
       </section>
 
+      <section className="section-padding-sm border-y border-slate-200 bg-white">
+        <div className="container-max max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold mt-0 mb-5">Technical artifacts and implementation status</h2>
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Technical artifacts</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+              <Card variant="outlined">
+                <h4 className="text-base font-bold mt-0 mb-2">Repository and architecture docs</h4>
+                <ul className="space-y-1 text-sm text-slate-700">
+                  <li><a href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer">Live product site (tools.datadustr.com)</a></li>
+                  <li><a href="https://github.com/JsonTyler/data-dustr-tools" target="_blank" rel="noopener noreferrer">data-dustr-tools repository</a></li>
+                  <li><a href="https://github.com/JsonTyler/data-dustr-tools/blob/main/docs/architecture.md" target="_blank" rel="noopener noreferrer">System architecture documentation</a></li>
+                  <li><a href="https://github.com/JsonTyler/data-dustr-tools/blob/main/docs/product-editions-and-policy.md" target="_blank" rel="noopener noreferrer">Edition and policy model</a></li>
+                  <li><a href="https://github.com/JsonTyler/data-dustr-tools/blob/main/docs/adr/0001-layered-boundaries.md" target="_blank" rel="noopener noreferrer">ADR, layered boundaries</a></li>
+                </ul>
+              </Card>
+              <Card variant="outlined">
+                <h4 className="text-base font-bold mt-0 mb-2">Implementation surfaces</h4>
+                <ul className="space-y-1 text-sm text-slate-700">
+                  <li><a href="https://github.com/JsonTyler/data-dustr-tools/blob/main/lib/product/policy.ts" target="_blank" rel="noopener noreferrer">Central policy engine</a></li>
+                  <li><a href="https://github.com/JsonTyler/data-dustr-tools/blob/main/lib/inbox-dustr/cleanupHeuristics.ts" target="_blank" rel="noopener noreferrer">Inbox cleanup heuristics</a></li>
+                  <li><a href="https://github.com/JsonTyler/data-dustr-tools/blob/main/lib/file-dustr/workflows.ts" target="_blank" rel="noopener noreferrer">File workflow orchestration</a></li>
+                  <li><a href="https://github.com/JsonTyler/data-dustr-tools/tree/main/src-tauri" target="_blank" rel="noopener noreferrer">Desktop runtime (Tauri)</a></li>
+                </ul>
+              </Card>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">Implemented</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>File Dustr with local filesystem workflows</li>
+                <li>Inbox Dustr with Gmail integration</li>
+                <li>Web demo and desktop runtime parity</li>
+              </ul>
+            </Card>
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">In development</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Usability refinements from real personal usage</li>
+                <li>Performance tuning for larger inboxes</li>
+                <li>Cleanup rule quality improvements</li>
+              </ul>
+            </Card>
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">Planned</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Outlook provider adapter</li>
+                <li>Licensing and entitlement infrastructure</li>
+                <li>Additional storage provider adapters</li>
+              </ul>
+            </Card>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Architecture diagram</h3>
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-center text-sm">
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">Clients</p>
+                <p className="text-slate-700">Web demo, desktop app</p>
+              </div>
+              <div className="text-center text-slate-500 font-semibold">→</div>
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">App core</p>
+                <p className="text-slate-700">Shared UI, state, module routing</p>
+              </div>
+              <div className="text-center text-slate-500 font-semibold">→</div>
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">Policy + adapters</p>
+                <p className="text-slate-700">Entitlements, Gmail API, filesystem access</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Decision log</h3>
+          <div className="overflow-x-auto">
+            <table aria-label="DataDustrTools architectural decision log">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Options considered</th>
+                  <th>Chosen solution</th>
+                  <th>Rejected alternatives</th>
+                  <th>Why this won</th>
+                  <th>Accepted tradeoffs</th>
+                  <th>Result after implementation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Need both web demos and desktop real-data workflows without drift.</td>
+                  <td>Separate clients or shared UI with adapters.</td>
+                  <td>Shared UI/state layer with platform adapters.</td>
+                  <td>Independent web and desktop UI stacks.</td>
+                  <td>Reduced duplicated engineering work while preserving parity.</td>
+                  <td>Adapter complexity and runtime branching.</td>
+                  <td>90% shared React surface and faster cross-platform release cadence.</td>
+                </tr>
+                <tr>
+                  <td>Edition/tier rules risk becoming scattered and inconsistent.</td>
+                  <td>Inline entitlement checks or centralized policy service.</td>
+                  <td>Centralized policy layer.</td>
+                  <td>Ad-hoc feature checks per component and module.</td>
+                  <td>Improved testability and consistent behavior across modules.</td>
+                  <td>Extra abstraction and policy maintenance overhead.</td>
+                  <td>Single source of truth for feature access and licensing boundaries.</td>
+                </tr>
+                <tr>
+                  <td>Need actionable cleanup recommendations while protecting user trust.</td>
+                  <td>Full-content scanning, metadata heuristics, or mixed strategy.</td>
+                  <td>Metadata-first heuristic analysis.</td>
+                  <td>Deep content inspection as default path.</td>
+                  <td>Balanced speed, privacy, and recommendation quality for real usage.</td>
+                  <td>Lower semantic precision for niche edge cases.</td>
+                  <td>Stable scanning pipelines and safe recommendation behavior at 30,000+ email validation scale.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* Architecture Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Product Architecture</h2>
 
@@ -39,14 +176,14 @@ export function DataDustrToolsCaseStudy() {
             The product is organized into two primary modules, each addressing a distinct user workflow:
           </p>
           <div className="space-y-4 mb-8">
-            <div className="bg-white border-l-4 border-cyan-600 p-6 rounded">
+            <div className="bg-white border-l-4 border-amber-600 p-6 rounded">
               <h4 className="font-bold text-slate-900 mb-2">File Dustr</h4>
               <p className="text-slate-700 leading-relaxed mb-2">
                 Analyzes local file systems for duplicates, old files, and large files that consume space. Provides recommendations for cleanup with safe defaults: confirmation before deletion, undo capability, and preview of what will be removed.
               </p>
               <p className="text-sm text-slate-600">Current implementation: Local filesystem access</p>
             </div>
-            <div className="bg-white border-l-4 border-cyan-600 p-6 rounded">
+            <div className="bg-white border-l-4 border-amber-600 p-6 rounded">
               <h4 className="font-bold text-slate-900 mb-2">Inbox Dustr</h4>
               <p className="text-slate-700 leading-relaxed mb-2">
                 Analyzes email accounts (currently Gmail) for old messages, large emails, newsletters, and duplicates. Provides intelligent recommendations rather than simple rules. Built-in safety: multiple confirmation steps before any action.
@@ -56,13 +193,15 @@ export function DataDustrToolsCaseStudy() {
           </div>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">The Policy Layer: Centralized Business Logic</h3>
-          <p className="text-slate-700 leading-relaxed mb-6">
-            The most important architectural decision: a centralized policy engine that manages feature availability, licensing, and business rules.
+          <p className="text-slate-700 leading-relaxed mb-4">
+            The key architectural decision was a centralized policy engine for feature availability and licensing behavior.
           </p>
           <div className="bg-white border border-slate-300 rounded-lg p-8 mb-6">
-            <p className="text-slate-700 leading-relaxed mb-4">
-              <strong>What This Means:</strong> Rather than scattering business rules throughout the codebase ("if free tier then disable bulk delete, if desktop then enable local files, if pro then..."), all policy decisions flow through a single policy layer.
-            </p>
+            <ul className="list-disc list-inside space-y-1 text-slate-700 mb-4">
+              <li>Avoids scattered checks like tier/platform conditionals across UI modules</li>
+              <li>Keeps entitlement logic testable and auditable in one location</li>
+              <li>Lets UI ask policy questions instead of encoding business rules directly</li>
+            </ul>
             <div className="bg-slate-50 border border-slate-200 rounded p-4 my-4 font-mono text-sm">
               <p className="text-slate-700 mb-2">// Example query pattern</p>
               <p className="text-slate-700">const canBulkDelete = policy.canPerformAction(</p>
@@ -72,7 +211,7 @@ export function DataDustrToolsCaseStudy() {
               <p className="text-slate-700">)</p>
             </div>
             <p className="text-slate-700 leading-relaxed">
-              <strong>Why This Matters:</strong> As pricing evolves or features are added, policy changes are centralized. The UI doesn't need to know all the business rules—it just queries the policy layer. Testing is simpler (mock the policy layer). Different editions (Free, Pro, Enterprise) don't require different codebases.
+              Pricing changes and feature expansions now update one policy surface instead of multiple UI branches.
             </p>
           </div>
 
@@ -102,28 +241,18 @@ export function DataDustrToolsCaseStudy() {
       </section>
 
       {/* Technical Implementation Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Technical Implementation</h2>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Technology Stack Rationale</h3>
-          <div className="space-y-4 mb-8">
-            <Card variant="outlined">
-              <p className="text-slate-700 mb-2"><strong>Next.js 16 + React 19 + TypeScript:</strong> Modern framework with excellent developer experience, server-side rendering capability, API routes for backend logic. TypeScript ensures type safety across a complex codebase. Fast builds and good deployment story.</p>
-            </Card>
-            <Card variant="outlined">
-              <p className="text-slate-700 mb-2"><strong>Tailwind CSS:</strong> Design system consistency through utility classes. Pairs perfectly with the established component library, enabling rapid UI iteration while maintaining visual standards.</p>
-            </Card>
-            <Card variant="outlined">
-              <p className="text-slate-700 mb-2"><strong>Tauri (Desktop Runtime):</strong> Lightweight alternative to Electron. Uses system WebView rather than embedding Chromium, resulting in smaller bundle sizes and lower memory usage. Rust backend for performance-critical operations.</p>
-            </Card>
-            <Card variant="outlined">
-              <p className="text-slate-700 mb-2"><strong>SQLite (Desktop):</strong> Embedded database for desktop application. No server required, perfect for local data management, excellent performance for the datasets we're handling (even 100,000 emails is manageable).</p>
-            </Card>
-            <Card variant="outlined">
-              <p className="text-slate-700 mb-2"><strong>Gmail API + OAuth:</strong> Standard email integration. Chosen for largest user base and well-documented API. OAuth ensures security—we never handle passwords directly.</p>
-            </Card>
-          </div>
+          <ul className="list-disc list-inside space-y-2 text-slate-700 mb-8">
+            <li><strong>Next.js 16 + React 19 + TypeScript:</strong> typed full-stack surface and consistent delivery path for web + desktop shell.</li>
+            <li><strong>Tailwind CSS:</strong> enforce design-system consistency without bespoke CSS drift.</li>
+            <li><strong>Tauri:</strong> desktop runtime with smaller footprint than Electron for local-workflow use cases.</li>
+            <li><strong>SQLite:</strong> embedded local persistence for desktop sessions and high-volume item workflows.</li>
+            <li><strong>Gmail API + OAuth:</strong> secure provider integration with explicit permission boundaries.</li>
+          </ul>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Performance Optimization Approach</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
@@ -152,20 +281,20 @@ export function DataDustrToolsCaseStudy() {
       </section>
 
       {/* Real-World Validation Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Real-World Validation & Learning</h2>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Processing 30,000 Emails: What I Learned</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            I used DataDustrTools to clean one of my personal Gmail accounts. This wasn't a theoretical exercise—it was real usage of the product at meaningful scale. Key discoveries:
+            I used DataDustrTools to clean one of my personal Gmail accounts. This was not a theoretical exercise, it was real usage of the product at meaningful scale. Key discoveries:
           </p>
 
           <div className="space-y-4 mb-8">
             <div className="bg-white border border-slate-200 rounded-lg p-6">
               <h4 className="font-bold text-slate-900 mb-2">1. Performance Optimization Was Non-Negotiable</h4>
               <p className="text-slate-700 leading-relaxed">
-                The initial implementation would have taken 5+ minutes to load a 30,000-email account. After optimization (pagination, virtual scrolling, Web Workers), the same analysis completes in seconds. This wasn't a "nice-to-have"—it was fundamental to usability.
+                The initial implementation would have taken 5+ minutes to load a 30,000-email account. After optimization (pagination, virtual scrolling, Web Workers), the same analysis completes in seconds. This was not a "nice-to-have", it was fundamental to usability.
               </p>
             </div>
 
@@ -179,7 +308,7 @@ export function DataDustrToolsCaseStudy() {
             <div className="bg-white border border-slate-200 rounded-lg p-6">
               <h4 className="font-bold text-slate-900 mb-2">3. Users Need Confidence in Destructive Operations</h4>
               <p className="text-slate-700 leading-relaxed">
-                Deletions feel permanent (even when they're not). This led to the preview feature, multiple confirmations, and undo capability. These features added complexity but dramatically improved user confidence in the product.
+                Deletions feel permanent (even when they are reversible). This led to preview, multiple confirmations, and undo support. These features added implementation complexity but were required for safe day-to-day use.
               </p>
             </div>
 
@@ -206,7 +335,7 @@ export function DataDustrToolsCaseStudy() {
       </section>
 
       {/* Challenges & Solutions Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Specific Technical Challenges</h2>
 
@@ -226,7 +355,7 @@ export function DataDustrToolsCaseStudy() {
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Challenge: Email Provider Integration Complexity</h3>
           <div className="bg-white border border-slate-300 rounded-lg p-6">
             <p className="text-slate-700 leading-relaxed mb-4">
-              <strong>Problem:</strong> Gmail API is powerful but has quirks: rate limits, pagination tokens, metadata retrieval limits, and authentication complexity. Getting this right is critical—bugs here corrupt user data or lose analysis results.
+              <strong>Problem:</strong> Gmail API is powerful but has quirks: rate limits, pagination tokens, metadata retrieval limits, and authentication complexity. Getting this right is critical, bugs here can corrupt user data or lose analysis results.
             </p>
             <p className="text-slate-700 leading-relaxed mb-4">
               <strong>Solution:</strong>
@@ -239,14 +368,14 @@ export function DataDustrToolsCaseStudy() {
               <li>Tests with real Gmail API (not mocks)</li>
             </ul>
             <p className="text-slate-700 leading-relaxed">
-              <strong>Future:</strong> Outlook support is planned. The adapter architecture makes adding new providers straightforward—implement the interface, handle provider-specific behavior, done.
+              <strong>Future:</strong> Outlook support is planned. The adapter architecture keeps adding new providers straightforward: implement the interface, handle provider-specific behavior, and validate.
             </p>
           </div>
         </div>
       </section>
 
       {/* Engineering Qualities Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">What This Project Demonstrates</h2>
 
@@ -254,7 +383,7 @@ export function DataDustrToolsCaseStudy() {
             DataDustrTools showcases my engineering approach:
           </p>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
             <Card variant="outlined">
               <h4 className="font-bold text-slate-900 mb-2">Architectural Thinking</h4>
               <p className="text-slate-700 text-sm">
@@ -282,13 +411,13 @@ export function DataDustrToolsCaseStudy() {
             <Card variant="outlined">
               <h4 className="font-bold text-slate-900 mb-2">Real-World Validation</h4>
               <p className="text-slate-700 text-sm">
-                Using the product myself to clean 30,000 emails revealed far more about its strengths and weaknesses than theoretical testing could. This is mature engineering—validation through real usage.
+                Using the product myself to clean 30,000 emails revealed far more about its strengths and weaknesses than theoretical testing could. This is mature engineering, validation through real usage.
               </p>
             </Card>
             <Card variant="outlined">
               <h4 className="font-bold text-slate-900 mb-2">Continuous Refinement</h4>
               <p className="text-slate-700 text-sm">
-                The codebase evolves based on real usage. I'm committed to maintaining clean architecture while the product grows—that's a discipline most solo developers don't maintain.
+                The codebase evolves based on real usage. I keep architecture boundaries explicit while adding features so iteration does not erode maintainability.
               </p>
             </Card>
           </div>
@@ -296,12 +425,12 @@ export function DataDustrToolsCaseStudy() {
       </section>
 
       {/* Current Implementation Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Current Implementation Status</h2>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">What's Live Today</h3>
-          <div className="space-y-3 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
             <div className="flex gap-4 items-start">
               <span className="text-green-600 font-bold text-2xl flex-shrink-0">✓</span>
               <div>
@@ -333,7 +462,7 @@ export function DataDustrToolsCaseStudy() {
           </div>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">In Development or Planned</h3>
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
             <div className="flex gap-4 items-start">
               <span className="text-slate-400 font-bold text-2xl flex-shrink-0">◯</span>
               <div>

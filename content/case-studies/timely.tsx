@@ -6,43 +6,157 @@ export function TimelyCaseStudy() {
   return (
     <>
       {/* Overview Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Overview</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
-            Timely is a research project from my undergraduate years—a chain of custody data visualizer for digital forensic investigators. The project demonstrates my ability to conduct rigorous academic research, understand complex problem domains, implement sophisticated solutions, and communicate findings to technical audiences.
+            Timely is an undergraduate research project: a chain-of-custody visualizer for digital forensics workflows. The work combined domain research, data modeling, and implementation, and was later published at IEEE SoutheastCon 2019.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Timeline</h3>
-              <p className="text-slate-600">2015–2017</p>
+              <h3 className="font-bold text-slate-900 mb-1">What was built</h3>
+              <p className="text-slate-600">A chain-of-custody visualization system for digital forensic workflows.</p>
             </Card>
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Publication</h3>
-              <p className="text-slate-600">IEEE Southeast Con 2019</p>
+              <h3 className="font-bold text-slate-900 mb-1">Key constraints</h3>
+              <p className="text-slate-600">Complex relationship data, domain-specific correctness, and research-grade rigor.</p>
             </Card>
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Role</h3>
-              <p className="text-slate-600">Lead researcher & developer</p>
+              <h3 className="font-bold text-slate-900 mb-1">Outcome signal</h3>
+              <p className="text-slate-600">Published at IEEE SoutheastCon 2019 after peer-review and iterative validation.</p>
             </Card>
           </div>
         </div>
       </section>
 
+      <section className="section-padding-sm border-y border-slate-200 bg-white">
+        <div className="container-max max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold mt-0 mb-5">Technical artifacts and implementation status</h2>
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Technical artifacts</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+              <Card variant="outlined">
+                <h4 className="text-base font-bold mt-0 mb-2">Publicly shareable artifacts</h4>
+                <ul className="space-y-1 text-sm text-slate-700">
+                  <li><a href="https://github.com/JsonTyler/Staticerson/blob/main/content/case-studies/timely.tsx" target="_blank" rel="noopener noreferrer">Case study source and decision rationale</a></li>
+                  <li><a href="https://github.com/JsonTyler/Staticerson/blob/main/content/projects.ts" target="_blank" rel="noopener noreferrer">Project metadata and portfolio integration</a></li>
+                </ul>
+              </Card>
+              <Card variant="outlined">
+                <h4 className="text-base font-bold mt-0 mb-2">Research artifacts with limited public access</h4>
+                <ul className="space-y-1 text-sm text-slate-700">
+                  <li>The original undergraduate repository and datasets are archived and not fully public.</li>
+                  <li>Normally shared artifacts would include dataset samples, graph interaction recordings, and benchmark runs used during publication prep.</li>
+                </ul>
+              </Card>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">Implemented</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Graph-based chain-of-custody visualizer</li>
+                <li>Interactive node and edge navigation</li>
+                <li>Research write-up and publication support</li>
+              </ul>
+            </Card>
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">In development</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Project is complete and archived</li>
+                <li>No active feature development</li>
+              </ul>
+            </Card>
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">Planned</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>No current roadmap items</li>
+                <li>Potential modernization only if reopened</li>
+              </ul>
+            </Card>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Model diagram</h3>
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-center text-sm">
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">Evidence node</p>
+                <p className="text-slate-700">Artifact, source, handler metadata</p>
+              </div>
+              <div className="text-center text-slate-500 font-semibold">→</div>
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">Relationship edges</p>
+                <p className="text-slate-700">Transfer, analysis, derivation links</p>
+              </div>
+              <div className="text-center text-slate-500 font-semibold">→</div>
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">Investigator view</p>
+                <p className="text-slate-700">Timeline and lineage exploration</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Decision log</h3>
+          <div className="overflow-x-auto">
+            <table aria-label="Timely decision log">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Options considered</th>
+                  <th>Chosen solution</th>
+                  <th>Rejected alternatives</th>
+                  <th>Why this won</th>
+                  <th>Accepted tradeoffs</th>
+                  <th>Result after implementation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Linear tables obscured evidence lineage relationships.</td>
+                  <td>Tabular views, timeline-only views, or graph model.</td>
+                  <td>Interactive graph visualization.</td>
+                  <td>Spreadsheet-style and static timeline-only interfaces.</td>
+                  <td>Made dependency and transfer paths easier to inspect quickly.</td>
+                  <td>Higher UI complexity and rendering constraints.</td>
+                  <td>Investigators could inspect relationship context faster than with linear views.</td>
+                </tr>
+                <tr>
+                  <td>Need broad accessibility for researchers and reviewers.</td>
+                  <td>Desktop-only app or web-delivered prototype.</td>
+                  <td>Web stack delivery.</td>
+                  <td>Desktop-bound prototype requiring local installs.</td>
+                  <td>Simplified distribution and evaluation in research settings.</td>
+                  <td>Browser performance limits for dense graphs.</td>
+                  <td>Lower friction for demonstration, collaboration, and publication review.</td>
+                </tr>
+                <tr>
+                  <td>Forensic domain requirements were easy to misinterpret without expert input.</td>
+                  <td>Build from assumptions or iterate with domain feedback.</td>
+                  <td>Iterative cycles with forensic feedback.</td>
+                  <td>One-pass implementation based only on literature.</td>
+                  <td>Increased fidelity to real analyst workflows.</td>
+                  <td>Longer early design and validation cycles.</td>
+                  <td>More credible problem framing and stronger publication readiness.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* Problem & Research Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">The Research Problem</h2>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Context: Digital Forensics</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            Digital forensics is the discipline of extracting and analyzing digital evidence from computer systems. A critical component is chain of custody—maintaining a documented history of how evidence was collected, transferred, analyzed, and preserved. This history is essential for legal proceedings; any break in the chain undermines the evidence.
+            Digital forensics is the discipline of extracting and analyzing digital evidence from computer systems. A critical component is chain of custody, maintaining a documented history of how evidence was collected, transferred, analyzed, and preserved. This history is essential for legal proceedings; any break in the chain undermines the evidence.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">The Problem</h3>
-          <p className="text-slate-700 leading-relaxed mb-6">
-            Chain of custody information is complex and highly interconnected. Investigators need to understand:
-          </p>
+          <p className="text-slate-700 leading-relaxed mb-6">Chain of custody data is highly interconnected. Investigators need to answer:</p>
           <ul className="list-disc list-inside space-y-2 text-slate-700 mb-6">
             <li>Which evidence items were collected when and where</li>
             <li>Who handled each item (and when)</li>
@@ -51,7 +165,7 @@ export function TimelyCaseStudy() {
             <li>The complete lineage of derivative artifacts</li>
           </ul>
           <p className="text-slate-700 leading-relaxed">
-            Representing this information in traditional formats (tables, spreadsheets, sequential lists) quickly becomes confusing. The relationships between entities are critical to understanding the chain of custody, but linear representations obscure these relationships.
+            Traditional tables and sequential logs hide relationship context, which is often the core of forensic reasoning.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Research Question</h3>
@@ -62,7 +176,7 @@ export function TimelyCaseStudy() {
       </section>
 
       {/* Solution Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Solution: Interactive Graph Visualization</h2>
 
@@ -99,7 +213,7 @@ export function TimelyCaseStudy() {
       </section>
 
       {/* Research Methodology Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Research Methodology</h2>
 
@@ -110,11 +224,11 @@ export function TimelyCaseStudy() {
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Design & Development Cycles</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            The project followed iterative design: initial prototype → evaluation with domain experts → refinement → next iteration. Each cycle incorporated feedback from forensic professionals who understood the actual use cases and constraints.
+            The project iterated through prototype, domain review, and refinement cycles, with each iteration validated by forensic professionals.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Key Research Contributions</h3>
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <Card variant="outlined">
               <h4 className="font-bold text-slate-900 mb-2">1. Novel Visualization Approach</h4>
               <p className="text-slate-700 text-sm">
@@ -138,13 +252,13 @@ export function TimelyCaseStudy() {
       </section>
 
       {/* Publication Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Publication & Impact</h2>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Peer-Reviewed Publication</h3>
           <p className="text-slate-700 leading-relaxed mb-4">
-            The research was published at IEEE Southeast Con 2019 under the title "Timely: A Chain of Custody Data Visualizer." This was a selective conference requiring peer review and rigorous evaluation.
+            The research was published at IEEE SoutheastCon 2019 under the title "Timely: A Chain of Custody Data Visualizer." This was a selective conference requiring peer review and rigorous evaluation.
           </p>
           <p className="text-slate-700 leading-relaxed mb-6">
             Publishing in a peer-reviewed venue meant:
@@ -158,13 +272,13 @@ export function TimelyCaseStudy() {
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">What This Demonstrates</h3>
           <p className="text-slate-700 leading-relaxed">
-            Publishing research as an undergraduate shows the ability to conduct rigorous, original work that contributes to a field. It's different from industry projects—it requires deep thinking about problems, literature knowledge, and the discipline to document and communicate findings formally.
+            Publishing research as an undergraduate shows the ability to conduct rigorous, original work that contributes to a field. It is different from industry projects, because it requires deep thinking about problems, literature knowledge, and the discipline to document and communicate findings formally.
           </p>
         </div>
       </section>
 
       {/* Technical Skills Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Technical & Research Skills Demonstrated</h2>
 
@@ -204,23 +318,23 @@ export function TimelyCaseStudy() {
       </section>
 
       {/* Lessons & Growth Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">What This Project Taught Me</h2>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">1. Understanding Domain Before Building</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            Building for a specific domain requires deep understanding of how users work, what matters to them, and what constraints they face. Reading papers isn't enough—talking to domain experts and understanding workflows is essential.
+            Building for a specific domain requires deep understanding of how users work, what matters to them, and what constraints they face. Reading papers is not enough, talking to domain experts and understanding workflows is essential.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">2. The Power of Visualization</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            Well-designed visualization can make complex information understandable. The difference between a table of chain of custody data and an interactive graph visualization is enormous. This lesson carried forward into all subsequent design work—visual hierarchy, effective representation, and user interaction are fundamental to good software.
+            Visualization decisions directly affect analysis quality. In this project, graph navigation exposed relationships that were difficult to track in tables. That lesson carried into later product work: representation choices are engineering choices.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">3. Research Communication Skills</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            Writing and publishing research taught me to think clearly, structure complex ideas logically, and communicate findings to skeptical audiences. These skills are valuable far beyond academia—they're essential for technical leadership, architecture documentation, and knowledge sharing.
+            Writing and publishing research taught me to think clearly, structure complex ideas logically, and communicate findings to skeptical audiences. These skills are valuable far beyond academia, they are essential for technical leadership, architecture documentation, and knowledge sharing.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">4. Building for Real Use Cases</h3>
@@ -231,7 +345,7 @@ export function TimelyCaseStudy() {
       </section>
 
       {/* Positioning Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Why This Matters on a Portfolio</h2>
 
@@ -242,12 +356,12 @@ export function TimelyCaseStudy() {
           <div className="space-y-4">
             <Card variant="outlined">
               <p className="text-slate-700">
-                <strong>Research Thinking:</strong> Shows the ability to identify novel problems, conduct literature review, and contribute original solutions. Not all engineering is about shipping products—sometimes it's about understanding problem domains deeply.
+                <strong>Research Thinking:</strong> Shows the ability to identify novel problems, conduct literature review, and contribute original solutions. Not all engineering is about shipping products, sometimes it is about understanding problem domains deeply.
               </p>
             </Card>
             <Card variant="outlined">
               <p className="text-slate-700">
-                <strong>Rigor:</strong> Academic publication requires a level of rigor—peer review, reproducibility, formal documentation—that demonstrates commitment to quality.
+                <strong>Rigor:</strong> Academic publication requires a level of rigor, including peer review, reproducibility, and formal documentation.
               </p>
             </Card>
             <Card variant="outlined">

@@ -6,59 +6,28 @@ export function Footer() {
 
   return (
     <footer className="border-t border-slate-200 bg-white">
-      <div className="container-max section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <h3 className="font-bold text-slate-900 mb-2">{SITE_METADATA.siteName}</h3>
-            <p className="text-slate-600 text-sm leading-relaxed">{SITE_METADATA.description}</p>
-          </div>
-          <nav aria-label="Footer navigation">
-            <h4 className="font-bold text-slate-900 mb-4">Navigation</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="text-slate-600 hover:text-slate-900 text-sm block transition-standard focus-ring">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-slate-600 hover:text-slate-900 text-sm block transition-standard focus-ring">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-slate-600 hover:text-slate-900 text-sm block transition-standard focus-ring">
-                  Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-slate-600 hover:text-slate-900 text-sm block transition-standard focus-ring">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <div>
-            <h4 className="font-bold text-slate-900 mb-4">Connect</h4>
-            <ul className="space-y-2">
-              {SOCIAL_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-600 hover:text-slate-900 text-sm block transition-standard focus-ring"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="border-t border-slate-200 pt-8">
-          <p className="text-slate-600 text-sm text-center">
-            © {currentYear} {SITE_METADATA.author}. All rights reserved.
+      <div className="container-max py-2.5 md:py-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:items-center">
+          <p className="text-xs md:text-sm text-slate-600">
+            © {currentYear} {SITE_METADATA.author}, Open to senior and staff software engineering roles.
           </p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 md:justify-end">
+            <Link href="/projects" className="text-xs md:text-sm text-slate-600 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4">Case studies</Link>
+            <a href="/resume/Jason-Rodriguez-Resume.pdf" target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm text-slate-600 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4">Resume PDF</a>
+            <a href="https://datadustr.com/" target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm text-slate-600 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4">DataDustr</a>
+            <a href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm text-slate-600 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4">DataDustrTools</a>
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs md:text-sm text-slate-600 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

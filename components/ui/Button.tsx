@@ -19,11 +19,11 @@ const baseStyles =
 
 const variants = {
   primary:
-    'bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950',
+    'bg-slate-900 text-white hover:bg-zinc-800 active:bg-zinc-950',
   secondary:
-    'border border-slate-300 bg-white text-slate-900 hover:bg-slate-50 active:bg-slate-100',
+    'border border-slate-300 bg-white text-slate-900 hover:bg-amber-50 active:bg-amber-100',
   tertiary:
-    'text-slate-900 hover:text-slate-700 underline underline-offset-2',
+    'text-slate-900 hover:text-amber-700 underline decoration-amber-300/70 underline-offset-2',
   ghost:
     'text-slate-600 hover:text-slate-900 hover:bg-slate-100',
 };

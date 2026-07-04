@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="gradient-bg text-white section-padding-lg border-b">
+      <section className="gradient-bg text-white hero-padding border-b">
         <div className="container-max max-w-4xl">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Building Products That Matter</h1>
-          <p className="text-lg md:text-xl text-slate-100 leading-relaxed max-w-3xl">
-            I'm a full-stack software engineer with product thinking and design sensibility. I don't specialize in one area—I integrate across technical architecture, product vision, UX, and business strategy.
+          <h1 className="hero-title text-5xl md:text-6xl font-bold mb-6">About Jason Rodriguez</h1>
+          <p className="hero-subtitle text-lg md:text-xl leading-relaxed max-w-3xl">
+            I'm a full-stack software engineer who integrates architecture, product vision, UX, and business strategy.
           </p>
         </div>
       </section>
@@ -27,7 +27,7 @@ export default function AboutPage() {
               I believe the best software comes from understanding problems deeply before building solutions. My approach starts with curiosity: Who are the users? What's the real problem, not the stated problem? Why hasn't someone solved this already?
             </p>
             <p>
-              Once I understand the problem, I design from first principles. What's the simplest solution that works? What are the non-obvious tradeoffs? How do we build this to scale? I'm comfortable making architectural decisions with incomplete information—that's the nature of building products. What matters is thinking through the implications carefully.
+              Once I understand the problem, I design from first principles. What is the simplest solution that works? What are the non-obvious tradeoffs? How do we build this to scale? I am comfortable making architectural decisions with incomplete information, because that is the nature of building products. What matters is thinking through the implications carefully.
             </p>
             <p>
               I combine three perspectives that rarely exist together:
@@ -62,7 +62,7 @@ export default function AboutPage() {
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Act 1: Foundation (2015–2017)</h3>
               <p>
-                I started as a CS student at Jackson State University on a full scholarship. Rather than just completing coursework, I got involved in academic research. I worked on a project called Timely—a data visualization tool for digital forensic investigators managing chain of custody information. That work was published at IEEE Southeast Con 2019.
+                I started as a CS student at Jackson State University on a full scholarship. Rather than just completing coursework, I got involved in academic research. I worked on a project called Timely, a data visualization tool for digital forensic investigators managing chain of custody information. That work was published at IEEE SoutheastCon 2019.
               </p>
               <p className="text-sm text-slate-600 mt-2">
                 <strong>What I learned:</strong> How to approach problems rigorously. How to go deep into a domain. How to communicate findings formally. That quality work gets recognized.
@@ -82,10 +82,10 @@ export default function AboutPage() {
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Act 3: User-Centered Engineering (2020–2022)</h3>
               <p>
-                I moved to Moses Lake Industries to focus on frontend and UX. I designed internal UIs for complex software. Learned Blazor and C# while watching the ecosystem evolve. This was my first time thinking deeply about user experience—how engineering decisions impact users directly.
+                I moved to Moses Lake Industries to focus on frontend and UX. I designed internal UIs for complex software. Learned Blazor and C# while watching the ecosystem evolve. This was my first time thinking deeply about user experience, and how engineering decisions impact users directly.
               </p>
               <p className="text-sm text-slate-600 mt-2">
-                <strong>What I learned:</strong> That good engineering isn't measured in compile time—it's measured in user satisfaction and business results. That UX considerations should shape architectural decisions from the start, not be applied afterwards.
+                <strong>What I learned:</strong> Good engineering is not measured in compile time, it is measured in user satisfaction and business results. UX considerations should shape architectural decisions from the start, not be applied afterwards.
               </p>
             </div>
 
@@ -95,17 +95,17 @@ export default function AboutPage() {
                 I joined Springbrook Software as a frontend engineer. Quickly moved into UX design and took ownership of the design library powering Cirrus, their ERP platform serving 1000+ enterprise customers. I led the design system effort that unified visual design, components, and patterns across the entire product.
               </p>
               <p className="text-sm text-slate-600 mt-2">
-                <strong>What I learned:</strong> How to scale design thinking across a product and team. How to make decisions that benefit thousands of customers. That design systems are as much organizational as technical—they're about enabling teams to move faster while maintaining quality.
+                <strong>What I learned:</strong> How to scale design thinking across a product and team. How to make decisions that benefit thousands of customers. Design systems are as much organizational as technical, they enable teams to move faster while maintaining quality.
               </p>
             </div>
 
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Act 5: Product Ownership (2022–Present, Parallel)</h3>
               <p>
-                In parallel with Springbrook, I founded DataDustr—a company focused on helping professionals reclaim digital space through intelligent cleanup of email and files. This taught me everything: product strategy, business planning, technical architecture choices, design system thinking, hiring decisions, how to prioritize ruthlessly, how to ship something real.
+                In parallel with Springbrook, I founded DataDustr, a company concept focused on helping professionals reclaim digital space through intelligent cleanup of email and files. This taught me product strategy, business planning, technical architecture choices, design system thinking, hiring decisions, prioritization, and shipping discipline.
               </p>
               <p className="text-sm text-slate-600 mt-2">
-                <strong>What I learned:</strong> That I can own the complete value chain—from identifying a market problem through building the solution through bringing it to market. That you learn more from actually building things than from any amount of planning. That mistakes are tuition in the school of product development.
+                <strong>What I learned:</strong> I can own the complete value chain, from identifying a market problem through building the solution and bringing it to market. You learn more from building than from planning alone. Mistakes are tuition in product development.
               </p>
             </div>
           </div>
@@ -117,15 +117,15 @@ export default function AboutPage() {
             </p>
             <div className="space-y-3">
               <div className="flex gap-4 items-start">
-                <span className="text-cyan-600 font-bold text-2xl flex-shrink-0">→</span>
+                <span className="text-amber-600 font-bold text-2xl flex-shrink-0">→</span>
                 <div>
                   <p>
-                    <strong>Solving real problems for real users.</strong> I'm energized when I can identify a genuine problem and build a solution that genuinely helps. Not abstract engineering problems—actual user problems that affect people's work and lives.
+                    <strong>Solving real problems for real users.</strong> I am energized when I can identify a genuine problem and build a solution that helps. Not abstract engineering problems, actual user problems that affect people's work and lives.
                   </p>
                 </div>
               </div>
               <div className="flex gap-4 items-start">
-                <span className="text-cyan-600 font-bold text-2xl flex-shrink-0">→</span>
+                <span className="text-amber-600 font-bold text-2xl flex-shrink-0">→</span>
                 <div>
                   <p>
                     <strong>Building systems and teams to scale.</strong> Small, scrappy solutions are fun. But I'm most energized when I can architect solutions that work for thousands of users, maintain design consistency across products, and enable teams to move quickly.
@@ -145,7 +145,7 @@ export default function AboutPage() {
               <span><strong>Not</strong> just narrow specialists who optimize for one dimension</span>
             </li>
             <li className="flex gap-4 items-start">
-              <span className="font-bold text-cyan-600 flex-shrink-0">✓</span>
+              <span className="font-bold text-amber-600 flex-shrink-0">✓</span>
               <span><strong>But rather</strong> integrators who bridge engineering, design, and product</span>
             </li>
             <li className="flex gap-4 items-start">
@@ -153,7 +153,7 @@ export default function AboutPage() {
               <span><strong>Not</strong> pure engineering divorced from user needs</span>
             </li>
             <li className="flex gap-4 items-start">
-              <span className="font-bold text-cyan-600 flex-shrink-0">✓</span>
+              <span className="font-bold text-amber-600 flex-shrink-0">✓</span>
               <span><strong>But rather</strong> engineers who understand user psychology and product strategy</span>
             </li>
             <li className="flex gap-4 items-start">
@@ -161,26 +161,26 @@ export default function AboutPage() {
               <span><strong>Not</strong> pure product thinking without technical rigor</span>
             </li>
             <li className="flex gap-4 items-start">
-              <span className="font-bold text-cyan-600 flex-shrink-0">✓</span>
+              <span className="font-bold text-amber-600 flex-shrink-0">✓</span>
               <span><strong>But rather</strong> product leaders who understand architectural tradeoffs</span>
             </li>
           </ul>
 
           <p className="text-slate-700 leading-relaxed mb-12">
-            Great software happens at the intersection. Most people pick one lane. I've chosen to develop genuine depth in all three—that's my differentiation.
+            Great software happens at the intersection. Most people pick one lane. I have chosen to develop genuine depth in all three, that is my differentiation.
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-8">Outside of Work</h2>
           <p className="text-slate-700 leading-relaxed mb-12">
-            I live in the Pacific Northwest with three cats. I travel frequently (18 states and counting). I code for fun—there's something deeply satisfying about building something just because it's interesting, without the pressure of commercial success.
+            I live in the Pacific Northwest with three cats. I travel frequently (18 states and counting). I code for fun, there is something deeply satisfying about building something just because it is interesting, without the pressure of commercial success.
           </p>
 
-          <Card className="bg-cyan-50 border-cyan-200" variant="outlined">
+          <Card className="bg-amber-50 border-amber-200" variant="outlined">
             <p className="text-slate-900 mb-4 leading-relaxed">
-              I'm looking for a role where I can leverage all of these perspectives—technical depth, product thinking, design sensibility, and leadership capability. I want to work on problems that matter, with people who care about quality, in teams that value both craftsmanship and business results.
+              I am looking for a role where I can leverage all of these perspectives, technical depth, product thinking, design sensibility, and leadership capability. I want to work on problems that matter, with people who care about quality, in teams that value both craftsmanship and business results.
             </p>
             <p className="text-slate-900 mb-6">
-              If you're building something interesting and need someone who can think across the full stack of software development—let's talk.
+              If you are building something interesting and need someone who can think across the full stack of software development, let us talk.
             </p>
             <ButtonLink href="/contact" variant="primary" size="md">
               Get In Touch

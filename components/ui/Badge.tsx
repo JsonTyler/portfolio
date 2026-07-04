@@ -7,10 +7,10 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const variants = {
-  default: 'bg-slate-100 text-slate-900',
-  primary: 'bg-slate-900 text-white',
-  secondary: 'bg-slate-200 text-slate-900',
-  accent: 'bg-cyan-100 text-cyan-900',
+  default: 'bg-zinc-200 text-zinc-900 border border-zinc-300',
+  primary: 'bg-emerald-200 text-zinc-950 border border-emerald-300',
+  secondary: 'bg-zinc-300 text-zinc-950 border border-zinc-400',
+  accent: 'bg-amber-50 text-amber-800 border border-amber-200',
   success: 'bg-emerald-100 text-emerald-900',
   warning: 'bg-orange-100 text-orange-900',
 };

@@ -15,35 +15,79 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-bg text-white section-padding-lg">
-        <div className="container-max max-w-4xl text-center">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+      <section className="gradient-bg text-white hero-padding border-b border-slate-700">
+        <div className="container-max max-w-5xl">
+          <p className="text-amber-200 text-sm md:text-base font-semibold tracking-wide uppercase mb-3">
+            Senior Full-Stack Engineer, Product and UX Focus
+          </p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight text-white">
             Jason Tyler Rodriguez
           </h1>
-          <p className="text-lg md:text-xl text-slate-100 mb-8 leading-relaxed max-w-2xl mx-auto">
-            Full-stack engineer with product thinking and design sensibility. I build software that solves real problems with elegant technical solutions.
+          <p className="text-base md:text-lg text-slate-100 mb-7 leading-relaxed max-w-3xl">
+            I build production software from concept to delivery, combining architecture, UX, and product execution.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-7">
+            <Card variant="ghost" className="border border-slate-600/70 bg-slate-900/30 p-4">
+              <p className="text-xs uppercase tracking-wide text-amber-200 mb-1">What I Build</p>
+              <p className="text-sm text-white">Full-stack products with real workflows, not demo-only interfaces.</p>
+            </Card>
+            <Card variant="ghost" className="border border-slate-600/70 bg-slate-900/30 p-4">
+              <p className="text-xs uppercase tracking-wide text-amber-200 mb-1">Operating Level</p>
+              <p className="text-sm text-white">Senior owner of architecture, implementation, UX, and iteration.</p>
+            </Card>
+            <Card variant="ghost" className="border border-slate-600/70 bg-slate-900/30 p-4">
+              <p className="text-xs uppercase tracking-wide text-amber-200 mb-1">Why Interview</p>
+              <p className="text-sm text-white">I can take ambiguous ideas and turn them into maintainable software.</p>
+            </Card>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
             <ButtonLink href="/projects" variant="secondary" size="lg">
-              View My Work
+              Review Case Studies
             </ButtonLink>
             <ButtonLink href="/contact" variant="tertiary" size="lg">
-              Get In Touch
+              Contact Me
             </ButtonLink>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section className="section-padding-lg">
+      {/* Interview Signal Section */}
+      <section className="section-padding-sm border-b border-slate-200 bg-white">
         <div className="container-max">
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Work</h2>
-            <p className="text-lg text-slate-600">
-              Projects that demonstrate engineering, design, and product thinking.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 mt-0">Why teams interview me</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <Card variant="outlined">
+              <h3 className="text-lg font-bold text-slate-900 mt-0 mb-2">Architecture ownership</h3>
+              <p className="text-slate-700 text-sm">
+                I design systems for delivery and maintenance. Current examples include policy layers, adapter boundaries, and multi-platform architecture.
+              </p>
+            </Card>
+            <Card variant="outlined">
+              <h3 className="text-lg font-bold text-slate-900 mt-0 mb-2">Product judgment</h3>
+              <p className="text-slate-700 text-sm">
+                I prioritize user value, avoid feature bloat, and validate with real usage before scaling implementation.
+              </p>
+            </Card>
+            <Card variant="outlined">
+              <h3 className="text-lg font-bold text-slate-900 mt-0 mb-2">Execution speed with rigor</h3>
+              <p className="text-slate-700 text-sm">
+                I use AI as a productivity tool for planning and implementation, while owning architecture, quality gates, and final decisions.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section className="section-padding">
+        <div className="container-max">
+          <div className="mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-3 mt-0">Featured engineering work</h2>
+            <p className="text-base md:text-lg text-slate-600">
+              Evidence-first case studies showing decisions, tradeoffs, and implementation details.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredProjects.map((project) => (
               <Card
                 key={project.slug}
@@ -94,31 +138,31 @@ export default function Home() {
       </section>
 
       {/* Strengths Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max">
-          <div className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">What I Do</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              I combine software engineering, user experience, and product thinking.
+          <div className="mb-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-3 mt-0">How I work</h2>
+            <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
+              Engineering decisions aligned with user workflow and product scope.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
             {[
               {
-                title: 'Software Engineering',
-                description: 'Systems architecture, code quality, scalability, and performance optimization.',
+                title: 'Architecture',
+                description: 'Bounded modules, explicit tradeoffs, reliable interfaces, and maintainable codebases.',
               },
               {
-                title: 'Product Thinking',
-                description: 'Understanding user problems, market opportunities, and building solutions.',
+                title: 'Product execution',
+                description: 'Scope control, prioritization, and iterative delivery based on real usage.',
               },
               {
-                title: 'UX & Design',
-                description: 'Design systems, accessibility, responsive interfaces, and visual clarity.',
+                title: 'UX and design systems',
+                description: 'Consistent components, accessible defaults, and predictable workflows.',
               },
               {
-                title: 'Full-Stack Development',
-                description: 'From frontend interfaces to backend services, API design to databases.',
+                title: 'Full-stack delivery',
+                description: 'Frontend, backend, data, and deployment through one coherent implementation plan.',
               },
             ].map((item, index) => (
               <Card key={index} variant="outlined">
@@ -131,18 +175,18 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Build Together?</h2>
-          <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            I'm interested in opportunities where I can own products end-to-end and make a meaningful impact with passionate teams.
+          <h2 className="text-4xl md:text-5xl font-bold mb-5 mt-0">Open to senior and staff opportunities</h2>
+          <p className="text-base md:text-lg text-slate-600 mb-6 leading-relaxed">
+            I am looking for roles where I can own architecture and delivery, partner closely with product and design, and build software that has clear user impact.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <ButtonLink href="/contact" variant="primary" size="lg">
-              Get In Touch
+              Start a conversation
             </ButtonLink>
-            <ButtonLink href="/about" variant="secondary" size="lg">
-              Learn About Me
+            <ButtonLink href="/resume" variant="secondary" size="lg">
+              View resume
             </ButtonLink>
           </div>
         </div>

@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
-      <section className="gradient-bg text-white section-padding-lg border-b">
+      <section className="gradient-bg text-white hero-padding border-b">
         <div className="container-max max-w-4xl">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">My Work</h1>
-          <p className="text-lg md:text-xl text-slate-100 max-w-3xl">
-            A collection of projects that demonstrate my engineering, design, and product thinking abilities.
+          <h1 className="hero-title text-5xl md:text-6xl font-bold mb-4">My Work</h1>
+          <p className="hero-subtitle text-lg md:text-xl max-w-3xl">
+            Engineering case studies focused on architecture, decisions, and implementation outcomes.
           </p>
         </div>
       </section>

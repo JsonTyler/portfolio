@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 export default function ExperiencePage() {
   return (
     <>
-      <section className="gradient-bg text-white section-padding-lg border-b">
+      <section className="gradient-bg text-white hero-padding border-b">
         <div className="container-max max-w-4xl">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Experience</h1>
-          <p className="text-lg md:text-xl text-slate-100 max-w-3xl">
+          <h1 className="hero-title text-5xl md:text-6xl font-bold mb-4">Experience</h1>
+          <p className="hero-subtitle text-lg md:text-xl max-w-3xl">
             A timeline of my professional journey and career growth.
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function ExperiencePage() {
               {experience.map((item, index) => (
                 <div key={item.id} className="relative">
                   {/* Timeline dot */}
-                  <div className="absolute left-0 md:left-1/2 top-2 w-4 h-4 bg-cyan-600 rounded-full border-4 border-white transform -translate-x-1.5 md:-translate-x-2.5 md:translate-x-0" />
+                  <div className="absolute left-0 md:left-1/2 top-2 w-4 h-4 bg-amber-600 rounded-full border-4 border-white transform -translate-x-1.5 md:-translate-x-2.5 md:translate-x-0" />
 
                   {/* Content */}
                   <div className={`ml-8 md:ml-0 ${index % 2 === 0 ? 'md:mr-1/2 md:pr-12' : 'md:ml-1/2 md:pl-12'}`}>
@@ -62,7 +62,7 @@ export default function ExperiencePage() {
                         <ul className="space-y-2">
                           {item.highlights.map((highlight, i) => (
                             <li key={i} className="flex gap-3 text-sm text-slate-700">
-                              <span className="text-cyan-600 font-bold flex-shrink-0">✓</span>
+                              <span className="text-amber-600 font-bold flex-shrink-0">✓</span>
                               <span>{highlight}</span>
                             </li>
                           ))}

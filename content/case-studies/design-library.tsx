@@ -6,60 +6,175 @@ export function DesignLibraryCaseStudy() {
   return (
     <>
       {/* Overview Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Overview</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
-            As a frontend engineer at Springbrook Software, I took ownership of the design library—a comprehensive component system powering Cirrus, an enterprise ERP application serving 1000+ customers. This project demonstrates how design systems thinking and engineering discipline scale to enterprise products.
+            As a frontend engineer at Springbrook Software, I took ownership of the design library powering Cirrus, an ERP product used by 1000+ organizations. This work focused on component architecture, accessibility defaults, and adoption patterns that scale across teams.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Timeline</h3>
-              <p className="text-slate-600">2022–present</p>
+              <h3 className="font-bold text-slate-900 mb-1">What was built</h3>
+              <p className="text-slate-600">An enterprise design library with reusable components, tokens, and adoption guidelines.</p>
             </Card>
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Impact Scale</h3>
-              <p className="text-slate-600">1000+ enterprise users</p>
+              <h3 className="font-bold text-slate-900 mb-1">Key constraints</h3>
+              <p className="text-slate-600">Large legacy surface area, cross-team adoption friction, and accessibility requirements.</p>
             </Card>
             <Card variant="outlined">
-              <h3 className="font-bold text-slate-900 mb-1">Role</h3>
-              <p className="text-slate-600">Design Library owner & lead</p>
+              <h3 className="font-bold text-slate-900 mb-1">Outcome signal</h3>
+              <p className="text-slate-600">Improved consistency and delivery velocity through component-first product development.</p>
             </Card>
           </div>
         </div>
       </section>
 
+      <section className="section-padding-sm border-y border-slate-200 bg-white">
+        <div className="container-max max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold mt-0 mb-5">Technical artifacts and implementation status</h2>
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Technical artifacts</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+              <Card variant="outlined">
+                <h4 className="text-base font-bold mt-0 mb-2">Publicly shareable artifacts</h4>
+                <ul className="space-y-1 text-sm text-slate-700">
+                  <li><a href="https://github.com/JsonTyler/Staticerson/blob/main/content/case-studies/design-library.tsx" target="_blank" rel="noopener noreferrer">Case study source and decision rationale</a></li>
+                  <li><a href="https://github.com/JsonTyler/Staticerson/blob/main/app/projects/%5Bslug%5D/page.tsx" target="_blank" rel="noopener noreferrer">Portfolio case-study template implementation</a></li>
+                </ul>
+              </Card>
+              <Card variant="outlined">
+                <h4 className="text-base font-bold mt-0 mb-2">Private enterprise artifacts</h4>
+                <ul className="space-y-1 text-sm text-slate-700">
+                  <li>Component-library repository and production modules are proprietary to Springbrook.</li>
+                  <li>Normally shared artifacts would include component contracts, migration plans, accessibility test reports, and adoption dashboards.</li>
+                </ul>
+              </Card>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">Implemented</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Shared component system and usage guidelines</li>
+                <li>Design tokens for type, color, and spacing</li>
+                <li>Accessibility defaults in common components</li>
+              </ul>
+            </Card>
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">In development</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Incremental migration of legacy views</li>
+                <li>Ongoing component coverage expansion</li>
+                <li>Team adoption feedback loops</li>
+              </ul>
+            </Card>
+            <Card variant="outlined">
+              <h3 className="text-base font-bold mt-0 mb-2">Planned</h3>
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Deeper pattern library documentation</li>
+                <li>More automation around visual regressions</li>
+                <li>Additional layout and data-density patterns</li>
+              </ul>
+            </Card>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Component hierarchy diagram</h3>
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-center text-sm">
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">Design tokens</p>
+                <p className="text-slate-700">Type, color, spacing, elevation</p>
+              </div>
+              <div className="text-center text-slate-500 font-semibold">→</div>
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">Primitive components</p>
+                <p className="text-slate-700">Buttons, inputs, modals, tables</p>
+              </div>
+              <div className="text-center text-slate-500 font-semibold">→</div>
+              <div className="bg-white border border-slate-300 rounded p-3">
+                <p className="font-semibold text-slate-900 mb-1">Product modules</p>
+                <p className="text-slate-700">Cirrus features with shared UX patterns</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-3">Decision log</h3>
+          <div className="overflow-x-auto">
+            <table aria-label="Design Library architectural decision log">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Options considered</th>
+                  <th>Chosen solution</th>
+                  <th>Rejected alternatives</th>
+                  <th>Why this won</th>
+                  <th>Accepted tradeoffs</th>
+                  <th>Result after implementation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UI inconsistency across multiple ERP modules and teams.</td>
+                  <td>Team-by-team conventions or centralized component library.</td>
+                  <td>Component-first design system with shared tokens.</td>
+                  <td>Uncoordinated local component implementations.</td>
+                  <td>Scaled consistency and reduced repeated UI decision cost.</td>
+                  <td>Initial migration cost and longer component design cycles.</td>
+                  <td>Higher consistency, faster implementation, lower review friction.</td>
+                </tr>
+                <tr>
+                  <td>Accessibility regressions appeared when implemented ad-hoc per screen.</td>
+                  <td>Late QA checks or accessibility in base components.</td>
+                  <td>Accessibility defaults embedded into base components.</td>
+                  <td>Optional accessibility reviews after feature completion.</td>
+                  <td>Moved compliance from optional step to default behavior.</td>
+                  <td>More complexity in foundational components.</td>
+                  <td>Stronger WCAG baseline across newly delivered features.</td>
+                </tr>
+                <tr>
+                  <td>Legacy UI surface was too large for a big-bang migration.</td>
+                  <td>Full rewrite or incremental rollout.</td>
+                  <td>Incremental migration by feature and module.</td>
+                  <td>Single release cutover of all legacy screens.</td>
+                  <td>Reduced delivery risk and protected roadmap throughput.</td>
+                  <td>Temporary coexistence of old and new patterns.</td>
+                  <td>Steady adoption without blocking ongoing product delivery.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* Context Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">The Context</h2>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">What is Cirrus?</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            Cirrus is Springbrook Software's flagship enterprise ERP (Enterprise Resource Planning) application. It serves school districts, municipalities, and other large organizations—customers who depend on reliable, scalable software for mission-critical operations. The application is complex: financial systems, human resources, procurement, inventory, and more.
+            Cirrus is Springbrook Software's enterprise ERP platform for municipalities, school districts, and other organizations running mission-critical workflows across finance, HR, procurement, and operations.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">The Challenge: Consistency at Scale</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            Before the formal design library, Cirrus was built organically by multiple teams over years. Different modules looked slightly different. Components weren't always reused. Visual inconsistencies accumulated. For enterprise customers managing critical operations, this inconsistency created confusion and reduced confidence in the product.
+            Before the formal library, modules evolved independently and UI drift accumulated. Inconsistent patterns increased user cognitive load and reduced confidence in product reliability.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">The Opportunity</h3>
-          <p className="text-slate-700 leading-relaxed">
-            I recognized that formalizing a design system could simultaneously:
-          </p>
+          <p className="text-slate-700 leading-relaxed">A formal system needed to deliver five outcomes:</p>
           <ul className="list-disc list-inside space-y-2 text-slate-700 mt-3">
             <li>Improve user experience through consistency</li>
             <li>Accelerate development by providing reusable components</li>
             <li>Reduce technical debt and maintenance burden</li>
-            <li>Enable scalability—new features built on solid foundations</li>
+            <li>Enable scalability, with new features built on solid foundations</li>
             <li>Improve product quality and user confidence</li>
           </ul>
         </div>
       </section>
 
       {/* Approach Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Design System Approach</h2>
 
@@ -84,7 +199,7 @@ export function DesignLibraryCaseStudy() {
             <div className="bg-white border border-slate-300 rounded-lg p-6">
               <h4 className="font-bold text-slate-900 mb-2">Typography System</h4>
               <p className="text-slate-700 leading-relaxed">
-                Defined font scales, line heights, letter spacing, and weight usage. Clear rules for headlines, body text, and labels. Consistency in typography dramatically improves readability and professionalism.
+                Defined font scales, line heights, letter spacing, and weight usage. Clear rules for headlines, body text, and labels improved readability and reduced style drift across modules.
               </p>
             </div>
 
@@ -131,7 +246,7 @@ export function DesignLibraryCaseStudy() {
       </section>
 
       {/* Key Decisions Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Technical Architecture Decisions</h2>
 
@@ -144,14 +259,14 @@ export function DesignLibraryCaseStudy() {
               <strong>Example:</strong> The Button component accepts size, variant (primary/secondary/danger), disabled state, and icon props. By being specific about what can be customized, we prevent the proliferation of button variants while remaining flexible.
             </p>
             <p className="text-slate-700 leading-relaxed">
-              <strong>Benefit:</strong> Developers don't have to make styling decisions for every button—the library makes those decisions. They focus on functionality and behavior.
+              <strong>Benefit:</strong> Developers do not have to make styling decisions for every button, the library makes those decisions. They can focus on functionality and behavior.
             </p>
           </div>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Accessibility as Foundation</h3>
           <div className="bg-white border border-slate-300 rounded-lg p-6 mb-6">
             <p className="text-slate-700 leading-relaxed mb-3">
-              <strong>Decision:</strong> Every component includes accessibility features by default—proper ARIA labels, keyboard navigation, focus management.
+              <strong>Decision:</strong> Every component includes accessibility features by default, including proper ARIA labels, keyboard navigation, and focus management.
             </p>
             <p className="text-slate-700 leading-relaxed mb-3">
               <strong>Why It Matters:</strong> For an enterprise product, users include people with disabilities. Making accessibility optional means it gets neglected. Building it into every component means the entire product is accessible.
@@ -170,25 +285,25 @@ export function DesignLibraryCaseStudy() {
               <strong>Reality Check:</strong> Enterprise applications are traditionally desktop-focused. However, end users increasingly access systems on tablets and mobile devices. Building responsive from the start prevents problems later.
             </p>
             <p className="text-slate-700 leading-relaxed">
-              <strong>Outcome:</strong> Cirrus works effectively on mobile devices without sacrificing desktop experience. This became a competitive advantage.
+              <strong>Outcome:</strong> Cirrus works on mobile and desktop with shared component behavior, reducing separate UI implementation paths.
             </p>
           </div>
         </div>
       </section>
 
       {/* Impact Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Impact & Outcomes</h2>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Development Velocity</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            With the design library, new features could be built faster. Developers didn't need to design buttons or form inputs—they used library components. This freed time to focus on business logic and user workflows rather than low-level UI decisions.
+            With the design library, new features could be built faster. Developers did not need to design buttons or form inputs, they used library components. This freed time to focus on business logic and user workflows rather than low-level UI decisions.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Product Consistency</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            The product looked cohesive. Users navigating different modules recognized consistent patterns. This reduced cognitive load and increased confidence in the product. Enterprise customers appreciate this consistency—it signals professional quality.
+            The product looked cohesive. Users navigating different modules recognized consistent patterns. This reduced cognitive load and increased confidence in the product. Enterprise customers appreciate this consistency, it signals professional quality.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Scalability</h3>
@@ -198,7 +313,7 @@ export function DesignLibraryCaseStudy() {
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Accessibility Compliance</h3>
           <p className="text-slate-700 leading-relaxed mb-6">
-            By building accessibility into components, the entire product became accessible by default. This wasn't an afterthought—it was foundational. Enterprise customers, especially government and education institutions, have accessibility requirements. This improved Cirrus's competitive position.
+            By building accessibility into components, the entire product became accessible by default. This was foundational. Enterprise customers, especially government and education institutions, have accessibility requirements. This improved Cirrus's product quality and reliability.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mb-4 mt-8">Brand & Visual Identity</h3>
@@ -209,7 +324,7 @@ export function DesignLibraryCaseStudy() {
       </section>
 
       {/* Challenges & Solutions Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Challenges in Driving Change</h2>
 
@@ -222,7 +337,7 @@ export function DesignLibraryCaseStudy() {
               <strong>Solution:</strong>
             </p>
             <ul className="list-disc list-inside space-y-1 text-slate-700">
-              <li>Led design system workshops to explain the value proposition</li>
+              <li>Led design system workshops to explain adoption rationale and migration path</li>
               <li>Made adoption practical: clear documentation, good examples, quick onboarding</li>
               <li>Started with new features (no migration burden, just new patterns)</li>
               <li>Gradually encouraged migration of existing code</li>
@@ -245,7 +360,7 @@ export function DesignLibraryCaseStudy() {
       </section>
 
       {/* Lessons Section */}
-      <section className="section-padding-lg">
+      <section className="section-padding">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Key Lessons & Engineering Insights</h2>
 
@@ -253,7 +368,7 @@ export function DesignLibraryCaseStudy() {
             <Card variant="outlined">
               <h4 className="font-bold text-slate-900 mb-2">1. Design Systems Are Organizational, Not Just Technical</h4>
               <p className="text-slate-700 text-sm">
-                Building a design system isn't just about creating components—it's about establishing shared conventions that help teams work together more effectively. This requires change management, communication, and alignment.
+                Building a design system is not just about creating components, it is about establishing shared conventions that help teams work together more effectively. This requires change management, communication, and alignment.
               </p>
             </Card>
 
@@ -274,21 +389,21 @@ export function DesignLibraryCaseStudy() {
             <Card variant="outlined">
               <h4 className="font-bold text-slate-900 mb-2">4. Documentation Determines Success</h4>
               <p className="text-slate-700 text-sm">
-                A beautiful design system with poor documentation is useless. Comprehensive, clear documentation—with examples and usage guidelines—determines whether developers will actually use the system.
+                A design system with poor documentation is ineffective. Comprehensive and clear documentation, with examples and usage guidelines, determines whether developers actually use the system.
               </p>
             </Card>
 
             <Card variant="outlined">
               <h4 className="font-bold text-slate-900 mb-2">5. Design Systems Enable Team Scaling</h4>
               <p className="text-slate-700 text-sm">
-                As teams grow, coordinating on UI/UX consistency becomes harder. A good design system scales—new developers can join and immediately understand "how we do UI." This is critical for scaling teams efficiently.
+                As teams grow, coordinating on UI/UX consistency becomes harder. A good design system scales, new developers can join and immediately understand "how we do UI." This is critical for scaling teams efficiently.
               </p>
             </Card>
 
             <Card variant="outlined">
               <h4 className="font-bold text-slate-900 mb-2">6. Enterprise Products Benefit Most From Systems</h4>
               <p className="text-slate-700 text-sm">
-                For consumer products, a certain amount of inconsistency might be tolerable or even charming. For enterprise software serving 1000+ customers with mission-critical needs, consistency and polish are essential. Design systems are table stakes for enterprise product quality.
+                Enterprise products with broad module surfaces accumulate inconsistency quickly. A design system is the mechanism that keeps behavior and UI predictable as teams and features scale.
               </p>
             </Card>
           </div>
@@ -296,7 +411,7 @@ export function DesignLibraryCaseStudy() {
       </section>
 
       {/* What This Demonstrates Section */}
-      <section className="section-padding-lg bg-slate-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">What This Project Demonstrates</h2>
 
@@ -304,46 +419,27 @@ export function DesignLibraryCaseStudy() {
             My ownership of the Springbrook Design Library shows:
           </p>
 
-          <div className="space-y-3">
-            <div className="flex gap-4 items-start">
-              <span className="text-cyan-600 font-bold text-2xl flex-shrink-0">→</span>
-              <div>
-                <h4 className="font-bold text-slate-900">Leadership Without Title</h4>
-                <p className="text-slate-700 text-sm">Leading a system-wide initiative that affects how the entire team works, without necessarily having formal authority. This is how actual influence works at scale.</p>
-              </div>
-            </div>
-
-            <div className="flex gap-4 items-start">
-              <span className="text-cyan-600 font-bold text-2xl flex-shrink-0">→</span>
-              <div>
-                <h4 className="font-bold text-slate-900">Systems Thinking</h4>
-                <p className="text-slate-700 text-sm">Understanding that individual components are less important than the system they're part of. How design systems scale to large teams and products.</p>
-              </div>
-            </div>
-
-            <div className="flex gap-4 items-start">
-              <span className="text-cyan-600 font-bold text-2xl flex-shrink-0">→</span>
-              <div>
-                <h4 className="font-bold text-slate-900">Change Management</h4>
-                <p className="text-slate-700 text-sm">Not just building something good, but getting people to adopt it. Understanding organizational dynamics and how to drive change effectively.</p>
-              </div>
-            </div>
-
-            <div className="flex gap-4 items-start">
-              <span className="text-cyan-600 font-bold text-2xl flex-shrink-0">→</span>
-              <div>
-                <h4 className="font-bold text-slate-900">Enterprise Product Thinking</h4>
-                <p className="text-slate-700 text-sm">Understanding the specific challenges of large-scale enterprise software. Accessibility isn't nice-to-have. Consistency isn't optional. Polish matters.</p>
-              </div>
-            </div>
-
-            <div className="flex gap-4 items-start">
-              <span className="text-cyan-600 font-bold text-2xl flex-shrink-0">→</span>
-              <div>
-                <h4 className="font-bold text-slate-900">Enabling Team Productivity</h4>
-                <p className="text-slate-700 text-sm">Good architecture isn't just about making good products—it's about enabling teams to move faster and with better outcomes. This is a multiplier effect.</p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+            <Card variant="outlined">
+              <h4 className="font-bold text-slate-900 mt-0 mb-2">Leadership Without Title</h4>
+              <p className="text-slate-700 text-sm">Led a system-wide initiative that changed team execution patterns without requiring formal authority.</p>
+            </Card>
+            <Card variant="outlined">
+              <h4 className="font-bold text-slate-900 mt-0 mb-2">Systems Thinking</h4>
+              <p className="text-slate-700 text-sm">Prioritized interoperable patterns and consistency rules across modules, not isolated component wins.</p>
+            </Card>
+            <Card variant="outlined">
+              <h4 className="font-bold text-slate-900 mt-0 mb-2">Change Management</h4>
+              <p className="text-slate-700 text-sm">Drove adoption with documentation, workshops, and migration patterns instead of top-down mandates.</p>
+            </Card>
+            <Card variant="outlined">
+              <h4 className="font-bold text-slate-900 mt-0 mb-2">Enterprise Product Thinking</h4>
+              <p className="text-slate-700 text-sm">Applied accessibility and consistency as hard product requirements for enterprise workflows.</p>
+            </Card>
+            <Card variant="outlined">
+              <h4 className="font-bold text-slate-900 mt-0 mb-2">Team Productivity Multiplier</h4>
+              <p className="text-slate-700 text-sm">Reduced UI rework and increased delivery speed by standardizing high-frequency interface patterns.</p>
+            </Card>
           </div>
         </div>
       </section>

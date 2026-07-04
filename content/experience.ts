@@ -64,10 +64,10 @@ export const experience: ExperienceItem[] = [
       start: '2015-06',
       end: '2017-12',
     },
-    description: 'Led research on digital forensics data visualization. Created Timely, a chain of custody data visualization tool. Work resulted in publication at IEEE Southeast Con 2019.',
+    description: 'Led research on digital forensics data visualization. Created Timely, a chain of custody data visualization tool. Work resulted in publication at IEEE SoutheastCon 2019.',
     technologies: ['JavaScript', 'Vis.js', 'HTML5', 'CSS', 'Bootstrap', 'Git', 'Linux'],
     highlights: [
-      'Published research at IEEE Southeast Con 2019',
+      'Published research at IEEE SoutheastCon 2019',
       'Developed Timely data visualization tool',
       'Worked on funded research project',
       'Demonstrated ability to conduct rigorous research',
