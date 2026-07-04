@@ -1,13 +1,9 @@
 [build]
   command = "npm run build"
-  functions = "netlify/functions"
-  publish = ".next/public"
-  environment = { NEXT_PUBLIC_SITE_URL = "https://www.jasontylerrodriguez.com" }
+  environment = { NODE_VERSION = "20", NEXT_PUBLIC_SITE_URL = "https://www.jasontylerrodriguez.com" }
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/*"
