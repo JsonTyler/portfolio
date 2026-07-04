@@ -105,8 +105,10 @@ export function Header() {
             title="Hacker"
           >
             <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.75">
-              <path d="M8 16v2M16 16v2M9 20h6M8 8h.01M16 8h.01" strokeLinecap="round" />
-              <path d="M7 14a5 5 0 1 1 10 0v2H7v-2Z" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M12 3a7 7 0 0 0-7 7v2.5a2.5 2.5 0 0 0 2.5 2.5h1V18a1 1 0 0 0 1 1h1v-2h1v2h2v-2h1v2h1a1 1 0 0 0 1-1v-3h1A2.5 2.5 0 0 0 19 12.5V10a7 7 0 0 0-7-7Z" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="9.25" cy="10.25" r="1" />
+              <circle cx="14.75" cy="10.25" r="1" />
+              <path d="M10.5 14h3" strokeLinecap="round" />
             </svg>
           </button>
         </div>
