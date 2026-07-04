@@ -388,6 +388,23 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  .case-study-content a {
+    @apply font-semibold text-amber-700 underline decoration-2 underline-offset-4;
+    text-decoration-line: underline;
+    text-decoration-color: rgba(217, 119, 6, 0.65);
+  }
+
+  .case-study-content a:hover {
+    @apply text-amber-800;
+    text-decoration-color: rgba(146, 64, 14, 0.9);
+  }
+
+  .case-study-content a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 0.125rem;
+  }
 }
 
 /* DataDustrTools theme system */

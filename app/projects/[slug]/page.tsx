@@ -118,7 +118,9 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       {/* Case Study Content */}
-      {caseStudyComponent}
+      <div className="case-study-content">
+        {caseStudyComponent}
+      </div>
 
       {/* Navigation */}
       <section className="section-padding-sm bg-slate-50 border-t">
@@ -151,7 +153,7 @@ export default async function ProjectPage({ params }: Props) {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-standard focus-ring hover:text-amber-700"
+                    className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-amber-700 underline decoration-2 underline-offset-4 decoration-amber-500/70 transition-standard focus-ring hover:bg-amber-50 hover:text-amber-800"
                   >
                     {link.label}
                   </a>
