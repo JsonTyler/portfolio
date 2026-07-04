@@ -14,7 +14,7 @@ export default function AboutPage() {
         <div className="container-max max-w-4xl">
           <h1 className="hero-title text-5xl md:text-6xl font-bold mb-6">About Jason Rodriguez</h1>
           <p className="hero-subtitle text-lg md:text-xl leading-relaxed max-w-3xl">
-            I'm a full-stack software engineer who integrates architecture, product vision, UX, and business strategy.
+            I&apos;m a full-stack software engineer who connects technical decisions to user needs and business goals.
           </p>
         </div>
       </section>
@@ -24,36 +24,36 @@ export default function AboutPage() {
           <h2 className="text-4xl md:text-5xl font-bold mb-8">How I Work</h2>
           <div className="space-y-8 text-slate-700 leading-relaxed mb-12">
             <p>
-              I believe the best software comes from understanding problems deeply before building solutions. My approach starts with curiosity: Who are the users? What's the real problem, not the stated problem? Why hasn't someone solved this already?
+              I believe good software starts with understanding the real problem before writing code. I ask simple questions first: who are the users, what is slowing them down, and what result matters most?
             </p>
             <p>
-              Once I understand the problem, I design from first principles. What is the simplest solution that works? What are the non-obvious tradeoffs? How do we build this to scale? I am comfortable making architectural decisions with incomplete information, because that is the nature of building products. What matters is thinking through the implications carefully.
+              Then I focus on the simplest solution that works well. I weigh tradeoffs, plan for growth, and make clear decisions even when not every detail is known yet.
             </p>
             <p>
-              I combine three perspectives that rarely exist together:
+              I bring three perspectives together:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
               <Card variant="outlined">
                 <h3 className="font-bold text-slate-900 mb-2">Technical Depth</h3>
                 <p className="text-slate-700 text-sm">
-                  Systems architecture, performance optimization, scalability thinking. Code that's maintainable, testable, and production-ready.
+                  Strong technical foundations, reliable systems, and code that teams can maintain long-term.
                 </p>
               </Card>
               <Card variant="outlined">
                 <h3 className="font-bold text-slate-900 mb-2">Product Thinking</h3>
                 <p className="text-slate-700 text-sm">
-                  Identifying market opportunities, understanding user problems, making strategic tradeoffs. Engineering for business outcomes, not just elegant code.
+                  Focus on customer value, clear priorities, and business outcomes, not just technical output.
                 </p>
               </Card>
               <Card variant="outlined">
                 <h3 className="font-bold text-slate-900 mb-2">Design Sensibility</h3>
                 <p className="text-slate-700 text-sm">
-                  UX that delights without being flashy. Visual hierarchy and consistency. Systems thinking applied to design. Accessibility by default.
+                  Clean, consistent user experiences that are easy to navigate and accessible by default.
                 </p>
               </Card>
             </div>
             <p>
-              Most engineers pick one path. I've chosen to develop depth in all three. It's made me more effective than any single specialization could.
+              Many engineers specialize in one area. I&apos;ve built depth across all three to help teams move faster with better results.
             </p>
           </div>
 
@@ -167,7 +167,7 @@ export default function AboutPage() {
           </ul>
 
           <p className="text-slate-700 leading-relaxed mb-12">
-            Great software happens at the intersection. Most people pick one lane. I have chosen to develop genuine depth in all three, that is my differentiation.
+            Great software comes from connecting engineering, product, and design. That cross-functional approach is what I bring to teams.
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-8">Outside of Work</h2>
@@ -177,10 +177,10 @@ export default function AboutPage() {
 
           <Card className="bg-amber-50 border-amber-200" variant="outlined">
             <p className="text-slate-900 mb-4 leading-relaxed">
-              I am looking for a role where I can leverage all of these perspectives, technical depth, product thinking, design sensibility, and leadership capability. I want to work on problems that matter, with people who care about quality, in teams that value both craftsmanship and business results.
+              I do my best work where technical quality, user experience, and business impact are all treated as important.
             </p>
             <p className="text-slate-900 mb-6">
-              If you are building something interesting and need someone who can think across the full stack of software development, let us talk.
+              If that&apos;s what your team cares about, I&apos;d be glad to connect.
             </p>
             <ButtonLink href="/contact" variant="primary" size="md">
               Get In Touch

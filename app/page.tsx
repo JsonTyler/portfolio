@@ -24,20 +24,20 @@ export default function Home() {
             Jason Tyler Rodriguez
           </h1>
           <p className="text-base md:text-lg text-slate-100 mb-7 leading-relaxed max-w-3xl">
-            I build production software from concept to delivery, combining architecture, UX, and product execution.
+            I build software from idea to launch, making sure it is reliable, easy to use, and valuable for the business.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-7">
             <Card variant="ghost" className="border border-slate-600/70 bg-slate-900/30 p-4">
               <p className="text-xs uppercase tracking-wide text-amber-200 mb-1">What I Build</p>
-              <p className="text-sm text-white">Full-stack products with real workflows, not demo-only interfaces.</p>
+              <p className="text-sm text-white">End-to-end products people can use in real day-to-day work.</p>
             </Card>
             <Card variant="ghost" className="border border-slate-600/70 bg-slate-900/30 p-4">
               <p className="text-xs uppercase tracking-wide text-amber-200 mb-1">Operating Level</p>
-              <p className="text-sm text-white">Senior owner of architecture, implementation, UX, and iteration.</p>
+              <p className="text-sm text-white">Senior-level ownership from planning and design to delivery and improvement.</p>
             </Card>
             <Card variant="ghost" className="border border-slate-600/70 bg-slate-900/30 p-4">
               <p className="text-xs uppercase tracking-wide text-amber-200 mb-1">Why Interview</p>
-              <p className="text-sm text-white">I can take ambiguous ideas and turn them into maintainable software.</p>
+              <p className="text-sm text-white">I turn unclear ideas into clear plans and solid, maintainable products.</p>
             </Card>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -59,19 +59,19 @@ export default function Home() {
             <Card variant="outlined">
               <h3 className="text-lg font-bold text-slate-900 mt-0 mb-2">Architecture ownership</h3>
               <p className="text-slate-700 text-sm">
-                I design systems for delivery and maintenance. Current examples include policy layers, adapter boundaries, and multi-platform architecture.
+                I design systems that are dependable today and easier to maintain over time.
               </p>
             </Card>
             <Card variant="outlined">
               <h3 className="text-lg font-bold text-slate-900 mt-0 mb-2">Product judgment</h3>
               <p className="text-slate-700 text-sm">
-                I prioritize user value, avoid feature bloat, and validate with real usage before scaling implementation.
+                I focus on what users need most, avoid unnecessary features, and improve based on real feedback.
               </p>
             </Card>
             <Card variant="outlined">
               <h3 className="text-lg font-bold text-slate-900 mt-0 mb-2">Execution speed with rigor</h3>
               <p className="text-slate-700 text-sm">
-                I use AI as a productivity tool for planning and implementation, while owning architecture, quality gates, and final decisions.
+                I move quickly without cutting corners, and I stay accountable for quality and final decisions.
               </p>
             </Card>
           </div>
@@ -84,7 +84,7 @@ export default function Home() {
           <div className="mb-8">
             <h2 className="text-4xl md:text-5xl font-bold mb-3 mt-0">Featured engineering work</h2>
             <p className="text-base md:text-lg text-slate-600">
-              Evidence-first case studies showing decisions, tradeoffs, and implementation details.
+              Case studies that clearly show the problem, the decisions made, and the results.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -159,7 +159,7 @@ export default function Home() {
           <div className="mb-8 text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-3 mt-0">How I work</h2>
             <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
-              Engineering decisions aligned with user workflow and product scope.
+              I make practical engineering decisions that support user needs and business goals.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
