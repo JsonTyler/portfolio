@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container-max py-2.5 md:py-3">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:items-center">
           <p className="text-xs md:text-sm text-slate-600">
-            © {currentYear} {SITE_METADATA.author}, Open to senior and staff software engineering roles.
+            © {currentYear} {SITE_METADATA.author}, Senior software engineer at Springbrook Software.
           </p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 md:justify-end">
             <Link href="/projects" className="text-xs md:text-sm text-slate-600 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4">Case studies</Link>

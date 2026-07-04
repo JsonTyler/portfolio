@@ -59,7 +59,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden sm:flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
+        <div className="flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
           <button
             type="button"
             onClick={() => setTheme('winter')}
@@ -127,57 +127,6 @@ export function Header() {
 
       {isMobileMenuOpen && (
         <nav id="mobile-navigation" className="md:hidden border-t border-slate-200 px-4 pb-4" aria-label="Mobile navigation">
-          <div className="flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 w-max mt-3">
-            <button
-              type="button"
-              onClick={() => setTheme('winter')}
-              aria-pressed={theme === 'winter'}
-              aria-label="Switch to winter theme"
-              className={`theme-toggle-btn p-1.5 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
-                theme === 'winter'
-                    ? 'bg-zinc-200/10 text-zinc-300 border-zinc-400/45'
-                    : 'text-zinc-500 border-transparent hover:text-amber-700 hover:border-zinc-600/50'
-              }`}
-              title="Winter"
-            >
-                <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.75">
-                  <path d="M12 2v20M4.9 6l14.2 12M19.1 6L4.9 18M3 12h18" strokeLinecap="round" />
-                </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => setTheme('midnight')}
-              aria-pressed={theme === 'midnight'}
-              aria-label="Switch to midnight theme"
-              className={`theme-toggle-btn p-1.5 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
-                theme === 'midnight'
-                  ? 'bg-zinc-200/10 text-zinc-300 border-zinc-400/45'
-                  : 'text-zinc-500 border-transparent hover:text-amber-700 hover:border-zinc-600/50'
-              }`}
-              title="Midnight"
-            >
-              <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.75">
-                <path d="M21 12.8A8.8 8.8 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8Z" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => setTheme('hacker')}
-              aria-pressed={theme === 'hacker'}
-              aria-label="Switch to hacker theme"
-              className={`theme-toggle-btn p-1.5 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
-                theme === 'hacker'
-                  ? 'bg-rose-500/15 text-rose-300 border-rose-400/55'
-                  : 'text-zinc-500 border-transparent hover:text-amber-700 hover:border-zinc-600/50'
-              }`}
-              title="Hacker"
-            >
-              <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.75">
-                <path d="M8 16v2M16 16v2M9 20h6M8 8h.01M16 8h.01" strokeLinecap="round" />
-                <path d="M7 14a5 5 0 1 1 10 0v2H7v-2Z" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
           <ul className="space-y-1 pt-3">
             {NAVIGATION.map((item) => (
               <li key={item.href}>

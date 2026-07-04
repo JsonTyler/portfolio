@@ -193,9 +193,9 @@ export default function Home() {
       {/* CTA Section */}
       <section className="section-padding">
         <div className="container-max max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 mt-0">Open to senior and staff opportunities</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-5 mt-0">Let&apos;s build something meaningful</h2>
           <p className="text-base md:text-lg text-slate-600 mb-6 leading-relaxed">
-            I am looking for roles where I can own architecture and delivery, partner closely with product and design, and build software that has clear user impact.
+            I currently build at Springbrook Software and enjoy connecting with teams working on impactful product and engineering challenges.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <ButtonLink href="/contact" variant="primary" size="lg">
