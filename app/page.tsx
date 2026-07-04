@@ -88,51 +88,67 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProjects.map((project) => (
-              <Card
-                key={project.slug}
-                as="article"
-                variant="default"
-                hover
-                className="flex flex-col"
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-4 mb-2">
-                    <div>
-                      <CardTitle>{project.title}</CardTitle>
-                      <CardDescription>{project.tagline}</CardDescription>
+            {featuredProjects.map((project) => {
+              const visibleTechnologies = project.technologies.slice(0, 3);
+              const remainingTechnologies = project.technologies.slice(3);
+
+              return (
+                <Card
+                  key={project.slug}
+                  as="article"
+                  variant="default"
+                  hover
+                  className="flex flex-col"
+                >
+                  <CardHeader>
+                    <div className="flex items-start justify-between gap-4 mb-2">
+                      <div>
+                        <CardTitle>{project.title}</CardTitle>
+                        <CardDescription>{project.tagline}</CardDescription>
+                      </div>
+                      <Badge variant={project.featured ? 'primary' : 'secondary'} size="sm">
+                        {project.status}
+                      </Badge>
                     </div>
-                    <Badge variant={project.featured ? 'primary' : 'secondary'} size="sm">
-                      {project.status}
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <p className="text-slate-700 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <Badge key={tech} variant="accent" size="sm">
-                        {tech}
-                      </Badge>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <Badge variant="secondary" size="sm">
-                        +{project.technologies.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <ButtonLink
-                    href={`/projects/${project.slug}`}
-                    variant="primary"
-                    size="sm"
-                  >
-                    Learn More →
-                  </ButtonLink>
-                </CardFooter>
-              </Card>
-            ))}
+                  </CardHeader>
+                  <CardContent className="flex-1">
+                    <p className="text-slate-700 mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {visibleTechnologies.map((tech) => (
+                        <Badge key={tech} variant="accent" size="sm">
+                          {tech}
+                        </Badge>
+                      ))}
+                      {remainingTechnologies.length > 0 && (
+                        <div className="relative group/tech">
+                          <Badge
+                            variant="secondary"
+                            size="sm"
+                            className="cursor-default"
+                            aria-label={`${remainingTechnologies.length} more technologies: ${remainingTechnologies.join(', ')}`}
+                            title={remainingTechnologies.join(', ')}
+                          >
+                            +{remainingTechnologies.length}
+                          </Badge>
+                          <span className="pointer-events-none absolute left-0 top-full z-10 mt-1 min-w-max rounded-md border border-slate-300 bg-white px-2 py-1 text-xs text-slate-700 opacity-0 shadow-sm transition-opacity group-hover/tech:opacity-100 group-focus-within/tech:opacity-100">
+                            {remainingTechnologies.join(' • ')}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <ButtonLink
+                      href={`/projects/${project.slug}`}
+                      variant="primary"
+                      size="sm"
+                    >
+                      Learn More →
+                    </ButtonLink>
+                  </CardFooter>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>

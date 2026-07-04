@@ -47,8 +47,16 @@ export default async function ProjectPage({ params }: Props) {
       { label: 'Live site', href: 'https://tools.datadustr.com/' },
       { label: 'Repository', href: 'https://github.com/JsonTyler/data-dustr-tools' },
     ],
-    timely: [{ label: 'Case study source', href: 'https://github.com/JsonTyler/Staticerson/blob/main/content/case-studies/timely.tsx' }],
-    'design-library': [{ label: 'Case study source', href: 'https://github.com/JsonTyler/Staticerson/blob/main/content/case-studies/design-library.tsx' }],
+    timely: [
+      { label: 'Repository', href: 'https://github.com/JsonTyler/Timely' },
+      { label: 'Former subdomain (archived)', href: 'https://timeliny.jasontylerrodriguez.com/' },
+      { label: 'Case study source', href: 'https://github.com/JsonTyler/Staticerson/blob/main/content/case-studies/timely.tsx' },
+    ],
+    'design-library': [
+      { label: 'Playground site', href: 'https://design.sprbrk.com/playground' },
+      { label: 'Archived demo site', href: 'https://test-design.sprbrk.com/' },
+      { label: 'Case study source', href: 'https://github.com/JsonTyler/Staticerson/blob/main/content/case-studies/design-library.tsx' },
+    ],
   };
 
   const relatedProjects = projects

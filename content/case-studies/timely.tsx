@@ -38,6 +38,8 @@ export function TimelyCaseStudy() {
               <Card variant="outlined">
                 <h4 className="text-base font-bold mt-0 mb-2">Publicly shareable artifacts</h4>
                 <ul className="space-y-1 text-sm text-slate-700">
+                  <li><a href="https://github.com/JsonTyler/Timely" target="_blank" rel="noopener noreferrer">Original Timely repository</a></li>
+                  <li><a href="https://timeliny.jasontylerrodriguez.com/" target="_blank" rel="noopener noreferrer">Former project subdomain (archived)</a></li>
                   <li><a href="https://github.com/JsonTyler/Staticerson/blob/main/content/case-studies/timely.tsx" target="_blank" rel="noopener noreferrer">Case study source and decision rationale</a></li>
                   <li><a href="https://github.com/JsonTyler/Staticerson/blob/main/content/projects.ts" target="_blank" rel="noopener noreferrer">Project metadata and portfolio integration</a></li>
                 </ul>

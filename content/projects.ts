@@ -43,7 +43,7 @@ export const projects: Project[] = [
     title: 'Design Library',
     tagline: 'Design system for SaaS ERP platform',
     description:
-      'Owner of design library powering Springbrook Software\'s Cirrus ERP application. Component library approach, design consistency, and UX best practices for 1000+ users.',
+      'Maintainer of the design library powering Springbrook Software\'s Cirrus ERP application. Focused on evolving components and system concepts for consistency, accessibility, and UX quality at scale.',
     technologies: ['Blazor', 'C#', 'SASS', 'Bootstrap', 'Design Systems'],
     status: 'active',
     featured: false,

@@ -184,9 +184,9 @@ export function Header() {
                 <Link
                   href={item.href}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-standard focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-standard focus-ring focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-amber-700 focus-visible:outline-offset-2 hover:underline hover:decoration-2 hover:underline-offset-4 ${
                     isActive(item.href)
-                      ? 'bg-slate-100 text-slate-900 hover:text-slate-900'
+                      ? 'bg-slate-800 text-slate-100 hover:text-slate-100'
                       : 'text-slate-700 hover:bg-slate-50 hover:text-amber-700'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}

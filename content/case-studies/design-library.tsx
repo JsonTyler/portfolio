@@ -10,7 +10,7 @@ export function DesignLibraryCaseStudy() {
         <div className="container-max max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Overview</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
-            As a frontend engineer at Springbrook Software, I took ownership of the design library powering Cirrus, an ERP product used by 1000+ organizations. This work focused on component architecture, accessibility defaults, and adoption patterns that scale across teams.
+            As a frontend engineer at Springbrook Software, I inherited and then maintained the design library powering Cirrus, an ERP product used by 1000+ organizations. I did not originate the system; my role was long-term stewardship of its components and core concepts, with ongoing improvements to architecture, accessibility defaults, and adoption patterns across teams.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card variant="outlined">
@@ -38,6 +38,8 @@ export function DesignLibraryCaseStudy() {
               <Card variant="outlined">
                 <h4 className="text-base font-bold mt-0 mb-2">Publicly shareable artifacts</h4>
                 <ul className="space-y-1 text-sm text-slate-700">
+                  <li><a href="https://design.sprbrk.com/playground" target="_blank" rel="noopener noreferrer">Current design playground site</a></li>
+                  <li><a href="https://test-design.sprbrk.com/" target="_blank" rel="noopener noreferrer">Archived design library demo site</a></li>
                   <li><a href="https://github.com/JsonTyler/Staticerson/blob/main/content/case-studies/design-library.tsx" target="_blank" rel="noopener noreferrer">Case study source and decision rationale</a></li>
                   <li><a href="https://github.com/JsonTyler/Staticerson/blob/main/app/projects/%5Bslug%5D/page.tsx" target="_blank" rel="noopener noreferrer">Portfolio case-study template implementation</a></li>
                 </ul>
@@ -416,7 +418,7 @@ export function DesignLibraryCaseStudy() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">What This Project Demonstrates</h2>
 
           <p className="text-slate-700 leading-relaxed mb-6">
-            My ownership of the Springbrook Design Library shows:
+            My maintenance ownership of the Springbrook Design Library shows:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">

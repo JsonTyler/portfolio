@@ -14,8 +14,8 @@ type CardContentProps = React.HTMLAttributes<HTMLDivElement>;
 type CardFooterProps = React.HTMLAttributes<HTMLDivElement>;
 
 const variants = {
-  default: 'bg-white border border-slate-200 shadow-xs',
-  outlined: 'border border-slate-300 bg-transparent',
+  default: 'bg-white border-2 border-slate-200 shadow-xs',
+  outlined: 'border-2 border-slate-300 bg-transparent',
   elevated: 'bg-white shadow-md',
   ghost: 'bg-transparent',
 };
