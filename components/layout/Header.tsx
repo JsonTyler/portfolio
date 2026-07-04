@@ -59,7 +59,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
+        <div className="flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
           <button
             type="button"
             onClick={() => setTheme('winter')}
