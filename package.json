@@ -13,7 +13,7 @@
     "ci": "npm run type-check && npm run lint && npm run build"
   },
   "dependencies": {
-    "next": "^16.2.10",
+    "next": "^16.4.2",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
