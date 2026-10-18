@@ -63,6 +63,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="hacker" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('portfolio-theme-v2');if(t==='winter'||t==='midnight'||t==='hacker')document.documentElement.dataset.theme=t}catch{}` }} />
+      </head>
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
         <ThemeEffects />

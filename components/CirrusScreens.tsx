@@ -56,9 +56,9 @@ export function CirrusScreens({ priority = false }: { priority?: boolean }) {
       <div className={styles.workspace}>
         <div className={styles.rail} aria-hidden="true">{(['home', 'person', 'wallet', 'clock', 'shield'] as const).map((kind, index) => <span key={kind} className={index === 1 ? styles.selected : ''}><Icon kind={kind}/><span>{['Home', 'General', 'Financial', 'Timecards', 'Benefits'][index]}</span></span>)}</div>
         <div className={styles.main}>
-          <div className={styles.pageTitle}><div><span className={styles.breadcrumb}>EMPLOYEE MAINTENANCE / GENERAL</span><h3>Jordan Morgan <span>Active</span></h3></div><span className={styles.employeeId}>Employee #1042</span></div>
+          <div className={styles.pageTitle}><div><span className={styles.breadcrumb}>EMPLOYEE MAINTENANCE / GENERAL</span><h3>Jason Rodriguez <span>Active</span></h3></div><span className={styles.employeeId}>Employee #1042</span></div>
           <div className={styles.overview}>
-            <div className={styles.info}><div className={styles.panelTitle}><Icon kind="person" size={16}/>Employee information</div><dl><div><dt>Email</dt><dd>jordan@example.test</dd></div><div><dt>Department</dt><dd>Public Works</dd></div><div><dt>Position</dt><dd>Operations specialist</dd></div><div><dt>Supervisor</dt><dd>Alex Taylor</dd></div></dl></div>
+            <div className={styles.info}><div className={styles.panelTitle}><Icon kind="person" size={16}/>Employee information</div><dl><div><dt>Email</dt><dd>jason@example.test</dd></div><div><dt>Department</dt><dd>Public Works</dd></div><div><dt>Position</dt><dd>Operations specialist</dd></div><div><dt>Supervisor</dt><dd>Alex Taylor</dd></div></dl></div>
             <div className={styles.accruals}><div className={styles.panelTitle}><Icon kind="clock" size={16}/>Accrual balances</div><div className={styles.balance}><span>Vacation</span><strong>72.00 <small>hours</small></strong></div><div className={styles.balance}><span>Sick leave</span><strong>48.00 <small>hours</small></strong></div></div>
           </div>
           <div className={styles.tableHeading}><strong>Deductions &amp; benefits</strong><span>{visibleRows ? `${visibleRows} of ${deductions.length} rows in view` : `${deductions.length} sample records`}</span></div>

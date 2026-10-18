@@ -2,23 +2,41 @@
 import { useState } from 'react';
 import { cleanupCandidates, sampleMail } from '@/lib/project-demos';
 import { DemoPrompt } from './DemoPrompt';
-import styles from './ProjectDemos.module.css';
+import styles from './InboxDemo.module.css';
+
 export function InboxDemo() {
-  const [group, setGroup] = useState<string | null>(null);
+  const [view, setView] = useState('Organize');
+  const [group, setGroup] = useState('all');
   const [removed, setRemoved] = useState<string[]>([]);
   const [lastBatch, setLastBatch] = useState<string[]>([]);
-  const [status, setStatus] = useState('Choose a suggestion to see what it would clean up.');
-  const candidates = cleanupCandidates(group ?? '', removed);
+  const [status, setStatus] = useState('Review the sample messages, then try Safe Mass Delete.');
   const visible = sampleMail.filter(mail => !removed.includes(mail.id));
-  function choose(next: string) { setGroup(next); const count = cleanupCandidates(next, removed).length; setStatus(count ? `${count} sample messages selected. Both protected messages will stay.` : 'No messages remain in this suggestion. Choose another or undo your cleanup.'); }
-  return <figure className={`project-visual ${styles.demo} ${styles.inbox}`} aria-label="Interactive Inbox Dustr sample inbox"><DemoPrompt instruction="Choose a cleanup suggestion below to select its messages."/><div className={styles.surface}>
-    <div className={styles.appBar}><strong>Inbox Dustr</strong><span>Organize / Quick Clean</span><span className={styles.sample}>Sample inbox</span></div>
-    <div className={styles.inboxBody}>
-      <div className={styles.keepBanner}><span className={styles.shield} aria-hidden="true">✓</span><div><strong>Keep the important things.</strong><span>Keep tags protect invoices and contracts.</span></div><span className={styles.protectedCount}>2 protected</span></div>
-      <div className={styles.suggestionHeading}><strong>Quick Clean</strong><span>Select a suggestion to highlight its messages.</span></div>
-      <div className={styles.suggestions} role="group" aria-label="Choose a cleanup suggestion">{[['newsletters', 'Old newsletters'], ['promotions', 'Expired promotions']].map(([key, label]) => <button type="button" key={key} aria-pressed={group === key} onClick={() => choose(key)}><span className={styles.suggestionCopy}><span>{group === key ? '✓' : '→'} {label}</span><small>{group === key ? 'Selected' : 'Select messages'}</small></span><b>{cleanupCandidates(key, removed).length}</b></button>)}</div>
-      <div className={styles.mailList}>{visible.map(mail => { const selected = candidates.includes(mail.id); return <div key={mail.id} className={styles.mail} data-selected={selected} data-protected={mail.keep}><span className={styles.mailMark} aria-hidden="true">{mail.keep ? '✓' : selected ? '✓' : '·'}</span><div><strong>{mail.sender}</strong><span>{mail.subject}</span></div><span className={mail.keep ? styles.keepTag : styles.autoTag}>{mail.keep ? `Keep · ${mail.tag}` : mail.tag}</span></div>; })}</div>
-      <div className={styles.inboxActions}><button type="button" className={styles.primary} disabled={!candidates.length} onClick={() => { setRemoved([...removed, ...candidates]); setLastBatch(candidates); setGroup(null); setStatus(`${candidates.length} sample messages moved to trash. Protected messages stayed. You can undo this.`); }}>Apply cleanup</button><button type="button" disabled={!lastBatch.length} onClick={() => { setRemoved(removed.filter(id => !lastBatch.includes(id))); setLastBatch([]); setGroup(null); setStatus('Cleanup undone. The sample messages are back.'); }}>Undo</button></div>
-      <p className={styles.status} role="status">{status}</p>
-    </div></div><figcaption>Select a suggestion to highlight messages, then apply or undo.<span>Interactive concept · synthetic messages</span></figcaption></figure>;
+  const matches = group === 'all' ? visible.filter(mail => !mail.keep).map(mail => mail.id) : cleanupCandidates(group, removed);
+  const shown = group === 'all' ? visible : visible.filter(mail => mail.group === group);
+
+  function clean() {
+    setRemoved([...removed, ...matches]);
+    setLastBatch(matches);
+    setStatus(`${matches.length} sample messages moved to trash. The 2 protected messages stayed. Undo is available.`);
+  }
+
+  return <figure className={`project-visual ${styles.demo}`} aria-label="Interactive Inbox Dustr demonstration">
+    <DemoPrompt instruction="Filter the sample inbox, then try Safe Mass Delete. Protected messages stay." />
+    <div className={styles.surface}>
+      <div className={styles.brandBar}><strong><span aria-hidden="true">🧹</span> Data Dustr <small>MVP</small></strong><span className={styles.product}>Inbox Dustr</span><span className={styles.edition}>Web · Free</span></div>
+      <div className={styles.accountBar}><div><strong>Inbox Dustr</strong><small>jason@example.com</small></div><span className={styles.loaded}>✓ {visible.length} emails loaded</span></div>
+      <div className={styles.navigation} role="group" aria-label="Sample inbox views">{['Overview', 'Organize'].map(name => <button key={name} type="button" aria-pressed={view === name} onClick={() => setView(name)}>{name}</button>)}<span>Interactive sample</span></div>
+      <div className={styles.body}>
+        {view === 'Overview' ? <><div className={styles.metrics}><div><span>Total Emails</span><strong>{visible.length}</strong><small>in this sample inbox</small></div><div><span>Actionable</span><strong>{visible.filter(mail => !mail.keep).length}</strong><small>unprotected sample messages</small></div></div><div className={styles.breakdown}><strong>Email Categories Breakdown</strong>{[['Personal', 0, '#924fff'], ['Newsletters', visible.filter(mail => mail.group === 'newsletters').length, '#635bff'], ['Promotions', visible.filter(mail => mail.group === 'promotions').length, '#f5a000'], ['Receipts', 2, '#00bd8a']].map(([name, count, color]) => <div key={name}><span>{name}</span><span className={styles.track}><span style={{ width: `${Number(count) / sampleMail.length * 100}%`, background: String(color) }} /></span><b>{count}</b></div>)}<small>Message counts from this interactive sample.</small></div><button className={styles.next} type="button" onClick={() => setView('Organize')}>Start with bulk cleanup →</button></> : <>
+          <div className={styles.labels}><strong>✧ SUGGESTED LABELS</strong><div>{['Work', 'Receipts', 'Newsletters'].map(label => <span key={label}>+ {label}</span>)}</div><small>Examples of labels suggested by the application.</small></div>
+          <div className={styles.safeNotice}><strong>All Emails view</strong><span>Safe delete skips protected emails. This sample keeps 2 protected messages.</span></div>
+          <div className={styles.actions}><span>{visible.length} messages</span><button type="button" className={styles.safeDelete} disabled={!matches.length} onClick={clean}>♢ Safe Mass Delete ({matches.length})</button><button type="button" disabled={!lastBatch.length} onClick={() => { setRemoved(removed.filter(id => !lastBatch.includes(id))); setLastBatch([]); setStatus('Cleanup undone. All sample messages in the last batch are back.'); }}>Undo</button></div>
+          <div className={styles.filters} role="group" aria-label="Filter sample messages">{[['all', 'All'], ['newsletters', 'Newsletters'], ['promotions', 'Promotions'], ['receipts', 'Protected']].map(([key, label]) => <button type="button" key={key} aria-pressed={group === key} onClick={() => setGroup(key)}>{label}</button>)}</div>
+          <div className={styles.mailList}>{shown.length ? shown.map(mail => <div className={styles.mail} key={mail.id}><span aria-hidden="true" className={styles.mailIcon}>{mail.keep ? '♢' : '✉'}</span><div><strong>{mail.subject}</strong><span>{mail.sender}</span></div><span className={mail.keep ? styles.keep : styles.tag}>{mail.keep ? 'Protected' : mail.tag}</span></div>) : <p className={styles.empty}>No messages left in this filter. Choose All or undo the last cleanup.</p>}</div>
+          <p className={styles.status} role="status">{status}</p>
+        </>}
+      </div>
+    </div>
+    <figcaption>Adapted from the live Inbox Dustr interface.<span>Reduced interactive demo · synthetic messages · local changes only</span></figcaption>
+  </figure>;
 }

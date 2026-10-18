@@ -1,0 +1,56 @@
+.demo { position: relative; z-index: 3; min-width: 0; }
+.surface { overflow: hidden; border: 1px solid #334155; border-radius: 12px; background: #0f172a; color: #f1f5f9; font: 12px/1.5 system-ui, sans-serif; }
+.brandBar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px; background: #1e293b; border-bottom: 1px solid #334155; }
+.brandBar > strong { font-size: 18px; }
+.brandBar strong > span { padding: 6px; margin-right: 5px; border: 1px solid #85621a; background: #484336; border-radius: 8px; }
+.brandBar small { color: #94a3b8; font-size: 10px; font-weight: 400; }
+.product { color: #ffa600; background: #393a38; border: 1px solid #6a542c; border-radius: 8px; padding: 6px 12px; font-weight: 650; }
+.edition { color: #cbd5e1; background: #29364b; border: 1px solid #475569; padding: 4px 9px; border-radius: 20px; margin-left: auto; }
+.accountBar { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 12px 16px; }
+.accountBar strong, .accountBar small { display: block; }
+.accountBar small { color: #94a3b8; }
+.loaded { border: 1px solid #075453; border-radius: 20px; background: #102e36; color: #5eeac1; padding: 4px 9px; }
+.demo button { min-height: 44px; padding: 8px 12px; border: 1px solid #475569; border-radius: 8px; background: #1e293b; color: #e2e8f0; font: 500 12px/1.4 system-ui, sans-serif; cursor: pointer; }
+.demo button:focus-visible { outline: 3px solid #c4b5fd; outline-offset: 3px; }
+.demo button:disabled { opacity: .5; cursor: default; }
+.demo button:hover:not(:disabled) { border-color: #a5b4fc; }
+.navigation { display: flex; align-items: center; gap: 6px; padding: 0 16px; border-bottom: 1px solid #334155; }
+.navigation button { border: 0; border-radius: 0; border-bottom: 2px solid transparent; background: transparent; }
+.navigation button[aria-pressed="true"] { border-bottom-color: #7c5cff; color: #fff; }
+.navigation > span { margin-left: auto; color: #94a3b8; font-size: 10px; }
+.body { padding: 16px; }
+.labels, .breakdown { padding: 14px; background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
+.labels > strong { color: #b0bad0; font-size: 10px; letter-spacing: .04em; }
+.labels > div { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.labels > div > span { border: 1px dashed #6466af; color: #b4bfff; border-radius: 20px; padding: 3px 8px; }
+.labels small, .breakdown small { color: #94a3b8; font-size: 10px; }
+.safeNotice { display: grid; gap: 3px; margin-top: 14px; padding: 12px; border: 1px solid #075e55; background: #102b35; color: #5eeac1; border-radius: 10px; }
+.safeNotice span { font-size: 11px; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.actions > span { color: #cbd5e1; }
+.actions .safeDelete { color: #5eeac1; background: #102e36; border-color: #075e55; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; border: 1px solid #334155; border-radius: 10px; }
+.filters button { padding-inline: 10px; }
+.filters button[aria-pressed="true"] { background: #26284e; border-color: #6665bf; color: #b9baff; }
+.mailList { display: grid; gap: 7px; margin-top: 12px; }
+.mail { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #334155; border-radius: 12px; background: #1e293b; }
+.mailIcon { color: #a5b4fc; }
+.mail > div { flex: 1; min-width: 0; }
+.mail strong, .mail > div > span { display: block; }
+.mail strong { font-size: 11px; font-weight: 500; }
+.mail > div > span { color: #a2b1c5; font-size: 10px; margin-top: 3px; }
+.keep, .tag { padding: 3px 6px; font-size: 9px; border-radius: 5px; }
+.keep { color: #5eeac1; background: #102e36; }
+.tag { color: #ffc65e; background: #3b3728; }
+.status, .empty { color: #cbd5e1; font-size: 11px; margin: 12px 0 0; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.metrics > div { display: grid; gap: 6px; padding: 16px; border-radius: 12px; background: #1e293b; border: 1px solid #334155; }
+.metrics span, .metrics small { color: #a2b1c5; }
+.metrics strong { font-size: 26px; }
+.breakdown > div { display: grid; grid-template-columns: 80px 1fr 16px; align-items: center; gap: 10px; margin: 16px 0; font-size: 11px; }
+.track { height: 8px; border-radius: 6px; background: #334155; overflow: hidden; }
+.track > span { display: block; height: 100%; border-radius: inherit; }
+.demo .next { color: #ffc65e; margin-top: 16px; }
+.demo figcaption { display: grid; gap: 4px; }
+.demo figcaption > span { font-size: 11px; }
+@media(max-width: 480px) { .brandBar, .body { padding: 12px; } .edition { margin-left: 0; } .mail { flex-wrap: wrap; } .tag, .keep { margin-left: 23px; } .navigation > span { display: none; } }

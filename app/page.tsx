@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { ProjectPreview } from '@/components/ProjectPreview';
-import { getFeaturedProjects } from '@/content/projects';
+import Link from 'next/link';
+import { projects } from '@/content/projects';
 
 export const metadata: Metadata = {
   title: 'Front-end engineering & UX',
@@ -24,8 +24,8 @@ export default function Home() {
       </section>
       <section id="selected-work" className="section-padding">
         <div className="container-max">
-          <div className="section-heading"><div><p className="eyebrow">Selected work</p><h2>See the work.</h2></div></div>
-          {getFeaturedProjects().map((project, index) => <ProjectPreview key={project.slug} project={project} index={index} />)}
+          <div className="section-heading"><div><p className="eyebrow">Project index</p><h2>What I build.</h2></div><Link className="story-link focus-ring" href="/projects">Explore all work &amp; interactive demos ↗</Link></div>
+          <div className="home-project-index">{projects.map(project => <Link className="home-project-link focus-ring" key={project.slug} href={`/projects/${project.slug}`}><strong>{project.title}<span aria-hidden="true"> ↗</span></strong><span>{project.tagline}</span></Link>)}</div>
         </div>
       </section>
       <section className="section-padding border-t border-slate-200">

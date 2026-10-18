@@ -9,7 +9,6 @@ export function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const [themeReady, setThemeReady] = useState(false);
   const [theme, setTheme] = useState<'winter' | 'midnight' | 'hacker'>('hacker');
 
   const isActive = (href: string) =>
@@ -19,17 +18,20 @@ export function Header() {
 
   useEffect(() => {
     try {
-      const saved = globalThis.localStorage.getItem('portfolio-theme');
+      const saved = globalThis.localStorage.getItem('portfolio-theme-v2');
       if (saved === 'winter' || saved === 'midnight' || saved === 'hacker') setTheme(saved);
     } catch { /* Storage may be unavailable; keep the default theme. */ }
-    setThemeReady(true);
   }, []);
 
   useEffect(() => {
-    if (!themeReady) return;
     globalThis.document.documentElement.setAttribute('data-theme', theme);
-    try { globalThis.localStorage.setItem('portfolio-theme', theme); } catch { /* Theme still works without persistence. */ }
-  }, [theme, themeReady]);
+  }, [theme]);
+
+  function chooseTheme(next: 'winter' | 'midnight' | 'hacker') {
+    setTheme(next);
+    // The old key also saved automatic defaults. Only persist explicit choices now.
+    try { globalThis.localStorage.setItem('portfolio-theme-v2', next); } catch { /* Theme works without persistence. */ }
+  }
 
 
 
@@ -63,7 +65,7 @@ export function Header() {
         <div className="theme-controls flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
           <button
             type="button"
-            onClick={() => setTheme('winter')}
+            onClick={() => chooseTheme('winter')}
             aria-pressed={theme === 'winter'}
             aria-label="Switch to winter theme"
             className={`theme-toggle-btn p-2 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
@@ -79,7 +81,7 @@ export function Header() {
           </button>
           <button
             type="button"
-            onClick={() => setTheme('midnight')}
+            onClick={() => chooseTheme('midnight')}
             aria-pressed={theme === 'midnight'}
             aria-label="Switch to midnight theme"
             className={`theme-toggle-btn p-2 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
@@ -95,7 +97,7 @@ export function Header() {
           </button>
           <button
             type="button"
-            onClick={() => setTheme('hacker')}
+            onClick={() => chooseTheme('hacker')}
             aria-pressed={theme === 'hacker'}
             aria-label="Switch to hacker theme"
             className={`theme-toggle-btn p-2 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ProjectVisual } from '@/components/ProjectVisual';
 
 export function DataDustrToolsCaseStudy() {
@@ -21,6 +22,14 @@ export function DataDustrToolsCaseStudy() {
             <dd>Web demonstration; desktop integration through Tauri</dd>
           </div>
         </dl>
+      </section>
+      <section>
+        <h2>Inside Inbox Dustr</h2>
+        <p>These screenshots were captured from the live web application on October 18, 2026 using Gmail mock data. Overview summarizes the inbox; Insights surfaces patterns; Organize groups and protects messages; Unsubscribe collects recurring senders.</p>
+        <p><a className="story-link focus-ring" href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer">Try the live web demo ↗</a></p>
+        <div className="app-captures">{[['overview', 'Overview: inbox totals, categories, and cleanup opportunities'], ['insights', 'Insights: engagement patterns and oldest clutter'], ['organize', 'Organize: suggested labels, filters, and safe deletion'], ['unsubscribe', 'Unsubscribe: recurring senders and mailing-list actions']].map(([screen, caption]) => <figure key={screen}><a className="focus-ring" href={`/projects/datadustr-live-${screen}.png`} target="_blank" rel="noopener noreferrer" aria-label={`Open full screenshot: ${caption}`}><Image src={`/projects/datadustr-live-${screen}.png`} alt={caption} width={1440} height={960} sizes="(min-width: 900px) 540px, 100vw" /></a><figcaption>{caption}</figcaption></figure>)}</div>
+        <p><a className="story-link focus-ring" href="/projects/datadustr-live-tour.gif" target="_blank" rel="noopener noreferrer">Watch the four-screen GIF tour ↗</a></p>
+        <p className="text-sm text-slate-600">Live application captures · mock data. The interactive preview above adapts a smaller sample for this portfolio.</p>
       </section>
       <section>
         <h2>The interaction comes before the operation</h2>
