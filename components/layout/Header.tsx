@@ -35,34 +35,8 @@ export function Header() {
 
 
 
-  return (
-    <header onKeyDown={(event) => { if (event.key === 'Escape' && isMobileMenuOpen) { setIsMobileMenuOpen(false); menuButtonRef.current?.focus(); } }} className="border-b border-slate-200 bg-white sticky top-0 z-40 transition-standard">
-      <div className="container-max site-header-row py-3">
-        <Link
-          href="/"
-          className="site-name font-bold text-xl text-slate-900 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4"
-          aria-label="Jason Tyler Rodriguez - Home"
-        >
-          {SITE_METADATA.siteName}
-        </Link>
-        <nav className="hidden lg:flex gap-5" aria-label="Main navigation">
-          {NAVIGATION.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={isActive(item.href) ? 'page' : undefined}
-              className={`transition-standard font-medium focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
-                isActive(item.href)
-                  ? 'text-slate-900 hover:text-slate-900'
-                  : 'text-slate-600 hover:text-amber-700'
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="theme-controls flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
+  const themeControls = (
+    <div className="theme-controls flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
           <button
             type="button"
             onClick={() => chooseTheme('winter')}
@@ -113,11 +87,41 @@ export function Header() {
             </svg>
           </button>
         </div>
+  );
+
+  return (
+    <header onKeyDown={(event) => { if (event.key === 'Escape' && isMobileMenuOpen) { setIsMobileMenuOpen(false); menuButtonRef.current?.focus(); } }} className="border-b border-slate-200 bg-white sticky top-0 z-40 transition-standard">
+      <div className="container-max site-header-row py-3">
+        <Link
+          href="/"
+          className="site-name font-bold text-xl text-slate-900 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4"
+          aria-label="Jason Tyler Rodriguez - Home"
+        >
+          {SITE_METADATA.siteName}
+        </Link>
+        <nav className="desktop-navigation" aria-label="Main navigation">
+          {NAVIGATION.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              className={`transition-standard font-medium focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
+                isActive(item.href)
+                  ? 'text-slate-900 hover:text-slate-900'
+                  : 'text-slate-600 hover:text-amber-700'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="desktop-theme-controls">{themeControls}</div>
 
         <button
           type="button"
           ref={menuButtonRef}
-          className="lg:hidden p-2 text-slate-600 focus-ring"
+          className="mobile-menu-toggle p-2 text-slate-600 focus-ring"
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
           aria-controls={isMobileMenuOpen ? "mobile-navigation" : undefined}
@@ -130,7 +134,7 @@ export function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <nav id="mobile-navigation" className="lg:hidden border-t border-slate-200 px-4 pb-4" aria-label="Mobile navigation">
+        <nav id="mobile-navigation" className="mobile-navigation border-t border-slate-200 px-4 pb-4" aria-label="Mobile navigation">
           <ul className="space-y-1 pt-3">
             {NAVIGATION.map((item) => (
               <li key={item.href}>
@@ -149,6 +153,7 @@ export function Header() {
               </li>
             ))}
           </ul>
+          <div className="mobile-theme-controls"><span>Theme</span>{themeControls}</div>
         </nav>
       )}
     </header>

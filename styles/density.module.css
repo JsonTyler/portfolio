@@ -1,12 +1,14 @@
-.shell :global(.hero-padding) { padding-block: clamp(16px, 2vw, 28px); }
-.shell :global(.hero-title) { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.12; margin: 0 0 .5rem; }
-.shell :global(.hero-subtitle) { margin: .5rem 0 0; line-height: 1.5; }
+/* One place controls the portfolio's reading scale and spacing. */
+.shell { font-size: 15px; line-height: 1.5; }
+.shell :global(.hero-padding) { padding-block: 14px; }
+.shell :global(.hero-title) { font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.15; margin: 0 0 .4rem; }
+.shell :global(.hero-subtitle) { margin: .4rem 0 0; line-height: 1.5; font-size: 15px; }
 .shell :global(.home-intro) { padding-block: 0; }
-.shell :global(.section-padding), .shell :global(.section-padding-lg) { padding-block: clamp(16px, 2vw, 28px); }
-.shell :global(.project-preview) { padding-block: 24px; gap: 24px; }
-.shell :global(.project-preview):first-of-type { margin-top: 12px; }
-.shell :global(.case-story) { padding-block: 12px 24px; }
-.shell :global(.case-story) > section { margin-bottom: 24px; }
-.shell :global(.case-visual), .shell :global(.story-navigation) { padding-block: 16px; }
-.shell :global(.experience-list) > :not(:last-child) { margin-bottom: 20px; }
-.shell :global(.resume-sections) > * { margin-block: 0 20px; }
+.shell :global(.section-padding), .shell :global(.section-padding-lg) { padding-block: 16px; }
+.shell :global(.project-preview) { padding-block: 16px; gap: 24px; }
+.shell :global(.project-preview):first-of-type { margin-top: 0; }
+.shell :global(.case-story) { padding-block: 8px 20px; }
+.shell :global(.case-story) > section { margin-bottom: 20px; }
+.shell :global(.case-visual), .shell :global(.story-navigation) { padding-block: 12px; }
+.shell :global(.experience-list) > :not(:last-child) { margin-bottom: 16px; }
+.shell :global(.resume-sections) > * { margin-block: 0 16px; }

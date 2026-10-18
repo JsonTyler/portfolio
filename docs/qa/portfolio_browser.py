@@ -1,4 +1,4 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 from pathlib import Path
 out=Path('/tmp/portfolio-oct18');out.mkdir(exist_ok=True)
 with sync_playwright() as p:
@@ -15,7 +15,7 @@ with sync_playwright() as p:
  assert page.locator('.project-preview').count()==0
  page.screenshot(path=str(out/'home-desktop.png'),full_page=True)
  page.get_by_role('button',name='Switch to winter theme').click();page.reload(wait_until='networkidle')
- assert page.locator('html').get_attribute('data-theme')=='winter'
+ expect(page.locator('html')).to_have_attribute('data-theme', 'winter')
  page.get_by_role('button',name='Switch to hacker theme').click()
  page.goto('http://127.0.0.1:3000/projects',wait_until='networkidle')
  assert page.locator('.project-preview').count()==4

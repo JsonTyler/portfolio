@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { projects } from '@/content/projects';
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Front-end engineering & UX',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return (
-    <>
+    <div className={styles.home}>
       <section className="gradient-bg hero-padding border-b">
         <div className="container-max home-intro home-intro-compact">
           <div>
@@ -31,9 +32,9 @@ export default function Home() {
       <section className="section-padding border-t border-slate-200">
         <div className="container-max experience-intro">
           <div><p className="eyebrow">Professional experience</p><h2>Engineering with a UX perspective.</h2></div>
-          <div className="reading-measure"><p>Enterprise front ends, reusable components, and close collaboration across design and engineering. The experience page covers component-library stewardship and collaboration across product teams.</p><a className="story-link focus-ring" href="/experience">View experience ↗</a></div>
+          <div className="reading-measure"><p>Enterprise front ends, reusable components, and close collaboration across design and engineering.</p><a className="story-link focus-ring" href="/experience">View experience ↗</a></div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

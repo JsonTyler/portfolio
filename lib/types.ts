@@ -13,6 +13,8 @@ export interface Project {
   status: 'active' | 'archived' | 'in-development';
   featured: boolean;
   statusLabel?: string;
+  contribution?: string;
+  engineeringNote?: string;
   content?: string; // Markdown or HTML for detail pages
 }
 

@@ -1,0 +1,25 @@
+.experience { padding-block: 8px 20px; }
+.list { list-style: none; padding: 0; margin: 0; }
+.entry { margin: 0; position: relative; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 32px; padding-block: 12px; }
+.entry::before { content: ''; position: absolute; left: 132px; top: 0; bottom: 0; width: 2px; background: var(--color-border); }
+.entry::after { content: ''; position: absolute; left: 128px; top: 31px; width: 10px; height: 10px; box-sizing: border-box; border: 2px solid var(--color-background); border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
+.entry:first-child::before { top: 36px; }
+.entry:last-child::before { bottom: calc(100% - 36px); }
+.entry article { min-width: 0; padding: 12px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-background); }
+.entry h2 { margin: 0 0 3px; font-size: 17px; line-height: 1.35; }
+.dates { margin: 14px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
+.company { margin: 0 0 6px; font-size: 14px; font-weight: 600; line-height: 1.45; }
+.description { margin: 0 0 6px; font-size: 14px; line-height: 1.5; }
+.highlights { list-style: disc; margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.5; }
+.highlights li { list-style: disc; margin: 2px 0; }
+.stack { margin: 7px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
+.stack > span { font-weight: 600; }
+@media(max-width: 600px) {
+  .entry { grid-template-columns: 1fr; gap: 5px; padding: 12px 0 12px 24px; }
+  .entry::before { left: 7px; }
+  .entry::after { left: 3px; top: 16px; }
+  .entry:first-child::before { top: 21px; }
+  .entry:last-child::before { bottom: calc(100% - 21px); }
+  .dates { margin: 0; }
+  .entry h2 { font-size: 16px; }
+}

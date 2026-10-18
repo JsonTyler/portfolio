@@ -80,3 +80,22 @@
 
 .preview .toolbar button { border: 1px solid #8daed5; background: #2d4967; }
 .preview .toolbar button:hover { background: #3d6085; }
+
+.comparison { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 10px; padding: 12px; border: 1px solid #799b84; border-radius: 10px; background: #e2f0cf; color: #173d32; font: 13px/1.4 system-ui, sans-serif; }
+.challenge { flex: 1; min-width: 180px; }
+.challenge strong, .challenge span, .result strong, .result span { display: block; }
+.challenge strong { font-size: 18px; }
+.challenge span { margin-top: 4px; }
+.result { min-width: 130px; font-variant-numeric: tabular-nums; }
+.result strong { font-size: 25px; line-height: 1.2; }
+.result span { font-size: 11px; margin-top: 3px; }
+.comparison .controls { gap: 0; padding: 3px; background: #cbdcbc; border: 1px solid #6f886c; border-radius: 8px; }
+.comparison .controls button { background: transparent; color: #244536; border-color: transparent; }
+.comparison .controls button[aria-pressed="true"] { background: #173d32; color: #f0f7e8; border-color: #173d32; }
+.comparison .controls button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.comparison button:focus-visible { outline: 3px solid #245b7d; outline-offset: -3px; }
+@media(max-width: 600px) { .comparison { padding: 12px; gap: 12px; } .challenge { flex-basis: 100%; } .result { flex: 1; min-width: 0; text-align: right; } .result span { max-width: 16ch; margin-left: auto; } }
+
+
+.workspace { grid-template-rows: minmax(0, 1fr); }
+.rail { min-height: 0; overflow: hidden; }

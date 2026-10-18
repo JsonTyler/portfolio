@@ -222,3 +222,59 @@ Removed Inbox’s separate Preview action. A suggestion immediately selects/high
 - `python3 docs/qa/portfolio_browser.py` passed against the local dev server using system Chromium and Playwright: actual Hacker body color, legacy Winter preference reset, explicit Winter choice surviving reload, four Home project links without duplicate demos, Cirrus name/toggle, inbox filtering/deletion/protection/undo/empty state, loaded screenshots, keyboard activation and visible focus, no page exceptions, and no document overflow at 390px across Home, Work and the DataDustr case study. Desktop viewport: 1440px. Reduced motion was enabled. Review captures are in `/tmp/portfolio-oct18`.
 - Screen-reader behavior, full accessibility audit, physical phone testing and the published site remain unverified. Changes are local; existing unrelated untracked assets were preserved.
 - Final `npm run ci` passed: TypeScript, ESLint and default Turbopack production build. The pre-existing ESLint package module-type warning remains. The workspace moved to `/home/user/source/as-i-left-it/portfolio-repos/portfolio` during checks; the dev server was restarted and final checks passed from that destination.
+
+## October 18, 2026 — faster project proof
+
+- Cirrus stays first on Work. Its demo now starts with a density control and a prominent live fully-visible-row count; Compact reports extra rows against the measured Spacious baseline. Measurements observe the viewport and row size, settle after transitions, and discard a baseline when the available width changes.
+- Case-study copy is shorter, with optional native `details` for implementation specifics. Specific engineering details replace generic technology lists on Work. DataDustr has a source-supported independent contribution line; exact Cirrus production ownership is awaiting user clarification.
+- `python3 docs/qa/cirrus_capacity.py` passed in Chromium with reduced motion: 1440px showed 3 → 9 fully visible rows; 390px showed 2 → 7. Both modes retain the same viewport height, body text size and 15 records. Keyboard density controls, restore-to-Spacious, viewport-change baseline reset, collapsed/keyboard-expandable details, no document overflow and no page exceptions passed. Screenshots reviewed in `/tmp/portfolio-cirrus-proof`.
+- Counts describe the local synthetic demo, not a measured production outcome. Physical-device and screen-reader checks remain unperformed. Changes remain local for review.
+- Final `npm run ci` passed (TypeScript, ESLint, production build; existing ESLint module-type warning only). The same Chromium checks also passed with normal motion enabled, including measurements after density transitions.
+
+## October 18, 2026 — compact site presentation
+
+- Compared rendered states with Playwright at 1366×768 and 390×844, retaining matching captures in `/tmp/portfolio-scale-review` (before) and `/tmp/portfolio-scale-after` (after). Desktop Home height decreased 1068→905px (15%); Work 4041→3421px (15%). Mobile Home decreased 1467→1304px; Work 5271→4672px. Mobile header decreased 115→65px; desktop 75→67px. About still fits the viewport.
+- Main display headings now cap at 42px; Home section headings cap at 32px. Reduced introductory spacing, tightened project index rows, and limited Work demo width to 660px. Body type remains 16px. Demo text is not globally scaled.
+- Mobile theme controls moved into the existing menu; desktop controls remain visible. Menu links and trigger retain 44px targets, and Escape restores focus to the trigger.
+- Cirrus viewport is 480px in both density modes, with smaller surrounding panels/chrome. Fully visible row counts remain measured, not hard-coded. Inbox uses four visible synthetic messages (two protected); filters, totals, deletion and undo all use this same sample. Suggested labels are an optional native disclosure. Existing live application screenshots are unchanged.
+- `python3 docs/qa/portfolio_density.py` passed at 320, 390, 768, 1024 and 1366px: header height, body text, menu/themes, keyboard/Escape focus, label disclosure, deletion/protection/undo, and no document overflow/page exceptions. `portfolio_browser.py` and `cirrus_capacity.py` also passed. Latest Cirrus counts at 1440px were 2→5 and at 390px 1→3, with identical viewport height/text/records across modes.
+- Dev server initially served stale global CSS; restarting it loaded the intended styles. Measurements above are from the fresh rendered styles. No full accessibility audit, physical-device or screen-reader test is claimed. Changes remain local at http://localhost:3000.
+- Final `npm run ci` passed: TypeScript, ESLint and production build. The existing ESLint package module-type warning remains.
+
+## October 18, 2026 — stronger compact pass and desktop navigation fix
+
+- User found the first density pass insufficient and reported a desktop hamburger. Playwright reproduced hidden desktop navigation at 900px. Navigation now uses explicit CSS classes with a 768px breakpoint, independent of Tailwind's former 1024px visibility classes; desktop links/themes remain visible at laptop widths, with mobile menu below 768px.
+- Reduced site reading scale to 15px, main display titles to 24–32px, section headings to 24px, header to 53px, and content width to 1080px. Tighter intro/index spacing and removal of a redundant Work tagline reduce visual bulk. Touch/coarse-pointer targets remain 44px.
+- Work previews cap at 500px and use condensed demo chrome. Cirrus uses a 360px preview viewport (380px on mobile), a reduced profile summary, and Type/Amount columns; case-study demo retains the full interface. Fixed grid containment and density-specific spacing so records stay inside the preview and Compact increases capacity. A measured zero is shown as zero, and zero is a valid Spacious baseline. Other demo interactions remain live.
+- Fresh Playwright measurements: desktop Home 768px (previous pass 905px; originally 1068px), Work 2822px (previous 3421px; originally 4041px). Mobile Home 1107px (previous1304px), Work3860px (previous4672px). Before/after evidence: `/tmp/portfolio-compact-v2-before` and `/tmp/portfolio-compact-v2-after`. Home fits a 1366×768 screen; desktop navigation visibly fits at 900px.
+- `portfolio_density.py` passed at 320,390,767,768,900,1024,1366px, including desktop-link visibility at ≥768px, hamburger below it, theme/menu/focus/disclosure/cleanup/undo and no horizontal overflow. `portfolio_browser.py` passed. Final `cirrus_capacity.py` passed: desktop 1→3 fully visible rows, mobile1→4, same viewport/text/records, keyboard comparison, viewport baseline reset and actual table containment. Separate Playwright checks confirmed Framed keyboard movement/reset and Timely selection.
+- The dev build reused stale global CSS even after restart; preserving the old `.next/dev` directory outside the repo and rebuilding it resolved the mismatch. Verified rendered styles afterward. Retro and frontend-quality now explicitly include intermediate laptop/breakpoint checks and verification of served/computed CSS. Physical-device and screen-reader testing remain unperformed; no new push/deployment.
+- TypeScript and ESLint passed; final production build after the last preview CSS adjustment passed. Existing ESLint module-type warning remains.
+
+## October 18, 2026 — restore demonstrations; compact career pages
+
+- User clarified that Work previews were over-compressed and Experience/Résumé were the intended density targets. Removed Work-only miniature demo rules, restored original demo palettes/layouts/sample inbox and a 76rem Work container, and restored Cirrus's 590px desktop/600px mobile viewport. Retained live measured comparison, valid zero handling and grid containment. Desktop navigation remains fixed.
+- Experience now uses aligned date/content rows, compact text and plain stack lines instead of oversized timeline cards/badges. All five entries, descriptions, highlights and technologies remain visible.
+- Résumé now uses a document layout: summary, career history and qualifications in the main column; skills, education and contact in a supporting column, stacking on mobile. Removed nested card decoration and duplicate print action. Existing content and PDF download remain; print control still works.
+- `nice -n 10 taskset -c 0 python3 docs/qa/career_pages.py` passed sequentially at reduced priority on one CPU: 1366,900,390px content/overflow checks; all six résumé sections and five Experience entries; print button dispatch; download response begins `%PDF`; print media hides navigation/actions while preserving sections; generated `/tmp/portfolio-career-after/resume-print.pdf`; no page exceptions.
+- Restored Cirrus counts: 3→9 rows at1366px, 3→8 at900px, 2→7 on mobile. Full desktop table columns and profile remain. This supersedes the miniature1→3 example.
+- Rendered before/after heights: desktop Experience2197→1441px (~34% shorter), Résumé2296→1276px (~44%); mobile Experience3205→1789px and Résumé3423→2374px. Work grows back to3850px desktop as intended. Captures and measurements: `/tmp/portfolio-career-before`, `/tmp/portfolio-career-after`; reviewed desktop and mobile screenshots.
+- Updated retro/frontend-quality to treat density as page-specific and preserve representative task capacity in embedded demonstrations. Physical phone and screen-reader/full accessibility audits remain unperformed. Changes stay local.
+- Final `npm run ci` passed (TypeScript, ESLint, production build) at reduced priority with affinity to one CPU. Existing ESLint module-type warning only.
+
+## October 18, 2026 — Home fits shorter desktop screens
+
+- User confirmed Home should have no desktop scrollbar. Added Home-only spacing rules, including a tighter layout for screens ≤720px tall, and shortened its redundant Experience teaser. No fixed page height or hidden overflow was introduced; mobile and narrow reflow still scroll normally. Other pages are unaffected.
+- `nice -n 10 taskset -c 0 python3 docs/qa/home_fit.py` passed sequentially: full page/footer fits at1366×768,1440×900,1280×720,1024×650,900×650; four project links and Experience link remain. All three themes with normal motion fit at900×650. Mobile390×844 and narrow640×360 retain vertical scrolling, no horizontal overflow and reachable/focusable content; no page exceptions.
+- Before: Home was751px at1280×720 and742px at900×650. After: it fits those viewport heights naturally. Desktop/mobile screenshot evidence: `/tmp/portfolio-home-fit-before` and `/tmp/portfolio-home-fit-after`.
+- Final TypeScript, ESLint and production build (`npm run ci`) passed sequentially at reduced priority with one-CPU affinity. Existing ESLint module-type warning only. No push or deployment.
+
+## October 18, 2026 — compact Experience timeline
+
+- User preferred Experience as a timeline. Restored a connected vertical rail, accent date markers and lightly bordered cards while retaining compact type/spacing and all existing content. Dates sit beside entries on desktop and above cards on mobile.
+- Playwright captures reviewed at1366×768 and390×844: all five entries present, no horizontal overflow. Final heights1497px desktop/2045px mobile, still substantially below original2197px/3205px. Evidence: `/tmp/portfolio-timeline-after`.
+- `git diff --check` passed. CSS-only change verified through the running Next dev compiler and rendered browser; no new full CI run or assistive-technology audit. No push/deployment.
+
+## Final approved session snapshot
+
+- User approved the compact timeline and requested saving the session highlights and pushing the reviewed changes. Final `npm run ci` passed on this exact UI snapshot, including the timeline CSS: TypeScript, ESLint and production build, run sequentially at reduced priority on one CPU. The pre-existing ESLint module-type warning remains. Earlier Playwright comparisons and targeted browser checks are recorded above.

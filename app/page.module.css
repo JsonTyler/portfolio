@@ -1,0 +1,11 @@
+/* Fit the desktop overview naturally; small screens and zoom can still scroll. */
+@media(min-width: 768px) {
+  .home > section:global(.hero-padding) { padding-block: 12px; }
+  .home > section:global(.section-padding) { padding-block: 12px; }
+  .home :global(.experience-intro) p { margin-bottom: 6px; }
+}
+@media(min-width: 768px) and (max-height: 720px) {
+  .home > section:global(.section-padding) { padding-block: 8px; }
+  .home :global(.section-heading) :global(.eyebrow),
+  .home :global(.experience-intro) :global(.eyebrow) { margin-bottom: 4px; }
+}

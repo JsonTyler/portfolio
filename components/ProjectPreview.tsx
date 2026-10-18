@@ -10,9 +10,9 @@ export function ProjectPreview({ project, index }: { project: Project; index: nu
       <div className="project-preview-copy">
         <p className="eyebrow"><span className="project-number" aria-hidden="true">0{index + 1} / </span>{project.statusLabel ?? projectStatusLabels[project.status]}</p>
         <h3 className="project-preview-title">{project.title}</h3>
-        <p className="project-tagline">{project.tagline}</p>
         <p className="text-slate-700 reading-measure">{project.description}</p>
-        <p className="project-stack text-sm text-slate-600">{project.technologies.join(' / ')}</p>
+        {project.contribution && <p className="text-sm text-slate-700"><strong>My contribution:</strong> {project.contribution}</p>}
+        <p className="project-stack text-sm text-slate-600">{project.engineeringNote ?? project.technologies.join(' / ')}</p>
         <Link className="story-link focus-ring" href={`/projects/${project.slug}`}>
           Explore {project.title}{' '}<span aria-hidden="true">↗</span>
         </Link>

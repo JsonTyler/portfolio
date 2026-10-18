@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { DemoPrompt } from './DemoPrompt';
 import styles from './CirrusScreens.module.css';
 const deductions = [
   ['Direct deposit', 'Every payroll', 'Checking account', '$2,480.00'],
@@ -32,23 +31,44 @@ function Icon({ kind, size = 18 }: { kind: 'person' | 'wallet' | 'clock' | 'shie
 }
 export function CirrusScreens({ priority = false }: { priority?: boolean }) {
   const [compact, setCompact] = useState(false);
-  const [visibleRows, setVisibleRows] = useState(0);
+  const [capacity, setCapacity] = useState<{ visible: number; spacious: number | null; width: number }>({ visible: 0, spacious: null, width: 0 });
   const viewport = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const element = viewport.current;
     if (!element) return;
+    let timer: ReturnType<typeof globalThis.setTimeout>;
     const measure = () => {
-      const bottom = element.getBoundingClientRect().bottom;
+      const bounds = element.getBoundingClientRect();
       const rows = [...element.querySelectorAll('tbody tr')];
-      setVisibleRows(rows.filter(row => row.getBoundingClientRect().bottom <= bottom + 1).length);
+      const visible = rows.filter(row => {
+        const rect = row.getBoundingClientRect();
+        return rect.top >= bounds.top && rect.bottom <= bounds.bottom + 1;
+      }).length;
+      const width = element.clientWidth;
+      setCapacity(previous => {
+        const spacious = compact ? (previous.width === width ? previous.spacious : null) : visible;
+        return previous.visible === visible && previous.spacious === spacious && previous.width === width
+          ? previous : { visible, spacious, width };
+      });
     };
-    const observer = new globalThis.ResizeObserver(measure);
+    // Announce the settled result, rather than every frame of the density transition.
+    const observer = new globalThis.ResizeObserver(() => {
+      globalThis.clearTimeout(timer);
+      timer = globalThis.setTimeout(measure, 100);
+    });
     observer.observe(element);
+    const firstRow = element.querySelector('tbody tr');
+    if (firstRow) observer.observe(firstRow);
     measure();
-    return () => observer.disconnect();
-  }, []);
+    return () => { observer.disconnect(); globalThis.clearTimeout(timer); };
+  }, [compact]);
+  const extraRows = compact && capacity.spacious !== null ? capacity.visible - capacity.spacious : 0;
   return <figure className={`project-visual ${styles.preview}`} data-compact={compact} data-priority={priority || undefined}>
-    <DemoPrompt instruction="Toggle compact mode below and watch more rows fit."/>
+    <div className={styles.comparison}>
+      <div className={styles.challenge}><strong>Fit more records.</strong><span>Switch density. Keep the same workspace.</span></div>
+      <div role="group" aria-label="Compare interface density" className={styles.controls}><button type="button" aria-pressed={!compact} onClick={() => setCompact(false)}>Spacious</button><button type="button" aria-pressed={compact} onClick={() => setCompact(true)}>Compact</button></div>
+      <div className={styles.result} role="status" aria-atomic="true"><strong>{capacity.width ? `${capacity.visible} of ${deductions.length}` : '…'}</strong><span>rows fully visible{extraRows > 0 ? ` · +${extraRows} in compact` : ''}</span></div>
+    </div>
     <div className={styles.mock} aria-label="Interactive compact-mode concept with sample employee data">
       <div className={styles.toolbar}><span className={styles.brand}>Springbrook <span> / Human Resources</span></span>
         <button type="button" aria-label={compact ? 'Use spacious density' : 'Use compact density'} aria-pressed={compact} onClick={() => setCompact(value => !value)} title="Toggle compact mode"><Icon kind="density"/><span>{compact ? 'Compact mode on' : 'Try compact mode'}</span><span className={styles.switch} aria-hidden="true"/></button>
@@ -61,12 +81,12 @@ export function CirrusScreens({ priority = false }: { priority?: boolean }) {
             <div className={styles.info}><div className={styles.panelTitle}><Icon kind="person" size={16}/>Employee information</div><dl><div><dt>Email</dt><dd>jason@example.test</dd></div><div><dt>Department</dt><dd>Public Works</dd></div><div><dt>Position</dt><dd>Operations specialist</dd></div><div><dt>Supervisor</dt><dd>Alex Taylor</dd></div></dl></div>
             <div className={styles.accruals}><div className={styles.panelTitle}><Icon kind="clock" size={16}/>Accrual balances</div><div className={styles.balance}><span>Vacation</span><strong>72.00 <small>hours</small></strong></div><div className={styles.balance}><span>Sick leave</span><strong>48.00 <small>hours</small></strong></div></div>
           </div>
-          <div className={styles.tableHeading}><strong>Deductions &amp; benefits</strong><span>{visibleRows ? `${visibleRows} of ${deductions.length} rows in view` : `${deductions.length} sample records`}</span></div>
+          <div className={styles.tableHeading}><strong>Deductions &amp; benefits</strong><span>{capacity.width ? `${capacity.visible} of ${deductions.length} rows in view` : `${deductions.length} sample records`}</span></div>
           <div className={styles.tableViewport} ref={viewport}><table><thead><tr><th>Type</th><th>Cycle</th><th>Description</th><th>Amount</th></tr></thead><tbody>{deductions.map(([type, cycle, description, amount]) => <tr key={type}><td>{type}</td><td>{cycle}</td><td>{description}</td><td>{amount}</td></tr>)}</tbody></table></div>
           <div className={styles.tableFooter}><span>‹ &nbsp; <b>1</b> &nbsp; ›</span><span>15 records · sample data</span></div>
         </div>
       </div>
     </div>
-    <figcaption className={styles.caption}><span>Same viewport. Same records. More room to work.</span><div role="group" aria-label="Compare interface density" className={styles.controls}><button type="button" aria-pressed={!compact} onClick={() => setCompact(false)}>Spacious</button><button type="button" aria-pressed={compact} onClick={() => setCompact(true)}>Compact</button></div><span className={styles.note}>Interactive concept based on Cirrus · sample data</span></figcaption>
+    <figcaption className={styles.caption}><span className={styles.note}>Interactive interpretation · sample data · counts measured in this demo</span></figcaption>
   </figure>;
 }
