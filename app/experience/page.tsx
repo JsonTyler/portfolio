@@ -15,7 +15,7 @@ export default function ExperiencePage() {
         <div className="container-max max-w-4xl">
           <h1 className="hero-title text-5xl md:text-6xl font-bold mb-4">Experience</h1>
           <p className="hero-subtitle text-lg md:text-xl max-w-3xl">
-            A timeline of my professional journey and career growth.
+            Professional front-end development, UX, and earlier software engineering work.
           </p>
         </div>
       </section>
@@ -24,20 +24,20 @@ export default function ExperiencePage() {
         <div className="container-max max-w-3xl">
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-slate-200 transform md:-translate-x-1/2" />
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-slate-200" />
 
             {/* Timeline items */}
-            <div className="space-y-12">
-              {experience.map((item, index) => (
+            <div className="space-y-12 experience-list">
+              {experience.map((item) => (
                 <div key={item.id} className="relative">
                   {/* Timeline dot */}
-                  <div className="absolute left-0 md:left-1/2 top-2 w-4 h-4 bg-amber-600 rounded-full border-4 border-white transform -translate-x-1.5 md:-translate-x-2.5 md:translate-x-0" />
+                  <div className="absolute left-0 top-2 w-4 h-4 bg-amber-600 rounded-full border-4 border-white -translate-x-1.5" />
 
                   {/* Content */}
-                  <div className={`ml-8 md:ml-0 ${index % 2 === 0 ? 'md:mr-1/2 md:pr-12' : 'md:ml-1/2 md:pl-12'}`}>
+                  <div className="ml-8">
                     <Card variant="default" className="hover:shadow-lg transition-standard">
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
+                      <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                        <h2 className="text-xl font-bold text-slate-900">{item.title}</h2>
                         <Badge variant="secondary" size="sm">
                           {item.period.start.slice(0, 7)} – {item.period.end === 'present' ? 'Present' : item.period.end.slice(0, 7)}
                         </Badge>

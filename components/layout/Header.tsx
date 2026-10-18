@@ -2,13 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SITE_METADATA, NAVIGATION } from '@/lib/constants';
 
 export function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<'winter' | 'midnight' | 'hacker'>('winter');
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const [themeReady, setThemeReady] = useState(false);
+  const [theme, setTheme] = useState<'winter' | 'midnight' | 'hacker'>('hacker');
 
   const isActive = (href: string) =>
     href === '/'
@@ -16,33 +18,32 @@ export function Header() {
       : pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
-    if (typeof globalThis === 'undefined' || !('document' in globalThis)) return;
-    const savedTheme = globalThis.localStorage.getItem('portfolio-theme');
-    if (savedTheme === 'winter' || savedTheme === 'midnight' || savedTheme === 'hacker') {
-      setTheme(savedTheme);
-      globalThis.document.documentElement.setAttribute('data-theme', savedTheme);
-      return;
-    }
-    globalThis.document.documentElement.setAttribute('data-theme', 'winter');
+    try {
+      const saved = globalThis.localStorage.getItem('portfolio-theme');
+      if (saved === 'winter' || saved === 'midnight' || saved === 'hacker') setTheme(saved);
+    } catch { /* Storage may be unavailable; keep the default theme. */ }
+    setThemeReady(true);
   }, []);
 
   useEffect(() => {
-    if (typeof globalThis === 'undefined' || !('document' in globalThis)) return;
+    if (!themeReady) return;
     globalThis.document.documentElement.setAttribute('data-theme', theme);
-    globalThis.localStorage.setItem('portfolio-theme', theme);
-  }, [theme]);
+    try { globalThis.localStorage.setItem('portfolio-theme', theme); } catch { /* Theme still works without persistence. */ }
+  }, [theme, themeReady]);
+
+
 
   return (
-    <header className="border-b border-slate-200 bg-white sticky top-0 z-40 transition-standard">
-      <div className="container-max flex items-center justify-between py-3">
+    <header onKeyDown={(event) => { if (event.key === 'Escape' && isMobileMenuOpen) { setIsMobileMenuOpen(false); menuButtonRef.current?.focus(); } }} className="border-b border-slate-200 bg-white sticky top-0 z-40 transition-standard">
+      <div className="container-max site-header-row py-3">
         <Link
           href="/"
-          className="font-bold text-xl text-slate-900 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4"
+          className="site-name font-bold text-xl text-slate-900 transition-standard focus-ring hover:text-amber-700 hover:underline hover:decoration-2 hover:underline-offset-4"
           aria-label="Jason Tyler Rodriguez - Home"
         >
           {SITE_METADATA.siteName}
         </Link>
-        <nav className="hidden md:flex gap-8" aria-label="Main navigation">
+        <nav className="hidden lg:flex gap-5" aria-label="Main navigation">
           {NAVIGATION.map((item) => (
             <Link
               key={item.href}
@@ -59,13 +60,13 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
+        <div className="theme-controls flex items-center bg-zinc-800/60 border border-zinc-700/50 rounded-full p-1 shrink-0 mr-2">
           <button
             type="button"
             onClick={() => setTheme('winter')}
             aria-pressed={theme === 'winter'}
             aria-label="Switch to winter theme"
-            className={`theme-toggle-btn p-1.5 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
+            className={`theme-toggle-btn p-2 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
               theme === 'winter'
                 ? 'bg-zinc-200/10 text-zinc-300 border-zinc-400/45'
                 : 'text-zinc-500 border-transparent hover:text-amber-700 hover:border-zinc-600/50'
@@ -81,7 +82,7 @@ export function Header() {
             onClick={() => setTheme('midnight')}
             aria-pressed={theme === 'midnight'}
             aria-label="Switch to midnight theme"
-            className={`theme-toggle-btn p-1.5 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
+            className={`theme-toggle-btn p-2 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
               theme === 'midnight'
                 ? 'bg-zinc-200/10 text-zinc-300 border-zinc-400/45'
                 : 'text-zinc-500 border-transparent hover:text-amber-700 hover:border-zinc-600/50'
@@ -97,38 +98,37 @@ export function Header() {
             onClick={() => setTheme('hacker')}
             aria-pressed={theme === 'hacker'}
             aria-label="Switch to hacker theme"
-            className={`theme-toggle-btn p-1.5 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
+            className={`theme-toggle-btn p-2 rounded-full border transition-all duration-150 focus-ring hover:underline hover:decoration-2 hover:underline-offset-4 ${
               theme === 'hacker'
-                ? 'bg-rose-500/15 text-rose-300 border-rose-400/55'
+                ? 'bg-emerald-500/15 text-emerald-300 border-emerald-400/55'
                 : 'text-zinc-500 border-transparent hover:text-amber-700 hover:border-zinc-600/50'
             }`}
             title="Hacker"
           >
             <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.75">
-              <path d="M12 3a7 7 0 0 0-7 7v2.5a2.5 2.5 0 0 0 2.5 2.5h1V18a1 1 0 0 0 1 1h1v-2h1v2h2v-2h1v2h1a1 1 0 0 0 1-1v-3h1A2.5 2.5 0 0 0 19 12.5V10a7 7 0 0 0-7-7Z" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="9.25" cy="10.25" r="1" />
-              <circle cx="14.75" cy="10.25" r="1" />
-              <path d="M10.5 14h3" strokeLinecap="round" />
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path d="m7 9 3 3-3 3M13 15h4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
 
         <button
           type="button"
-          className="md:hidden p-2 text-slate-600 focus-ring"
+          ref={menuButtonRef}
+          className="lg:hidden p-2 text-slate-600 focus-ring"
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
-          aria-controls="mobile-navigation"
+          aria-controls={isMobileMenuOpen ? "mobile-navigation" : undefined}
           onClick={() => setIsMobileMenuOpen((open) => !open)}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg aria-hidden="true" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
 
       {isMobileMenuOpen && (
-        <nav id="mobile-navigation" className="md:hidden border-t border-slate-200 px-4 pb-4" aria-label="Mobile navigation">
+        <nav id="mobile-navigation" className="lg:hidden border-t border-slate-200 px-4 pb-4" aria-label="Mobile navigation">
           <ul className="space-y-1 pt-3">
             {NAVIGATION.map((item) => (
               <li key={item.href}>

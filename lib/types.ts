@@ -12,6 +12,7 @@ export interface Project {
   technologies: string[];
   status: 'active' | 'archived' | 'in-development';
   featured: boolean;
+  statusLabel?: string;
   content?: string; // Markdown or HTML for detail pages
 }
 

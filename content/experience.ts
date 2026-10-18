@@ -8,15 +8,16 @@ export const experience: ExperienceItem[] = [
   {
     id: 'springbrook-2022',
     company: 'Springbrook Software',
-    title: 'Front-End Software Engineer / Lead UX Designer',
+    title: 'Senior Front-End Software Engineer / Lead UX Designer',
     period: {
       start: '2022-01',
       end: 'present',
     },
-    description: 'Owner of the Design Library component library and design system. Lead UX designer focused on consistency, documenting standards, and best practices for Cirrus ERP platform serving 1000+ users.',
+    description: 'Maintained the existing Design Library component library and worked on UX consistency, documented standards, and interface patterns for an ERP platform.',
     technologies: ['Blazor', 'C#', 'SASS', 'TypeScript', 'Azure DevOps', 'Git'],
     highlights: [
-      'Owned and maintained Design Library (nuget package)',
+      'Served as team lead, guiding frontend implementation and coordinating delivery',
+      'Owned and maintained Design Library (NuGet package)',
       'Led UX design efforts across product',
       'Established design consistency and best practices',
       'Collaborated with product and engineering teams',
@@ -70,7 +71,7 @@ export const experience: ExperienceItem[] = [
       'Published research at IEEE SoutheastCon 2019',
       'Developed Timely data visualization tool',
       'Worked on funded research project',
-      'Demonstrated ability to conduct rigorous research',
+      'Explored domain-specific data visualization',
     ],
   },
   {

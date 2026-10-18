@@ -1,74 +1,19 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { projects } from '@/content/projects';
-import { ButtonLink } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
-
-export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'My portfolio of software projects and case studies.',
-};
-
+import { ProjectPreview } from '@/components/ProjectPreview';
+export const metadata: Metadata = { title: 'Selected work', description: 'Professional UX and component-library work, independent products, and interaction experiments.', alternates: { canonical: '/projects' } };
 export default function ProjectsPage() {
   return (
     <>
-      <section className="gradient-bg text-white hero-padding border-b">
-        <div className="container-max max-w-4xl">
-          <h1 className="hero-title text-5xl md:text-6xl font-bold mb-4">My Work</h1>
-          <p className="hero-subtitle text-lg md:text-xl max-w-3xl">
-            Engineering case studies focused on architecture, decisions, and implementation outcomes.
-          </p>
+      <section className="gradient-bg hero-padding border-b">
+        <div className="container-max">
+          <p className="eyebrow">Portfolio</p>
+          <h1 className="hero-title">Selected work</h1>
+          <p className="hero-subtitle reading-measure">Professional UX and component work, independent products, and interaction experiments.</p>
         </div>
       </section>
-
-      <section className="section-padding-lg">
-        <div className="container-max">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project) => (
-              <Card
-                key={project.slug}
-                as="article"
-                variant="default"
-                hover
-                className="flex flex-col"
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-4 mb-2">
-                    <div>
-                      <CardTitle>{project.title}</CardTitle>
-                      <CardDescription>{project.tagline}</CardDescription>
-                    </div>
-                    <Badge
-                      variant={project.status === 'active' ? 'primary' : 'secondary'}
-                      size="sm"
-                    >
-                      {project.status}
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <p className="text-slate-700 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="accent" size="sm">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <ButtonLink
-                    href={`/projects/${project.slug}`}
-                    variant="primary"
-                    size="sm"
-                  >
-                    View Case Study →
-                  </ButtonLink>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
+      <section className="section-padding">
+        <div className="container-max"><h2 className="sr-only">Projects</h2>{projects.map((project, index) => <ProjectPreview key={project.slug} project={project} index={index} />)}</div>
       </section>
     </>
   );

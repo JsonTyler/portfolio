@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { ButtonLink } from '@/components/ui/Button';
+import { PrintResume } from '@/components/PrintResume';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { SITE_METADATA } from '@/lib/constants';
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 const skills = {
   languages: ['C#', 'JavaScript', 'HTML', 'CSS', 'SCSS', 'Python'],
   frameworks: ['.NET', 'Blazor', 'Bootstrap', 'Syncfusion'],
-  architecture: ['Design systems', 'Component libraries', 'Accessibility (WCAG)', 'Design tokens', 'UX engineering'],
+  architecture: ['Design systems', 'Component libraries', 'Accessibility practice', 'Design tokens', 'UX engineering'],
   devops: ['Azure DevOps', 'Git', 'CI/CD pipelines'],
-  ai: ['Claude', 'GitHub Copilot', 'AI agents', 'Workflow automation'],
+  ai: ['AI-assisted development'],
 };
 
 export default function ResumePage() {
@@ -24,17 +24,21 @@ export default function ResumePage() {
         <div className="container-max max-w-4xl">
           <h1 className="hero-title text-4xl md:text-5xl font-bold mb-4">Resume</h1>
           <p className="hero-subtitle text-base md:text-lg max-w-3xl">
-            Senior Software Engineer with 7+ years of experience in enterprise frontend engineering, design systems, and engineering workflow automation.
+            Senior Software Engineer with eight years of experience in professional front-end development and a strong UX focus.
           </p>
+          <div className="resume-actions" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', marginTop: '1.5rem' }}>
+            <a className="focus-ring resume-download" href="/resume/download" download="Jason-Tyler-Rodriguez-Resume.pdf" style={{ display: 'inline-flex', alignItems: 'center', minHeight: 44, padding: '.65rem 1rem', borderRadius: '.4rem', background: '#ceeaa0', color: '#101819', fontWeight: 700 }}>Download résumé · PDF</a>
+            <PrintResume />
+          </div>
         </div>
       </section>
 
       <section className="section-padding">
-        <div className="container-max max-w-4xl space-y-8">
+        <div className="container-max max-w-4xl space-y-8 resume-sections">
           <Card variant="outlined">
             <h2 className="text-2xl font-bold mt-0 mb-3">Professional Summary</h2>
             <p className="text-slate-700 leading-relaxed">
-              Senior Software Engineer with 7+ years building enterprise frontend applications, reusable Blazor components, design systems, and AI-assisted engineering automation. I work across architecture, implementation, UX standards, and delivery quality.
+              Senior Software Engineer with eight years building front-end applications, reusable components, and design systems, with a strong UX focus. I work across architecture, implementation, UX standards, and delivery quality.
             </p>
           </Card>
 
@@ -43,15 +47,15 @@ export default function ResumePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                 <h3 className="text-base font-bold mt-0 mb-2">Architecture and design systems</h3>
-                <p className="text-slate-700 text-sm mb-0">Led enterprise component architecture, design tokens, and accessibility-first UI standards across multi-team products.</p>
+                <p className="text-slate-700 text-sm mb-0">Led enterprise component architecture, design tokens, and UI standards across multi-team products.</p>
               </div>
               <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                 <h3 className="text-base font-bold mt-0 mb-2">Product-minded implementation</h3>
                 <p className="text-slate-700 text-sm mb-0">Translate ambiguous requirements into maintainable software with clear tradeoffs, iterative delivery, and measurable quality gates.</p>
               </div>
               <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                <h3 className="text-base font-bold mt-0 mb-2">AI-assisted engineering workflows</h3>
-                <p className="text-slate-700 text-sm mb-0">Use AI for planning, implementation support, refactoring, and review while owning technical direction, validation, and final decisions.</p>
+                <h3 className="text-base font-bold mt-0 mb-2">Exploring AI-assisted workflows</h3>
+                <p className="text-slate-700 text-sm mb-0">Interested in AI-assisted planning, implementation, and review, with responsibility for validating the result.</p>
               </div>
               <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                 <h3 className="text-base font-bold mt-0 mb-2">Enterprise delivery</h3>
@@ -64,14 +68,13 @@ export default function ResumePage() {
             <h2 className="text-2xl font-bold mt-0 mb-4">Experience</h2>
             <div className="space-y-5">
               <div>
-                <h3 className="text-lg font-bold mt-0 mb-1">Springbrook Software, Senior Front-End Software Engineer</h3>
+                <h3 className="text-lg font-bold mt-0 mb-1">Springbrook Software, Senior Front-End Software Engineer / Team Lead</h3>
                 <p className="text-slate-600 text-sm mb-2">2022 to Present</p>
                 <ul className="text-slate-700 text-sm space-y-1">
                   <li>Led development of an enterprise design system used across multiple ERP applications.</li>
                   <li>Built reusable Blazor components, design tokens, and frontend architecture for consistency and scalability.</li>
                   <li>Partnered with product and engineering leadership to modernize UX and UI standards.</li>
-                  <li>Built AI-powered Azure DevOps automation for engineering workflows and governance.</li>
-                  <li>Mentored engineers on frontend architecture and component design practices.</li>
+                  <li>Served as team lead and mentored engineers on frontend architecture and component design practices.</li>
                 </ul>
               </div>
               <div>
@@ -123,7 +126,7 @@ export default function ResumePage() {
                 <div className="flex flex-wrap gap-2">{skills.devops.map((s) => <Badge key={s} variant="accent" size="sm">{s}</Badge>)}</div>
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-900 mb-2">AI tooling</p>
+                <p className="text-sm font-semibold text-slate-900 mb-2">AI tools I’m exploring</p>
                 <div className="flex flex-wrap gap-2">{skills.ai.map((s) => <Badge key={s} variant="accent" size="sm">{s}</Badge>)}</div>
               </div>
             </div>
@@ -145,12 +148,8 @@ export default function ResumePage() {
             </div>
           </Card>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a href="/resume/Jason-Rodriguez-Resume.pdf" className="inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium transition-standard bg-slate-900 text-white hover:bg-slate-800 no-underline border-0" target="_blank" rel="noopener noreferrer">
-              Download PDF resume
-            </a>
-            <ButtonLink href="/projects" variant="primary" size="md">Review case studies</ButtonLink>
-            <ButtonLink href="/contact" variant="secondary" size="md">Contact me</ButtonLink>
+          <div className="resume-actions flex flex-col sm:flex-row gap-3">
+            <PrintResume />
           </div>
         </div>
       </section>

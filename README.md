@@ -46,3 +46,20 @@ Case studies distinguish personal products, professional experience, prototypes,
 ## Feedback
 
 This is a personal portfolio. Pull requests are not currently accepted; feedback is welcome.
+
+## Local review of the hiring portfolio pass
+
+Branch: `portfolio/hiring-first-pass`. Existing themes and stack are retained. DataDustr has one case study; `/projects/datadustr` redirects to `/projects/datadustr-tools`. Professional work detail is withheld pending sharing permission; see `docs/CONTENT_PENDING.md`.
+
+With Node 20.9+ and npm available, from this directory:
+
+```sh
+npm ci
+npm run dev
+```
+
+Open http://localhost:3000. For checks, run `npm run type-check`, `npm run lint`, and `npm run build`. These are local operations; do not trigger deployment.
+
+Before release, inspect home, work, each project, resume, and contact at phone/tablet/desktop widths; all three themes; keyboard skip link, mobile menu, Escape and focus return; 200%/400% zoom; reduced motion; screen-reader headings/landmarks; source links and the résumé print/save action. No automated accessibility result establishes full conformance.
+
+The current authoring sandbox can run typecheck and lint. The Webpack production build is available via `npm run build -- --webpack`; default Turbopack is blocked by the sandbox’s port-binding restriction. The dev server and Chromium also remain blocked, so no rendered-layout, keyboard, screen-reader, or screenshot pass is claimed. See `docs/VERIFICATION.md` for the checks actually performed.

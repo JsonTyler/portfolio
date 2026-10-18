@@ -43,3 +43,7 @@ yarn-error.log*
 # OS
 Thumbs.db
 
+
+# Python helper caches
+__pycache__/
+*.py[cod]

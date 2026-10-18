@@ -1,0 +1,8 @@
+.prompt { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; padding: 12px 16px; border: 1px solid #91b49a; border-left: 4px solid #387052; border-radius: 10px; background: #e2f0cf; color: #173d32; font-family: system-ui, sans-serif; }
+.prompt > svg { flex-shrink: 0; }
+.prompt > div { min-width: 0; flex: 1; }
+.prompt strong { display: block; font-size: 15px; line-height: 1.35; font-weight: 750; color: #173d32; }
+.prompt div > span { display: block; margin-top: 3px; color: #294e40; font-size: 13px; line-height: 1.4; }
+.arrow { font-size: 25px; font-weight: 600; }
+@media(max-width: 480px) { .prompt { padding: 10px 12px; gap: 9px; } .prompt div > span { font-size: 12px; } }
+@media print { .prompt { display: none; } }

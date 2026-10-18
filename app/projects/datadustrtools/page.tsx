@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
 export default function DataDustrToolsAliasPage() {
-  redirect('/projects/datadustr-tools');
+  permanentRedirect('/projects/datadustr-tools');
 }

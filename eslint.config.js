@@ -8,7 +8,7 @@ export default [
     ignores: ['.next', 'node_modules', 'out', 'public'],
   },
   {
-    files: ['app/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}', 'lib/**/*.{ts,tsx}'],
+    files: ['app/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}', 'content/**/*.{ts,tsx}', 'lib/**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

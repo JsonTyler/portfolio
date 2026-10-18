@@ -3,7 +3,7 @@ import type { SiteMetadata } from './types';
 export const SITE_METADATA: SiteMetadata = {
   title: 'Jason Tyler Rodriguez',
   description:
-    'Full-stack software engineer with product thinking and design sensibility. Building products that matter.',
+    'Front-end engineer with eight years of professional experience and a strong UX focus.',
   author: 'Jason Tyler Rodriguez',
   email: 'jasontylerrodriguez@gmail.com',
   github: 'https://github.com/JsonTyler',
@@ -13,11 +13,10 @@ export const SITE_METADATA: SiteMetadata = {
 };
 
 export const NAVIGATION = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
   { label: 'Work', href: '/projects' },
   { label: 'Experience', href: '/experience' },
-  { label: 'Resume', href: '/resume' },
+  { label: 'About', href: '/about' },
+  { label: 'Résumé', href: '/resume' },
   { label: 'Contact', href: '/contact' },
 ];
 

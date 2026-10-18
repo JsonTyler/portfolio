@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { URL } from 'node:url';
+import { ThemeEffects } from '@/components/ThemeEffects';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SITE_METADATA } from '@/lib/constants';
 import '@/styles/globals.css';
+import densityStyles from '@/styles/density.module.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_METADATA.siteUrl),
@@ -11,15 +13,12 @@ export const metadata: Metadata = {
     default: SITE_METADATA.title,
     template: `%s | ${SITE_METADATA.title}`,
   },
-  alternates: {
-    canonical: '/',
-  },
   description: SITE_METADATA.description,
   authors: [{ name: SITE_METADATA.author }],
   creator: SITE_METADATA.author,
   keywords: [
     'software engineer',
-    'full-stack developer',
+    'front-end engineer',
     'product design',
     'frontend',
     'backend',
@@ -53,8 +52,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  colorScheme: 'light',
-  themeColor: '#1e293b',
+  colorScheme: 'dark light',
+  themeColor: '#080d10',
 };
 
 export default function RootLayout({
@@ -63,11 +62,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="hacker" suppressHydrationWarning>
       <body>
-        <div className="flex flex-col min-h-screen bg-slate-50">
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <ThemeEffects />
+        <div className={`site-shell flex flex-col min-h-screen bg-slate-50 ${densityStyles.shell}`} style={{ zIndex: 'auto' }}>
           <Header />
-          <main className="flex-1" role="main">
+          <main id="main-content" tabIndex={-1} className="flex-1">
             {children}
           </main>
           <Footer />

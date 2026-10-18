@@ -1,63 +1,41 @@
 import type { Project } from '@/lib/types';
 
-/**
- * Projects showcase - data structure for all portfolio projects
- * Each project can be expanded into a full case study page
- */
 export const projects: Project[] = [
   {
-    slug: 'datadustr',
-    title: 'DataDustr',
-    tagline: 'Company building and digital organization platform',
-    description:
-      'Founded DataDustr to help professionals and businesses reclaim digital space through intelligent cleanup and organization of email and files. Demonstrates full-stack product development from vision through market.',
-    image: '/images/projects/datadustr.jpg',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Tauri', 'PostgreSQL'],
-    status: 'active',
-    featured: true,
+    slug: 'cirrus', title: 'Cirrus compact mode',
+    tagline: 'One density control across the product',
+    description: 'A shared compact mode for data-dense screens, using consistent type, spacing, rows, and controls.',
+    technologies: ['Interaction design', 'HTML', 'CSS', 'JavaScript'],
+    status: 'archived', statusLabel: 'Professional compact-mode concept', featured: true,
   },
   {
-    slug: 'datadustr-tools',
-    title: 'DataDustrTools',
-    tagline: 'Technical architecture case study in production software',
-    description:
-      'Commercial product built under the DataDustr brand. Dual-module architecture (File Dustr + Inbox Dustr) with sophisticated policy layer for feature entitlements. Multi-platform development with shared React codebase.',
-    image: '/images/projects/datadustr-tools.jpg',
-    technologies: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind', 'Tauri', 'Rust'],
-    status: 'active',
-    featured: true,
+    slug: 'datadustr-tools', title: 'DataDustr',
+    tagline: 'Designing a more deliberate cleanup workflow',
+    description: 'File and inbox cleanup built around reviewable suggestions and explicit web/desktop boundaries.',
+    technologies: ['React', 'TypeScript', 'Next.js', 'Tauri', 'Rust'],
+    status: 'in-development', featured: true,
   },
   {
-    slug: 'timely',
-    title: 'Timely',
-    tagline: 'Digital forensics data visualization tool',
-    description:
-      'Research project: Chain of Custody data visualizer for digital forensic investigators. Published at IEEE SoutheastCon 2019. Demonstrates research rigor and data visualization expertise.',
-    image: '/images/projects/timely.jpg',
-    technologies: ['JavaScript', 'Vis.js', 'HTML5', 'CSS', 'Bootstrap', 'Git'],
-    status: 'archived',
-    featured: true,
+    slug: 'timely', title: 'Timely',
+    tagline: 'Making custody records visible over time',
+    description: 'A research prototype connecting custody-record details with the time between removal and return.',
+    technologies: ['JavaScript', 'Vis.js', 'HTML', 'CSS'],
+    status: 'archived', featured: false,
   },
   {
-    slug: 'design-library',
-    title: 'Design Library',
-    tagline: 'Design system for SaaS ERP platform',
-    description:
-      'Maintainer of the design library powering Springbrook Software\'s Cirrus ERP application. Focused on evolving components and system concepts for consistency, accessibility, and UX quality at scale.',
-    technologies: ['Blazor', 'C#', 'SASS', 'Bootstrap', 'Design Systems'],
-    status: 'active',
-    featured: false,
+    slug: 'framed', title: 'Framed',
+    tagline: 'Exploring a physical problem on a canvas',
+    description: 'A canvas experiment in arranging frames through dimensions, drag interactions, and position feedback.',
+    technologies: ['JavaScript', 'Konva', 'jQuery'],
+    status: 'archived', featured: false,
   },
 ];
 
+export const projectStatusLabels: Record<Project['status'], string> = {
+  active: 'Active', 'in-development': 'Independent project · not launched', archived: 'Historical prototype',
+};
 export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+  return projects.find((project) => project.slug === slug);
 }
-
-export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.featured);
-}
-
-export function getActiveProjects(): Project[] {
-  return projects.filter((p) => p.status === 'active');
-}
+export function getFeaturedProjects(): Project[] { return projects.filter((project) => project.featured); }
+export function getActiveProjects(): Project[] { return projects.filter((project) => project.status === 'active'); }
