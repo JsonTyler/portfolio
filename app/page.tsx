@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { projects } from '@/content/projects';
+import { getSelectedProjects } from '@/content/projects';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function Home() {
             <p className="eyebrow text-amber-200">Front-end engineering / UX</p>
             <h1 className="hero-title">Jason Tyler Rodriguez</h1>
             <p className="intro-statement">Eight years building interfaces.<br />A strong focus on how people use them.</p>
-            <p className="hero-subtitle reading-measure">I turn complex workflows into clear interfaces, from enterprise applications to independent products.</p>
+            <p className="hero-subtitle reading-measure">I turn complex workflows into clear interfaces, from enterprise applications to independent product concepts.</p>
 
           </div>
 
@@ -25,8 +25,8 @@ export default function Home() {
       </section>
       <section id="selected-work" className="section-padding">
         <div className="container-max">
-          <div className="section-heading"><div><p className="eyebrow">Project index</p><h2>What I build.</h2></div><Link className="story-link focus-ring" href="/projects">Explore all work &amp; interactive demos ↗</Link></div>
-          <div className="home-project-index">{projects.map(project => <Link className="home-project-link focus-ring" key={project.slug} href={`/projects/${project.slug}`}><strong>{project.title}<span aria-hidden="true"> ↗</span></strong><span>{project.tagline}</span></Link>)}</div>
+          <div className="section-heading"><div><p className="eyebrow">Project index</p><h2>What I build.</h2></div><Link className="story-link focus-ring" href="/projects">Explore work, demos &amp; college archive ↗</Link></div>
+          <div className="home-project-index">{getSelectedProjects().map(project => <Link className="home-project-link focus-ring" key={project.slug} href={`/projects/${project.slug}`}><strong>{project.title}<span aria-hidden="true"> ↗</span></strong><span>{project.tagline}</span></Link>)}</div>
         </div>
       </section>
       <section className="section-padding border-t border-slate-200">

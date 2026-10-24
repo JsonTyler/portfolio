@@ -11,14 +11,14 @@ with sync_playwright() as p:
  assert page.locator('html').get_attribute('data-theme')=='hacker'
  assert page.locator('body').evaluate('(el)=>getComputedStyle(el).backgroundColor')=='rgb(8, 13, 16)'
  assert page.get_by_role('button',name='Switch to hacker theme').get_attribute('aria-pressed')=='true'
- assert page.locator('.home-project-link').count()==4
+ assert page.locator('.home-project-link').count()==3
  assert page.locator('.project-preview').count()==0
  page.screenshot(path=str(out/'home-desktop.png'),full_page=True)
  page.get_by_role('button',name='Switch to winter theme').click();page.reload(wait_until='networkidle')
  expect(page.locator('html')).to_have_attribute('data-theme', 'winter')
  page.get_by_role('button',name='Switch to hacker theme').click()
  page.goto('http://127.0.0.1:3000/projects',wait_until='networkidle')
- assert page.locator('.project-preview').count()==4
+ assert page.locator('.project-preview').count()==3
  assert page.get_by_role('heading',name='Jason Rodriguez Active').count()==1
  page.get_by_role('button',name='Use compact density').click()
  assert page.get_by_role('button',name='Use spacious density').get_attribute('aria-pressed')=='true'
@@ -40,11 +40,8 @@ with sync_playwright() as p:
  demo.get_by_role('button',name='Undo',exact=True).click()
  demo.screenshot(path=str(out/'inbox-desktop.png'))
  page.goto('http://127.0.0.1:3000/projects/datadustr-tools',wait_until='networkidle')
- assert page.locator('.app-captures img').count()==4
- for img in page.locator('.app-captures img').all():
-  img.scroll_into_view_if_needed()
-  img.evaluate('(img)=>img.decode()')
- assert page.locator('.app-captures img').evaluate_all('(images)=>images.every(i=>i.complete && i.naturalWidth>0)')
+ assert page.locator('#trailers video').count()==2
+ assert page.locator('#college-projects').count()==0
  page.screenshot(path=str(out/'datadustr-case.png'),full_page=True)
  for route in ['/', '/projects', '/projects/datadustr-tools']:
   page.set_viewport_size({'width':390,'height':844})

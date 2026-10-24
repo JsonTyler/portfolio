@@ -12,6 +12,8 @@ export interface Project {
   technologies: string[];
   status: 'active' | 'archived' | 'in-development';
   featured: boolean;
+  comingSoon?: boolean;
+  collection?: 'college';
   statusLabel?: string;
   contribution?: string;
   engineeringNote?: string;

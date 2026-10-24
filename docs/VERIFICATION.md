@@ -1,5 +1,13 @@
 # First-pass verification
 
+## Mac acceptance review — October 18, 2026
+
+Current checkout `1c04709` was reviewed without changing the approved UI. Fresh TypeScript and ESLint checks pass (existing module-type warning only). The existing production output has one H1 on Home, Work, Experience, Résumé, Contact and all four project pages; their internal links resolve in that output or public assets. The current résumé PDF exists and has a PDF signature. Professional contribution attribution remains pending user clarification; no new ownership claims were added.
+
+Fresh Playwright visual/keyboard verification is blocked: Chrome aborts on a denied macOS bootstrap handshake. Next production startup also fails with `listen EPERM` on `127.0.0.1:3000`. These attempts produced no screenshots and left no functioning server. No fresh build was needed for an unchanged UI; earlier build/browser results below remain historical.
+
+The workspace `.local-tools/start-both.command` is prepared for direct Terminal use: it starts the existing production build without development watchers and opens As I Left It against its existing personal `brain/` data. It cannot be executed successfully inside this sandbox. CPU load averages were readable, but `ps`, `top`, priority changes and thermal status were denied; no thermal or Linux performance comparison is claimed.
+
 Branch: `portfolio/hiring-first-pass`. The checkout was clean before edits. No dependencies, lockfile, unrelated repositories, remote branches, or deployment configuration were changed. The CI workflow now includes the existing master branch.
 
 ## Completed in the authoring environment
@@ -278,3 +286,12 @@ Removed Inbox’s separate Preview action. A suggestion immediately selects/high
 ## Final approved session snapshot
 
 - User approved the compact timeline and requested saving the session highlights and pushing the reviewed changes. Final `npm run ci` passed on this exact UI snapshot, including the timeline CSS: TypeScript, ESLint and production build, run sequentially at reduced priority on one CPU. The pre-existing ESLint module-type warning remains. Earlier Playwright comparisons and targeted browser checks are recorded above.
+
+## October 18, 2026 — portfolio concepts, college archive and creative kit
+
+- Inbox Dustr/File Dustr now lead selected work as interactive portfolio concepts using fictional data. Links reuse tools.datadustr.com. Framed and Timely remain available in a separate College projects section, with their original detail routes, interactive examples and source links. The main DataDustr detail page leads with its story/tours; the smaller inline inbox sample is optional.
+- The public File Dustr entry was inspected and currently displays a desktop notice. Local tools source now opens the existing mock adapter through Load sample files, labels the browser as a non-commercial portfolio demo and hides the browser directory picker. No production deployment was performed. Tools TypeScript, ten tests and production build pass; native account/filesystem operations were not tested in this work.
+- The first screenshot-based trailers were rejected by the owner and superseded. Replacement 22-second animated concept stories use the approved plush peach brain, moving illustrative files/messages, review/choice/undo beats, large text, original synthesized music and optional captions/transcripts. Exported Opus audio was decoded: RMS approximately 0.094/0.093, peak below 0.9. The sound-enabled play button unmutes only on an explicit user action; no autoplay or looping. Films explain concepts and do not claim to record application operations.
+- Five social PNGs (two 1080-square profile variants, Facebook 1702×630, LinkedIn personal 1584×396 and company 1128×191) and matching SVG layouts use @AsILeftIt. The generated character is an embedded raster image; layout text remains editable. Asset provenance and exact image-generation prompts are in public/brand/as-i-left-it/ASSET-NOTES.md. New artwork and both trailers were copied into the user-requested Desktop creative-kit folder, with START HERE.html, a preview shortcut, and ZIPs. Rejected first-draft files remain in its Archive.
+- Final portfolio TypeScript, ESLint and production build pass (existing ESLint module-type warning only). docs/qa/concept_portfolio.py passes with installed Chrome: selected/archive hierarchy, mock cleanup/undo, external links, preserved college demos, both videos' playback/seek/audio decoding/captions, explicit sound control, desktop and 900/390/320px layouts, three themes, short-desktop Home fit, and the actual Desktop/social preview pages. PNG dimensions and ZIP integrity were checked. Captures reviewed in /tmp/portfolio-concept-review. These automated checks are not a full accessibility audit or physical-device test.
+- User chose to keep the current context-recovery app as a portfolio project rather than pursue a commercial launch at this stage. The home-handover kit is a separate unvalidated product candidate; no new commercial app, sales, publication, social-account modification, external outreach or spending was performed.

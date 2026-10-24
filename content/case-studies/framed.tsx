@@ -2,9 +2,9 @@ export function FramedCaseStudy() {
   return (
     <div className="container-max case-story">
       <section className="story-summary">
-        <p className="eyebrow">Interaction experiment</p>
+        <p className="eyebrow">College project · archived</p>
         <h2>Arrange a wall before reaching for a hammer.</h2>
-        <p className="lead">Framed is an earlier canvas-based wall-layout planner. It combines wall dimensions, preset frame sizes, background textures, and draggable groups to explore a practical spatial task.</p>
+        <p className="lead">Framed is a college project exploring a canvas-based wall-layout planner. It combines wall dimensions, preset frame sizes, background textures, and draggable groups to explore a practical spatial task.</p>
       </section>
       <section className="decision-grid">
         <div>

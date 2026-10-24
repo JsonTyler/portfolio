@@ -23,7 +23,7 @@ export function InboxDemo() {
   return <figure className={`project-visual ${styles.demo}`} aria-label="Interactive Inbox Dustr demonstration">
     <DemoPrompt instruction="Filter the sample inbox, then try Safe Mass Delete. Protected messages stay." />
     <div className={styles.surface}>
-      <div className={styles.brandBar}><strong><span aria-hidden="true">🧹</span> Data Dustr <small>MVP</small></strong><span className={styles.product}>Inbox Dustr</span><span className={styles.edition}>Web · Free</span></div>
+      <div className={styles.brandBar}><strong><span aria-hidden="true">🧹</span> DataDustr <small>Concept</small></strong><span className={styles.product}>Inbox Dustr</span><span className={styles.edition}>Mock data</span></div>
       <div className={styles.accountBar}><div><strong>Inbox Dustr</strong><small>jason@example.com</small></div><span className={styles.loaded}>✓ {visible.length} emails loaded</span></div>
       <div className={styles.navigation} role="group" aria-label="Sample inbox views">{['Overview', 'Organize'].map(name => <button key={name} type="button" aria-pressed={view === name} onClick={() => setView(name)}>{name}</button>)}<span>Interactive sample</span></div>
       <div className={styles.body}>
@@ -37,6 +37,6 @@ export function InboxDemo() {
         </>}
       </div>
     </div>
-    <figcaption>Adapted from the live Inbox Dustr interface.<span>Reduced interactive demo · synthetic messages · local changes only</span></figcaption>
+    <figcaption>Interactive sample of the Inbox Dustr concept.<span>Reduced interactive demo · synthetic messages · local changes only</span></figcaption>
   </figure>;
 }

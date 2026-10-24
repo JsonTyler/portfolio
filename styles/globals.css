@@ -912,3 +912,30 @@ figcaption { margin-top: 1rem; font-size: .875rem; color: var(--color-text-secon
 .work-page .project-preview .project-visual { max-width: none; }
 .work-page .project-preview { grid-template-columns: minmax(0, 1fr); }
 @media(min-width: 900px) { .work-page .project-preview { grid-template-columns: minmax(0, 1.65fr) minmax(0, .85fr); } }
+.work-page .project-preview-text { grid-template-columns: minmax(0, 1fr); }
+
+/* Current concepts lead; college work stays accessible as a compact archive. */
+.college-archive { scroll-margin-top: 7rem; }
+.archive-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+.archive-project { min-width: 0; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: .75rem; }
+.archive-project h3 { margin: .25rem 0 .75rem; font-size: 1.4rem; }
+.concept-actions { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-block: 1rem; }
+.concept-actions > p { flex-basis: 100%; }
+.trailer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.trailer-grid article { min-width: 0; }
+.trailer-grid video { display: block; width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--color-border); border-radius: .75rem; background: #09090b; }
+#trailers { scroll-margin-top: 7rem; }
+.trailer-transcript { margin-block: .75rem; font-size: .875rem; }
+.trailer-transcript summary { cursor: pointer; padding-block: .5rem; }
+@media (max-width: 700px) { .archive-grid, .trailer-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.trailer-intro { display: flex; align-items: center; gap: 1rem; }
+.trailer-intro > img { width: 110px; height: auto; flex: 0 0 110px; }
+.trailer-intro h2 { margin-block: .5rem; }
+@media (max-width: 480px) { .trailer-intro > img { width: 76px; flex-basis: 76px; } }
+
+.inline-concept-demo { margin-block: 2rem; }
+.inline-concept-demo > summary { cursor: pointer; padding-block: .75rem; color: var(--color-accent); }
+.story-player { position: relative; }
+.story-play { position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); white-space: nowrap; min-height: 48px; padding: .7rem 1.1rem; border: 1px solid #f8f2e6; border-radius: 999px; background: #213f2c; color: #fff8ef; font: 600 15px system-ui,sans-serif; cursor: pointer; box-shadow: 0 5px 18px #0004; }
+.story-play:hover { background: #3d5d42; }

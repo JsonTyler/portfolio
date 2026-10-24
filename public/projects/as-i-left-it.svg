@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" fill="none">
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#c2c8b9" opacity=".5"/></pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#273a2f" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="1200" height="780" fill="#eef0e6"/>
+  <rect width="1200" height="780" fill="url(#grid)"/>
+  <circle cx="1090" cy="82" r="212" fill="#dce5d3"/>
+  <circle cx="52" cy="758" r="235" fill="#e4decc"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="70" y="70" fill="#51634e" font-size="15" font-weight="700" letter-spacing="3">AS I LEFT IT</text>
+    <text x="70" y="125" fill="#253b31" font-size="39" font-weight="700">A little context. A clear next move.</text>
+    <g transform="translate(83 228) rotate(-5 180 170)" filter="url(#shadow)">
+      <rect width="350" height="328" rx="12" fill="#fffaf0" stroke="#cdc8b7"/>
+      <path d="M274 0V57L300 42L326 57V0" fill="#b6784e"/>
+      <text x="28" y="49" fill="#856344" font-size="14" font-weight="700" letter-spacing="2">WHEN I STOPPED</text>
+      <text x="28" y="101" fill="#374438" font-size="25" font-weight="700">The idea is taking shape.</text>
+      <path d="M28 131H317M28 181H317M28 231H317M28 281H317" stroke="#e0dccd"/>
+      <text x="28" y="163" fill="#60665b" font-size="18">Kept the return view simple.</text>
+      <text x="28" y="213" fill="#60665b" font-size="18">Decided what matters first.</text>
+      <text x="28" y="263" fill="#60665b" font-size="18">One question still open…</text>
+    </g>
+    <path d="M410 570C476 613 556 597 579 526" stroke="#8b9e7c" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 10"/>
+    <path d="M563 532L581 515L589 539" stroke="#8b9e7c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <g filter="url(#shadow)">
+      <rect x="480" y="198" width="640" height="438" rx="18" fill="#fcfcf7" stroke="#b8c6b0"/>
+      <path d="M498 198H1102Q1120 198 1120 216V268H480V216Q480 198 498 198" fill="#263e32"/>
+      <circle cx="510" cy="233" r="5" fill="#b6c9a4"/>
+      <text x="530" y="239" fill="#eef2e8" font-size="17" font-weight="700">Your place, kept.</text>
+      <text x="1088" y="238" text-anchor="end" fill="#c8d4c1" font-size="13">RETURN TO WORK</text>
+      <text x="514" y="312" fill="#66785b" font-size="13" font-weight="700" letter-spacing="2">PROJECT / WEBSITE</text>
+      <text x="514" y="357" fill="#263e32" font-size="30" font-weight="700">Right where you left it.</text>
+      <rect x="514" y="385" width="572" height="114" rx="10" fill="#edf1e5"/>
+      <text x="534" y="416" fill="#596f48" font-size="13" font-weight="700" letter-spacing="1.5">NEXT MOVE</text>
+      <text x="534" y="451" fill="#2f4535" font-size="21" font-weight="700">Try the return flow on a small screen.</text>
+      <text x="534" y="478" fill="#64705b" font-size="16">The decision and the reason are still here.</text>
+      <rect x="514" y="524" width="172" height="48" rx="24" fill="#38593c"/>
+      <text x="540" y="555" fill="#fffef4" font-size="17" font-weight="700">Resume work</text>
+      <path d="M654 542L662 548L654 554" stroke="#fffef4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="710" y="554" fill="#65715d" font-size="16">Decisions · Notes · Questions</text>
+      <circle cx="520" cy="608" r="4" fill="#789465"/>
+      <text x="534" y="613" fill="#6b7563" font-size="14">Saved locally. Ready when you are.</text>
+    </g>
+    <text x="75" y="705" fill="#6c7962" font-size="16">Pause.</text>
+    <path d="M136 700H192M185 695L192 700L185 705" stroke="#9ba68f" stroke-width="1.5"/>
+    <text x="207" y="705" fill="#6c7962" font-size="16">Return.</text>
+    <path d="M277 700H333M326 695L333 700L326 705" stroke="#9ba68f" stroke-width="1.5"/>
+    <text x="348" y="705" fill="#354e36" font-size="16" font-weight="700">Continue.</text>
+    <text x="1120" y="715" text-anchor="end" fill="#7b8372" font-size="12" letter-spacing="1.5">CONCEPT SKETCH / FICTIONAL WORK</text>
+  </g>
+</svg>

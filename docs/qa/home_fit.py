@@ -14,7 +14,7 @@ with sync_playwright() as p:
   if w>=900:assert size['height']<=h,(w,h,size)
   else:assert size['height']>h,(w,h,size)
   assert size['width']<=w
-  assert page.locator('.home-project-link').count()==4
+  assert page.locator('.home-project-link').count()==3
   assert page.get_by_role('link',name='View experience ↗').is_visible()
   footer=page.locator('.site-shell > footer')
   if w>=900:assert footer.bounding_box()['y']+footer.bounding_box()['height']<=h+1

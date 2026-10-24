@@ -5,6 +5,11 @@ import { InboxDemo } from './InboxDemo';
 import { TimelyDemo } from './TimelyDemo';
 
 const visuals: Record<string, { src: string; alt: string; caption?: string }> = {
+  'as-i-left-it': {
+    src: '/projects/as-i-left-it.svg',
+    alt: 'An illustrated handoff note connects to a return-to-work card with a saved next move and a Resume work action.',
+    caption: 'Concept illustration · fictional work, not an application screenshot',
+  },
   'datadustr-website': {
     src: '/projects/datadustr-website.svg',
     alt: 'DataDustr service site with its dark background, red accents, service proposition, and consultation call to action.',

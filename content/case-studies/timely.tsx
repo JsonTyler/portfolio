@@ -2,7 +2,7 @@ export function TimelyCaseStudy() {
   return (
     <div className="container-max case-story">
       <section className="story-summary">
-        <p className="eyebrow">Undergraduate research prototype</p>
+        <p className="eyebrow">College project · archived</p>
         <h2>Details in a table. Duration on a timeline.</h2>
         <p className="lead">Timely explores how forensic custody records can be represented over time. A form collects case and item details; a table exposes the record and a Vis.js timeline represents its time interval.</p>
         <dl className="story-facts">

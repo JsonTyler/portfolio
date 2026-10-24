@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about',
     '/projects',
     '/projects/datadustr-tools',
+    '/projects/as-i-left-it',
     '/projects/framed',
     '/projects/timely',
     '/projects/cirrus',

@@ -23,16 +23,19 @@ export default async function ProjectPage({ params }: Props) {
     <>
       <section className="gradient-bg hero-padding border-b">
         <div className="container-max">
-          <p className="eyebrow">{project.statusLabel ?? projectStatusLabels[project.status]}</p>
+          <p className="eyebrow">{project.comingSoon ? 'Independent project' : project.statusLabel ?? projectStatusLabels[project.status]}</p>
           <h1 className="hero-title">{project.title}</h1>
           <p className="hero-subtitle reading-measure">{project.tagline}</p>
-          <p className="text-sm text-slate-200">{project.technologies.join(' / ')}</p>
+          {!project.comingSoon && <p className="text-sm text-slate-200">{project.technologies.join(' / ')}</p>}
+          {slug === 'datadustr-tools' && <div className="concept-actions"><a className="story-link focus-ring" href="#trailers">Watch the short tours ↓</a><a className="story-link focus-ring" href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer">Try the interactive web preview ↗</a></div>}
         </div>
       </section>
-      <div className="container-max case-visual"><ProjectVisual slug={project.slug} title={project.title} priority /></div>
-      <div className="case-study-content">{slug === 'datadustr-tools' ? <DataDustrToolsCaseStudy /> : slug === 'timely' ? <TimelyCaseStudy /> : slug === 'cirrus' ? <CirrusCaseStudy /> : <FramedCaseStudy />}</div>
+      {!project.comingSoon && <>
+        <div className="container-max case-visual"><ProjectVisual slug={project.slug} title={project.title} priority /></div>
+        <div className="case-study-content">{slug === 'datadustr-tools' ? <DataDustrToolsCaseStudy /> : slug === 'timely' ? <TimelyCaseStudy /> : slug === 'cirrus' ? <CirrusCaseStudy /> : <FramedCaseStudy />}</div>
+      </>}
       <nav className="container-max story-navigation" aria-label="Project navigation">
-        <ButtonLink href="/projects" variant="secondary">← All work</ButtonLink>
+        <ButtonLink href={project.collection === 'college' ? '/projects#college-projects' : '/projects'} variant="secondary">{project.collection === 'college' ? '← College archive' : '← All work'}</ButtonLink>
         {links.map((link) => <ButtonLink key={link.href} href={link.href} variant="tertiary" external>{link.label}</ButtonLink>)}
       </nav>
     </>
