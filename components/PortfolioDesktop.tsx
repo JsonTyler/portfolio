@@ -49,7 +49,7 @@ export function PortfolioDesktop({ projects, pages, stories }: { projects: Proje
       const slug = path === '/' || path === '/projects' ? 'overview' : path.startsWith('/projects/') ? path.slice(10) : path.slice(1);
       if (slug !== 'overview' && !projects.some(item => item.slug === slug) && !documents.some(item => item.slug === slug)) return;
       // Leave in-document anchors and file downloads to the browser.
-      if (path === '/' && url.hash && !documents.some(item => `#${item.slug}` === url.hash) && !projects.some(item => `#${item.slug}` === url.hash)) return;
+      if (path === '/' && url.hash) return;
       event.preventDefault();
       select(slug, url.hash === '#trailers' ? 'films' : 'preview');
     };
@@ -90,7 +90,11 @@ export function PortfolioDesktop({ projects, pages, stories }: { projects: Proje
       </div>
       <div className={styles.toolbar}>
         <button type="button" className={styles.back} onClick={() => select('overview')} disabled={selected === 'overview'} aria-label="Back to overview">‹</button>
-        <div className={styles.breadcrumb}><span>Portfolio</span><span aria-hidden="true">›</span><strong>{project?.title ?? document?.title ?? 'Overview'}</strong></div>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+          <a href="#overview" aria-current={selected === 'overview' ? 'page' : undefined}>Portfolio</a>
+          {selected !== 'overview' && <><span aria-hidden="true">›</span><a href={`#${selected}`} aria-current={view === 'preview' ? 'page' : undefined}>{project?.title ?? document?.title}</a></>}
+          {project && view !== 'preview' && <><span aria-hidden="true">›</span><a href={`#${selected}/${view}`} aria-current="page">{view === 'story' ? 'Story' : 'Films'}</a></>}
+        </nav>
         {project?.slug === 'datadustr-tools' && <a className={styles.fullDemoLink} href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer">Open full demo <span aria-hidden="true">↗</span></a>}
         {project && !project.comingSoon ? <div className={styles.viewControls} role="group" aria-label="Project view">
           <button type="button" aria-pressed={view === 'preview'} onClick={() => select(selected)}>Preview</button>

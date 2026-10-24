@@ -70,7 +70,9 @@
 .back { border: 1px solid var(--desk-line); border-radius: 5px; width: 35px; height: 29px; background: linear-gradient(var(--desk-top), var(--desk-bottom)); color: var(--desk-text); box-shadow: inset 0 1px #fff2, 0 1px 1px #0001; font: 25px/1 system-ui, sans-serif; cursor: pointer; }
 .back:disabled { opacity: .35; cursor: default; }
 .breadcrumb { display: flex; align-items: center; gap: 12px; min-width: 0; font-size: 11px; color: var(--desk-muted); }
-.breadcrumb strong { color: var(--desk-text); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.breadcrumb a { min-width: 0; padding-block: 7px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.breadcrumb a:focus-visible { outline: 2px solid var(--desk-accent); outline-offset: 2px; border-radius: 2px; }
 .toolbarLink { margin-left: auto; white-space: nowrap; font-size: 11px; text-decoration: none; padding-block: 8px; }
 .workspace { display: grid; grid-template-columns: 205px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); flex: 1; min-height: 0; }
 .sidebar { display: flex; flex-direction: column; padding: 16px 10px 12px; background: var(--desk-sidebar); border-right: 1px solid var(--desk-line); min-height: 0; }
@@ -149,7 +151,6 @@
   .toolbar { padding-inline: 12px; gap: 10px; }
   .toolbarLink { font-size: 10px; }
   .breadcrumb { font-size: 10px; gap: 7px; }
-  .breadcrumb > span:first-child, .breadcrumb > span:nth-child(2) { display: none; }
   .workspace { display: flex; flex-direction: column; }
   .sidebar { border-right: 0; border-bottom: 1px solid var(--desk-line); padding: 9px; }
   .tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
@@ -244,7 +245,7 @@
   .projectPanel { height: 560px; min-height: 0; }
   .preview { height: auto; flex: 1; }
   .viewControls button { padding-inline: 7px; min-height: 36px; font-size: 10px; }
-  .breadcrumb strong { max-width: 105px; }
+  .breadcrumb a { max-width: 105px; }
   .films { grid-template-columns: 1fr; align-content: start; padding: 10px; }
   .films video { max-height: 175px; }
   .document :global(.resume-actions) { gap: 8px !important; }
