@@ -332,3 +332,9 @@ Removed Inbox’s separate Preview action. A suggestion immediately selects/high
 ## October 24, 2026 — Cirrus disclosure
 
 - At the owner's request, Cirrus now identifies the preview, story and project listing as an independent recreation based on publicly available product imagery, using fictional data and not affiliated with or endorsed by Springbrook. Showcase labels say “Independent recreation.” Professional context is separated from the recreation without claiming sole authorship of the production feature.
+
+## October 24, 2026 — hiring overview
+
+- The overview leads with senior front-end engineering and UX leadership, supported by existing career facts: Springbrook team/UX leadership, Design Library package ownership, and IEEE SoutheastCon research. Experience, résumé and contact are directly accessible. No new performance metrics or production outcomes were invented.
+- The public Design Library playground at https://design.sprbrk.com/ is linked from the overview and Springbrook experience, as supplied by the owner. The overview highlights three explorable projects instead of the coming-soon placeholder, with separate preview and story entry points. Cirrus recreation disclosures remain in place.
+- Browser checks verified all three themes at 1440×900, 1366×768, 1280×720, 1024×650, 900×650, 390×844 and 320×640, including page and desktop-panel fit. Screenshots were reviewed at 900×650. Separate link checks passed for project stories and the public playground link on Experience, without runtime errors. Reusable combined check: docs/qa/hiring_overview.py. These checks do not establish full accessibility conformance.

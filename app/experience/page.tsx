@@ -22,6 +22,7 @@ export default function ExperiencePage() {
           <h2>{item.title}</h2>
           <p className={styles.company}>{item.company}</p>
           <p className={styles.description}>{item.description}</p>
+          {item.id === 'springbrook-2022' && <p className={styles.description}><a className="focus-ring" href="https://design.sprbrk.com/" target="_blank" rel="noopener noreferrer">Explore the public Design Library playground <span aria-hidden="true">↗</span></a></p>}
           {item.highlights && item.highlights.length > 0 && <ul className={styles.highlights}>{item.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}</ul>}
           {item.technologies && item.technologies.length > 0 && <p className={styles.stack}><span>Stack: </span>{item.technologies.join(' · ')}</p>}
         </article>

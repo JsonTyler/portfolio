@@ -11,8 +11,8 @@ import { FramedCaseStudy } from '@/content/case-studies/framed';
 import { TimelyCaseStudy } from '@/content/case-studies/timely';
 
 export const metadata: Metadata = {
-  title: 'Front-end engineering & UX',
-  description: 'Jason Tyler Rodriguez — eight years of professional front-end experience, with a strong UX focus.',
+  title: 'Senior front-end engineer & UX lead',
+  description: 'Jason Tyler Rodriguez — senior front-end engineer and UX lead. Enterprise workflows, reusable components, interactive product demos, and published digital-forensics research.',
   alternates: { canonical: '/' },
 };
 export default function Home() {

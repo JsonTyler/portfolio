@@ -24,6 +24,7 @@ export function PortfolioDesktop({ projects, pages, stories }: { projects: Proje
   const project = projects.find(item => item.slug === selected);
   const document = documents.find(item => item.slug === selected);
   const selectedProjects = projects.filter(item => item.collection !== 'college');
+  const overviewProjects = projects.filter(item => !item.comingSoon && (item.featured || item.slug === 'timely'));
   const select = useCallback((slug: string, nextView: 'preview' | 'story' | 'films' = 'preview', history = true) => {
     setSelected(slug);
     setView(nextView);
@@ -117,15 +118,27 @@ export function PortfolioDesktop({ projects, pages, stories }: { projects: Proje
         <div role="tabpanel" id="desktop-panel" aria-labelledby={`desktop-tab-${selected}`} tabIndex={0} className={`${styles.panel} ${document ? styles.documentPanel : project ? styles.projectPanel : styles.overview}`}>
           {document ? <div key={selected} data-desktop-document={selected} className={`${styles.document} ${selected === 'about' ? styles.aboutDocument : ''}`}>{pages[selected]}</div> : !project ? <>
             <div className={styles.introduction}>
-              <p className={styles.kicker}>Front-end engineering &amp; UX</p>
+              <p className={styles.kicker}>Senior front-end engineer · UX lead</p>
               <h1>Jason Tyler Rodriguez</h1>
-              <p className={styles.introText}>Eight years building interfaces.<br />A strong focus on how people use them.</p>
-              <p className={styles.bio}>Enterprise applications, reusable components, and independent projects. Take a look around.</p>
-              <Link className={styles.experienceLink} href="/experience">View experience <span aria-hidden="true">↗</span></Link>
+              <p className={styles.introText}>I make complex software easier to use.</p>
+              <p className={styles.bio}>Eight years in software engineering, connecting interface design with implementation. My work spans ERP workflows, reusable components, and interactive products.</p>
+              <div className={styles.overviewActions}>
+                <Link className={styles.experienceLink} href="/experience">View experience <span aria-hidden="true">↗</span></Link>
+                <Link className={styles.experienceLink} href="/resume">Read résumé <span aria-hidden="true">↗</span></Link>
+                <Link className={styles.experienceLink} href="/contact">Get in touch <span aria-hidden="true">↗</span></Link>
+              </div>
             </div>
+            <dl className={styles.evidence} aria-label="Experience at a glance">
+              <div><dt>Enterprise UX</dt><dd>Front-end team lead and UX design at Springbrook.</dd></div>
+              <div><dt>Reusable components</dt><dd>Owned and maintained the Design Library NuGet package. <a href="https://design.sprbrk.com/" target="_blank" rel="noopener noreferrer">Public playground <span aria-hidden="true">↗</span></a></dd></div>
+              <div><dt>Published research</dt><dd><a href="#timely/story">Digital forensics · IEEE SoutheastCon 2019 <span aria-hidden="true">↗</span></a></dd></div>
+            </dl>
             <section className={styles.projectShelf} aria-labelledby="desktop-projects-heading">
-              <h2 id="desktop-projects-heading">Selected projects</h2>
-              <div className={styles.projectFiles}>{selectedProjects.map(item => <button key={item.slug} type="button" onClick={() => select(item.slug)} className={styles.projectFile}><Folder /><strong>{item.title}</strong><span>{item.comingSoon ? 'Coming soon' : item.slug === 'cirrus' ? 'Independent recreation' : 'Independent concepts'}</span></button>)}</div>
+              <h2 id="desktop-projects-heading">Explore the work <span>Interactive previews + project stories</span></h2>
+              <div className={styles.projectFiles}>{overviewProjects.map(item => <div key={item.slug} className={styles.projectEntry}>
+                <button type="button" onClick={() => select(item.slug)} className={styles.projectFile}><Folder /><strong>{item.title}</strong><span>{item.slug === 'cirrus' ? 'Independent interface recreation' : item.slug === 'timely' ? 'Published undergraduate research' : 'Independent design & engineering'}</span><p>{item.engineeringNote}</p><span className={styles.openProject}>Try the preview <span aria-hidden="true">↗</span></span></button>
+                <a className={styles.storyShortcut} href={`#${item.slug}/story`}>Read the story <span aria-hidden="true">→</span></a>
+              </div>)}</div>
             </section>
           </> : <>
             <div className={`${styles.projectHeading} ${styles.previewHeading}`}><p className={styles.kicker}>{project.comingSoon ? 'In progress' : project.slug === 'timely' ? 'Published research · IEEE SoutheastCon 2019' : project.collection === 'college' ? 'College project · archived' : project.slug === 'cirrus' ? 'Independent recreation' : 'Independent concepts'}</p><h1>{project.title}</h1><p>{project.comingSoon ? 'Coming soon.' : project.tagline}</p></div>
