@@ -1,0 +1,79 @@
+.demo { position: relative; min-width: 0; z-index: 3; }
+.surface { display: flex; flex-direction: column; height: 470px; border: 1px solid #847767; border-radius: 8px; background: #333332; color: #f0ede6; overflow: hidden; font: 12px/1.4 system-ui, sans-serif; }
+.brand { display: flex; align-items: center; gap: 12px; padding: 9px 12px; background: #ece9e0; color: #343332; border-bottom: 3px solid #a99a73; }
+.brand > strong { font-size: 17px; letter-spacing: -.03em; }
+.brand > span { font-size: 10px; color: #625d54; }
+:global(html:root[data-theme]) .demo .brand > a { margin-left: auto; font-size: 10px; color: #6b2838; text-decoration: none; font-weight: 650; }
+:global(html:root[data-theme]) .demo .brand > a:hover { color: #481a27 !important; text-decoration: underline; }
+.navigation { display: flex; gap: 4px; padding: 5px 10px; background: #252525; border-bottom: 1px solid #666054; }
+.demo button { min-height: 30px; padding: 5px 9px; border: 1px solid #7a7062; border-radius: 4px; background: #484641; color: #f5efe2; font: 500 11px/1.3 system-ui, sans-serif; cursor: pointer; }
+.demo button:hover { border-color: #d2c2a5; }
+.demo button:focus-visible, .demo input:focus-visible { outline: 2px solid #b8d9e3; outline-offset: 2px; }
+.navigation button { background: transparent; border-color: transparent; }
+.navigation button[aria-pressed="true"] { background: #dcd0c0; border-color: #e4dacb; color: #332d28; }
+.navigation .export { margin-left: auto; border-color: #817868; }
+.body { flex: 1; min-height: 0; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+.timelineTools { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 10px; color: #d9d0c0; }
+.timelineTools > div { display: flex; gap: 3px; flex-shrink: 0; }
+.timelineTools button { min-height: 26px; padding: 3px 7px; }
+.plot { position: relative; display: flex; flex-direction: column; flex: 1; min-height: 115px; background: #171718; border: 6px solid #610e20; padding: 9px 8px 4px; border-radius: 4px; }
+.grid { position: absolute; inset: 9px 8px 23px; pointer-events: none; }
+.grid span { position: absolute; top: 0; bottom: 0; border-left: 1px solid #ffffff1c; }
+.lanes { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: thin; display: flex; flex-direction: column; gap: 7px; }
+.lane { position: relative; flex: 1; min-height: 36px; }
+.lane button { position: absolute; top: 0; bottom: 0; padding: 4px 8px; min-height: 30px; overflow: hidden; white-space: nowrap; text-align: left; background: #dcd0c0; color: #352e27; border-color: #b6a68d; }
+.lane button[aria-pressed="true"] { background: #f1e4c9; border-color: #fff0b4; box-shadow: 0 0 0 1px #fff0b4; }
+.lane button strong, .lane button span { display: block; overflow: hidden; text-overflow: ellipsis; }
+.lane button strong { font-size: 10px; font-weight: 650; }
+.lane button span { font-size: 9px; margin-top: 2px; }
+.axis { display: flex; justify-content: space-between; padding-top: 8px; font-size: 9px; color: #e2d7c3; }
+.detail { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 10px; border: 1px solid #756c60; background: #292827; border-radius: 4px; }
+.detail > div { min-width: 0; }
+.detail strong, .detail span { display: block; }
+.detail strong { font-size: 11px; }
+.detail span { margin-top: 3px; font-size: 9px; color: #d1c7b7; }
+.detail dl { display: flex; flex-shrink: 0; gap: 16px; margin: 0; }
+.detail dt { font-size: 9px; color: #d1c7b7; }
+.detail dd { font-size: 11px; margin: 2px 0 0; color: #fff0cf; }
+.status { flex-shrink: 0; font-size: 10px; line-height: 1.4; color: #d6cab6; margin: 0; padding: 0 12px 7px; }
+.tableViewport { overflow: auto; min-height: 0; flex: 1; }
+.tableViewport table { width: 100%; border-collapse: collapse; font-size: 10px; }
+.tableViewport caption { text-align: left; padding-bottom: 10px; color: #e4d9c5; font-size: 12px; }
+:global(html:root[data-theme]) .demo .tableViewport :is(td,th) { color: #e9e0d1 !important; }
+.tableViewport th { background: #201e1e; text-align: left; font-size: 9px; padding: 8px; white-space: nowrap; }
+.tableViewport td { padding: 10px 8px; border-bottom: 1px solid #686052; vertical-align: top; }
+.tableViewport tr[data-selected="true"] { background: #4b3438; }
+.tableViewport small { display: block; margin-top: 3px; font-size: 9px; color: #d1c7b7; }
+.tableViewport button { color: #f1dfb9; background: transparent; padding: 3px 5px; font-size: 10px; }
+.form { overflow: auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px 14px; }
+.form > p { grid-column: 1/-1; font-size: 11px; color: #e2d7c3; margin: 0; }
+.form label { display: grid; gap: 4px; font-size: 10px; }
+.form input { min-width: 0; width: 100%; border: 1px solid #8e8270; border-radius: 3px; background: #222; color: #f5eee0; min-height: 31px; padding: 5px 7px; font: inherit; }
+.formActions { display: flex; gap: 8px; align-self: end; }
+.demo figcaption { color: var(--color-text-secondary); }
+:global([data-embedded]) .surface { height: max(310px, calc(var(--embedded-preview-height, 500px) - 30px)); }
+:global([data-embedded]) .demo figcaption { margin-top: 6px; font-size: 10px; }
+@media (max-width: 767px) {
+  .brand { gap: 6px; padding-inline: 8px; }
+  .brand > span { display: none; }
+  .brand > strong { font-size: 14px; }
+  .brand > a { font-size: 9px !important; }
+  .navigation { padding-inline: 5px; gap: 1px; }
+  .navigation button { padding-inline: 6px; font-size: 10px; }
+  .body { padding: 8px; }
+  .timelineTools { flex-wrap: wrap; gap: 5px; }
+  .detail { flex-direction: column; align-items: stretch; gap: 7px; padding: 6px 8px; }
+  .detail dl { justify-content: space-between; }
+  .detail span { display: none; }
+  .form { gap: 8px; }
+  .formActions { grid-column: 1/-1; }
+}
+
+/* Keep all three initial case lanes in view, including their item labels. */
+.plot { min-height: 165px; }
+.lanes { gap: 6px; }
+.lane { min-height: 34px; }
+.lane button { min-height: 28px; padding: 3px 6px; }
+.lane button strong { line-height: 1.2; }
+.lane button span { margin-top: 1px; line-height: 1.2; }
+.detail { padding: 7px 8px; }

@@ -4,7 +4,7 @@ import { useState, type CSSProperties } from 'react';
 import { MotionControl } from './MotionControl';
 
 const flakes = Array.from({ length: 64 }, (_, index) => ({
-  left: `${(index * 67 + 11) % 100}%`,
+  left: `${(index + .5) / 64 * 100}%`,
   '--snow-top': `${(index * 43 + 19) % 100}%`,
   width: index % 8 === 0 ? 14 : 3 + index % 3,
   height: index % 8 === 0 ? 14 : 3 + index % 3,

@@ -1,0 +1,22 @@
+.viewport { min-width: 0; width: 100%; }
+.stage { position: relative; width: 100%; }
+.content { display: flow-root; width: 100%; transform-origin: top center; }
+.controls { display: flex; justify-content: center; margin-top: 4px; }
+.controls button { min-height: 44px; padding: 6px 14px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-background); color: var(--color-text-secondary); font: inherit; font-size: 12px; cursor: pointer; }
+.controls button:hover { color: var(--color-text); border-color: var(--color-accent); }
+.viewport[data-embedded] { height: 100%; display: grid; grid-template-rows: minmax(0, 1fr) 38px; overflow: hidden; }
+.viewport[data-embedded][data-ready="false"] .embeddedContent { visibility: hidden; }
+.canvas { display: flex; overflow: auto; min-height: 0; min-width: 0; overscroll-behavior: contain; padding: 10px; scrollbar-width: thin; scrollbar-color: var(--desk-line) transparent; }
+.canvas:focus-visible { outline: 2px solid var(--desk-accent); outline-offset: -2px; }
+.scaledSurface { position: relative; flex-shrink: 0; margin: auto; }
+.embeddedContent { display: flow-root; position: absolute; top: 0; left: 0; transform-origin: top left; }
+.zoomControls { display: flex; align-items: center; justify-content: center; gap: 3px; border-top: 1px solid var(--desk-line); color: var(--desk-text); font-size: 11px; }
+.zoomControls button { min-height: 28px; min-width: 30px; padding: 3px 8px; border: 1px solid transparent; border-radius: 4px; color: var(--desk-text); background: transparent; font: inherit; cursor: pointer; }
+.zoomControls button:hover { background: var(--desk-toolbar); border-color: var(--desk-line); }
+.zoomControls button[aria-pressed="true"] { background: var(--desk-toolbar); border-color: var(--desk-line); }
+.zoomControls button:disabled { opacity: .35; cursor: default; }
+.zoomControls button:focus-visible { outline: 2px solid var(--desk-accent); outline-offset: -2px; }
+.zoomControls output { min-width: 38px; text-align: center; font-variant-numeric: tabular-nums; }
+.zoomDivider { width: 1px; height: 14px; margin-inline: 7px; background: var(--desk-line); }
+@media (pointer: coarse) { .viewport[data-embedded] { grid-template-rows: minmax(0,1fr) 48px; } .zoomControls button { min-height: 44px; min-width: 40px; } }
+@media print { .stage { height: auto !important; } .content { position: relative !important; transform: none !important; } .controls, .zoomControls { display: none; } .canvas { display: block; overflow: visible; } .scaledSurface { width: auto !important; height: auto !important; } .embeddedContent { position: relative; width: auto !important; transform: none !important; } }

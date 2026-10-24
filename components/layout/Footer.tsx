@@ -1,6 +1,6 @@
 import { SITE_METADATA, SOCIAL_LINKS } from '@/lib/constants';
 
-export function Footer() {
+export function Footer({ embedded = false }: { embedded?: boolean }) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container-max py-2.5 md:py-3">
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-center">
           <p className="footer-copy flex-1 min-w-0 text-xs md:text-sm text-slate-600">
-            © {currentYear} {SITE_METADATA.author}. Building practical software with thoughtful UX.
+            © {currentYear} {SITE_METADATA.author}{!embedded && '. Building practical software with thoughtful UX.'}
           </p>
           <div className="flex flex-wrap items-center gap-1 sm:justify-end">
             <div id="motion-control-slot" />

@@ -1,7 +1,14 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getSelectedProjects } from '@/content/projects';
-import styles from './page.module.css';
+import { PortfolioDesktop } from '@/components/PortfolioDesktop';
+import { getCollegeProjects, getSelectedProjects } from '@/content/projects';
+import ExperiencePage from './experience/page';
+import { AboutDesktop } from '@/components/AboutDesktop';
+import ResumePage from './resume/page';
+import ContactPage from './contact/page';
+import { DataDustrDesktopStory } from '@/content/case-studies/datadustr-tools';
+import { CirrusCaseStudy } from '@/content/case-studies/cirrus';
+import { FramedCaseStudy } from '@/content/case-studies/framed';
+import { TimelyCaseStudy } from '@/content/case-studies/timely';
 
 export const metadata: Metadata = {
   title: 'Front-end engineering & UX',
@@ -9,32 +16,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 export default function Home() {
-  return (
-    <div className={styles.home}>
-      <section className="gradient-bg hero-padding border-b">
-        <div className="container-max home-intro home-intro-compact">
-          <div>
-            <p className="eyebrow text-amber-200">Front-end engineering / UX</p>
-            <h1 className="hero-title">Jason Tyler Rodriguez</h1>
-            <p className="intro-statement">Eight years building interfaces.<br />A strong focus on how people use them.</p>
-            <p className="hero-subtitle reading-measure">I turn complex workflows into clear interfaces, from enterprise applications to independent product concepts.</p>
-
-          </div>
-
-        </div>
-      </section>
-      <section id="selected-work" className="section-padding">
-        <div className="container-max">
-          <div className="section-heading"><div><p className="eyebrow">Project index</p><h2>What I build.</h2></div><Link className="story-link focus-ring" href="/projects">Explore work, demos &amp; college archive ↗</Link></div>
-          <div className="home-project-index">{getSelectedProjects().map(project => <Link className="home-project-link focus-ring" key={project.slug} href={`/projects/${project.slug}`}><strong>{project.title}<span aria-hidden="true"> ↗</span></strong><span>{project.tagline}</span></Link>)}</div>
-        </div>
-      </section>
-      <section className="section-padding border-t border-slate-200">
-        <div className="container-max experience-intro">
-          <div><p className="eyebrow">Professional experience</p><h2>Engineering with a UX perspective.</h2></div>
-          <div className="reading-measure"><p>Enterprise front ends, reusable components, and close collaboration across design and engineering.</p><a className="story-link focus-ring" href="/experience">View experience ↗</a></div>
-        </div>
-      </section>
-    </div>
-  );
+  return <PortfolioDesktop
+    projects={[...getSelectedProjects(), ...getCollegeProjects()]}
+    pages={{ experience: <ExperiencePage />, about: <AboutDesktop />, resume: <ResumePage />, contact: <ContactPage /> }}
+    stories={{ 'datadustr-tools': <DataDustrDesktopStory />, cirrus: <CirrusCaseStudy />, framed: <FramedCaseStudy />, timely: <TimelyCaseStudy /> }}
+  />;
 }

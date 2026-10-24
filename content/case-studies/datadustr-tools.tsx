@@ -1,5 +1,23 @@
 import { InboxDemo } from '@/components/InboxDemo';
+import { ProjectViewport } from '@/components/ProjectViewport';
 import { DataDustrTrailers } from '@/components/DataDustrTrailers';
+
+export function DataDustrDesktopStory() {
+  return <div className="case-story compact-project-story">
+    <section>
+      <p className="eyebrow">Independent product design &amp; engineering</p>
+      <h2>Cleanup starts with a decision you can review.</h2>
+      <p>Inbox Dustr and File Dustr grew from the same problem: digital clutter is easy to accumulate, but deciding what to remove or reorganize takes care. I designed the workflow around visible suggestions, deliberate choices, and clear feedback.</p>
+      <div className="compact-story-products">
+        <div><h3>Inbox Dustr</h3><p>Group messages by recurring patterns, protect important mail, and review cleanup candidates. Filtering and undo make the consequences of a choice visible before moving on.</p></div>
+        <div><h3>File Dustr</h3><p>Turn a crowded folder into a review queue. Suggested moves and organization rules explain where a file could go, with the decision kept beside the explanation.</p></div>
+      </div>
+      <p><strong>My work:</strong> interface design, interaction flows, and implementation with React, TypeScript, Next.js, Tauri, and Rust. Shared interface code sits above separate web and desktop adapters.</p>
+      <p><a className="story-link focus-ring" href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer">Explore the full interactive demo ↗</a></p>
+      <p className="compact-story-note">The embedded preview is a small sample; the full demo explores more of the product. Portfolio examples use fictional data.</p>
+    </section>
+  </div>;
+}
 
 export function DataDustrToolsCaseStudy() {
   return (
@@ -17,7 +35,7 @@ export function DataDustrToolsCaseStudy() {
         <p className="text-sm text-slate-600">Choose “Demo with Gmail mock data” or “Demo with Outlook mock data” to explore the inbox. No account connection is needed. File Dustr’s public entry currently shows a desktop notice; its sample-file browser mode is prepared locally and is not published yet.</p>
       </section>
       <DataDustrTrailers />
-      <details className="inline-concept-demo"><summary>Try a small inbox sample on this page</summary><InboxDemo /></details>
+      <details className="inline-concept-demo"><summary>Try a small inbox sample on this page</summary><ProjectViewport><InboxDemo /></ProjectViewport></details>
       <section className="decision-grid">
         <div><p className="eyebrow">Inbox Dustr</p><h2>See the pattern before clearing the inbox.</h2><p>Overview and Insights surface categories and recurring senders. Organize explores grouping, protected messages and a review step before cleanup. Try filtering and undo in the smaller interactive sample on this page, or explore the full mock inbox on the demo site.</p></div>
         <div><p className="eyebrow">File Dustr</p><h2>Turn a messy folder into a queue of decisions.</h2><p>A dashboard summarizes the sample files. The review queue exposes suggested moves and cleanup candidates; organization rules explore where different file types belong. The browser prototype uses fictional files and never scans the visitor’s computer.</p></div>

@@ -22,7 +22,7 @@ export default function ProjectsPage() {
           <p className="eyebrow">Earlier explorations</p><h2 id="college-heading">College projects</h2>
           <p className="reading-measure">Framed and Timely are archived college projects. Their case studies, interactive examples and source links remain available here.</p>
           <div className="archive-grid">{getCollegeProjects().map(project => <article className="archive-project" key={project.slug}>
-            <p className="eyebrow">College project · archived</p><h3>{project.title}</h3><p>{project.description}</p>
+            <p className="eyebrow">{project.statusLabel}</p><h3>{project.title}</h3><p>{project.description}</p>
             <Link className="story-link focus-ring" href={`/projects/${project.slug}`}>Explore {project.title} ↗</Link>
           </article>)}</div>
         </div>

@@ -4,10 +4,10 @@ export const projects: Project[] = [
   {
     slug: 'cirrus', title: 'Cirrus compact mode',
     tagline: 'One density control across the product',
-    description: 'A shared compact mode for data-dense screens, using consistent type, spacing, rows, and controls.',
+    description: 'An independent compact-mode recreation based on publicly available product imagery. Uses fictional data; not affiliated with or endorsed by Springbrook.',
     technologies: ['Interaction design', 'HTML', 'CSS', 'JavaScript'],
     engineeringNote: 'One density state across navigation, panels, and table rows.',
-    status: 'archived', statusLabel: 'Professional compact-mode concept', featured: true,
+    status: 'archived', statusLabel: 'Independent compact-mode recreation', featured: true,
   },
   {
     slug: 'datadustr-tools', title: 'Inbox Dustr & File Dustr',
@@ -27,11 +27,11 @@ export const projects: Project[] = [
   },
   {
     slug: 'timely', title: 'Timely',
-    tagline: 'Making custody records visible over time',
-    description: 'A research prototype connecting custody-record details with the time between removal and return.',
+    tagline: 'Chain-of-custody research · IEEE SoutheastCon 2019',
+    description: 'Undergraduate digital-forensics research connecting case records with an interactive timeline. Related research published at IEEE SoutheastCon 2019.',
     technologies: ['JavaScript', 'Vis.js', 'HTML', 'CSS'],
-    engineeringNote: 'One custody record drives both table and timeline views.',
-    status: 'archived', statusLabel: 'College project · archived', collection: 'college', featured: false,
+    engineeringNote: 'Questions, timeline, table and CSV export share the same case records.',
+    status: 'archived', statusLabel: 'Published research · IEEE SoutheastCon 2019', collection: 'college', featured: false,
   },
   {
     slug: 'framed', title: 'Framed',

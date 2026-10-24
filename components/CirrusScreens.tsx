@@ -29,7 +29,8 @@ function Icon({ kind, size = 18 }: { kind: 'person' | 'wallet' | 'clock' | 'shie
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[kind]}/></svg>;
 }
-export function CirrusScreens({ priority = false }: { priority?: boolean }) {
+export function CirrusScreens({ priority = false, embedded = false }: { priority?: boolean; embedded?: boolean }) {
+  const [details, setDetails] = useState(false);
   const [compact, setCompact] = useState(false);
   const [capacity, setCapacity] = useState<{ visible: number; spacious: number | null; width: number }>({ visible: 0, spacious: null, width: 0 });
   const viewport = useRef<HTMLDivElement>(null);
@@ -63,7 +64,7 @@ export function CirrusScreens({ priority = false }: { priority?: boolean }) {
     return () => { observer.disconnect(); globalThis.clearTimeout(timer); };
   }, [compact]);
   const extraRows = compact && capacity.spacious !== null ? capacity.visible - capacity.spacious : 0;
-  return <figure className={`project-visual ${styles.preview}`} data-compact={compact} data-priority={priority || undefined}>
+  return <figure className={`project-visual ${styles.preview}`} data-compact={compact} data-details={details} data-priority={priority || undefined}>
     <div className={styles.comparison}>
       <div className={styles.challenge}><strong>Fit more records.</strong><span>Switch density. Keep the same workspace.</span></div>
       <div role="group" aria-label="Compare interface density" className={styles.controls}><button type="button" aria-pressed={!compact} onClick={() => setCompact(false)}>Spacious</button><button type="button" aria-pressed={compact} onClick={() => setCompact(true)}>Compact</button></div>
@@ -76,7 +77,7 @@ export function CirrusScreens({ priority = false }: { priority?: boolean }) {
       <div className={styles.workspace}>
         <div className={styles.rail} aria-hidden="true">{(['home', 'person', 'wallet', 'clock', 'shield'] as const).map((kind, index) => <span key={kind} className={index === 1 ? styles.selected : ''}><Icon kind={kind}/><span>{['Home', 'General', 'Financial', 'Timecards', 'Benefits'][index]}</span></span>)}</div>
         <div className={styles.main}>
-          <div className={styles.pageTitle}><div><span className={styles.breadcrumb}>EMPLOYEE MAINTENANCE / GENERAL</span><h3>Jason Rodriguez <span>Active</span></h3></div><span className={styles.employeeId}>Employee #1042</span></div>
+          <div className={styles.pageTitle}><div><span className={styles.breadcrumb}>EMPLOYEE MAINTENANCE / GENERAL</span><h3>Jason Rodriguez <span>Active</span></h3></div><span className={styles.employeeId}>Employee #1042</span>{embedded && <button type="button" className={styles.detailToggle} aria-expanded={details} onClick={() => setDetails(value => !value)}>{details ? 'Hide employee details' : 'Employee details'}</button>}</div>
           <div className={styles.overview}>
             <div className={styles.info}><div className={styles.panelTitle}><Icon kind="person" size={16}/>Employee information</div><dl><div><dt>Email</dt><dd>jason@example.test</dd></div><div><dt>Department</dt><dd>Public Works</dd></div><div><dt>Position</dt><dd>Operations specialist</dd></div><div><dt>Supervisor</dt><dd>Alex Taylor</dd></div></dl></div>
             <div className={styles.accruals}><div className={styles.panelTitle}><Icon kind="clock" size={16}/>Accrual balances</div><div className={styles.balance}><span>Vacation</span><strong>72.00 <small>hours</small></strong></div><div className={styles.balance}><span>Sick leave</span><strong>48.00 <small>hours</small></strong></div></div>
@@ -87,6 +88,6 @@ export function CirrusScreens({ priority = false }: { priority?: boolean }) {
         </div>
       </div>
     </div>
-    <figcaption className={styles.caption}><span className={styles.note}>Interactive interpretation · sample data · counts measured in this demo</span></figcaption>
+    <figcaption className={styles.caption}><span className={styles.note}>Independent recreation based on publicly available product imagery. Uses fictional data; not affiliated with or endorsed by Springbrook. Row counts describe this demo.</span></figcaption>
   </figure>;
 }

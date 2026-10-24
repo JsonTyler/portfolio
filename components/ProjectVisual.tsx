@@ -3,6 +3,7 @@ import { CirrusScreens } from './CirrusScreens';
 import { FramedDemo } from './FramedDemo';
 import { InboxDemo } from './InboxDemo';
 import { TimelyDemo } from './TimelyDemo';
+import { ProjectViewport } from './ProjectViewport';
 
 const visuals: Record<string, { src: string; alt: string; caption?: string }> = {
   'as-i-left-it': {
@@ -18,11 +19,15 @@ const visuals: Record<string, { src: string; alt: string; caption?: string }> = 
 
 };
 
-export function ProjectVisual({ slug, title, priority = false }: { slug: string; title: string; priority?: boolean }) {
+export function ProjectVisual({ slug, title, priority = false, embedded = false }: { slug: string; title: string; priority?: boolean; embedded?: boolean }) {
+  return <ProjectViewport embedded={embedded}><ProjectContent slug={slug} title={title} priority={priority} embedded={embedded} /></ProjectViewport>;
+}
+
+function ProjectContent({ slug, title, priority = false, embedded = false }: { slug: string; title: string; priority?: boolean; embedded?: boolean }) {
   if (slug === 'framed') return <FramedDemo />;
   if (slug === 'datadustr-tools') return <InboxDemo />;
   if (slug === 'timely') return <TimelyDemo />;
-  if (slug === 'cirrus') return <CirrusScreens priority={priority} />;
+  if (slug === 'cirrus') return <CirrusScreens priority={priority} embedded={embedded} />;
   const visual = visuals[slug];
   if (!visual) return null;
   return <figure className="project-visual" aria-label={`${title} preview`} style={{ position: 'relative', zIndex: 3 }}>

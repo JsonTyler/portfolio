@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { URL } from 'node:url';
 import { ThemeEffects } from '@/components/ThemeEffects';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
+import { SiteHeader, SiteFooter } from '@/components/layout/SiteChrome';
 import { SITE_METADATA } from '@/lib/constants';
 import '@/styles/globals.css';
 import densityStyles from '@/styles/density.module.css';
@@ -70,11 +69,11 @@ export default function RootLayout({
         <a className="skip-link" href="#main-content">Skip to content</a>
         <ThemeEffects />
         <div className={`site-shell flex flex-col min-h-screen bg-slate-50 ${densityStyles.shell}`} style={{ zIndex: 'auto' }}>
-          <Header />
+          <SiteHeader />
           <main id="main-content" tabIndex={-1} className="flex-1">
             {children}
           </main>
-          <Footer />
+          <SiteFooter />
         </div>
       </body>
     </html>

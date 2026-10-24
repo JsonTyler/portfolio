@@ -1,38 +1,21 @@
+import { timelyPublication } from '@/content/timely';
+
 export function TimelyCaseStudy() {
-  return (
-    <div className="container-max case-story">
-      <section className="story-summary">
-        <p className="eyebrow">College project · archived</p>
-        <h2>Details in a table. Duration on a timeline.</h2>
-        <p className="lead">Timely explores how forensic custody records can be represented over time. A form collects case and item details; a table exposes the record and a Vis.js timeline represents its time interval.</p>
-        <dl className="story-facts">
-          <div>
-            <dt>Context</dt>
-            <dd>Undergraduate digital-forensics research</dd>
-          </div>
-          <div>
-            <dt>Implementation</dt>
-            <dd>JavaScript, Vis.js, browser local storage</dd>
-          </div>
-          <div>
-            <dt>Status</dt>
-            <dd>Historical prototype, preserved for reference</dd>
-          </div>
-        </dl>
-      </section>
-      <section>
-        <h2>One record, two representations</h2>
-        <p>The same locally stored record supplies table fields and a Vis.js date interval. CSV export takes the demonstration data out of the browser.</p>
-        <a className="story-link" href="https://github.com/JsonTyler/Timely/blob/master/assets/js/script.js">Inspect the record-to-timeline mapping ↗</a>
-      </section>
-      <section>
-        <h2>What the representation makes explicit</h2>
-        <p>The table exposes individual fields; the timeline exposes the interval between removal and return. Each view answers a different question.</p>
-      </section>
-      <section className="story-limits">
-        <h2>Research prototype, not an evidence system</h2>
-        <p>A historical research prototype, not an audited evidence system. Input handling, storage recovery, timeline updates, and repeated export need further verification. Explore it with synthetic data.</p>
-      </section>
-    </div>
-  );
+  return <div className="container-max case-story">
+    <section className="story-summary">
+      <p className="eyebrow">Published research · {timelyPublication.venue}</p>
+      <h2>{timelyPublication.title}</h2>
+      <p className="lead">Timely grew out of my undergraduate digital-forensics research at Jackson State University. The related paper was published in the proceedings of IEEE SoutheastCon 2019.</p>
+      <p>The project explores how investigators can understand evidence handling over time: who collected an item, where it came from, and the interval between its removal and return.</p>
+      <dl className="story-facts"><div><dt>Publication</dt><dd>2019 SoutheastCon · IEEE</dd></div><div><dt>Research area</dt><dd>Digital forensics · chain of custody</dd></div><div><dt>Implementation</dt><dd>JavaScript, Vis.js, HTML and CSS</dd></div></dl>
+      <p><a className="story-link focus-ring" href={timelyPublication.url} target="_blank" rel="noopener noreferrer">Read the IEEE publication ↗</a>{' · '}<a className="story-link focus-ring" href="https://github.com/JsonTyler/Timely" target="_blank" rel="noopener noreferrer">View Timely on GitHub ↗</a></p>
+      <p className="text-sm text-slate-600">DOI: {timelyPublication.doi}</p>
+    </section>
+    <section>
+      <h2>One record, three ways to work with it.</h2>
+      <p>The original application connects a Questions form, a Timeline, and a Table. Case details and removal/return dates supply both the tabular record and the Vis.js interval. Timeline navigation helps inspect the dates, while CSV export makes the records portable.</p>
+      <p>The portfolio recreation follows that workflow: select a sample case, inspect its fields, add a fictional record, compare the table and timeline, and export the sample as CSV.</p>
+      <p className="text-sm text-slate-600">The original is preserved on GitHub. This recreation uses fictional records and keeps edits in the current preview session.</p>
+    </section>
+  </div>;
 }

@@ -99,3 +99,53 @@
 
 .workspace { grid-template-rows: minmax(0, 1fr); }
 .rail { min-height: 0; overflow: hidden; }
+
+/* In the desktop workspace, reflow the application rather than shrinking a tall screenshot. */
+:global([data-embedded]) .mock { height: max(220px, calc(var(--embedded-preview-height, 500px) - 74px)); }
+:global([data-embedded]) .comparison { padding: 6px 8px; margin-bottom: 8px; flex-wrap: nowrap; gap: 8px; }
+:global([data-embedded]) .challenge { min-width: 0; }
+:global([data-embedded]) .challenge strong { font-size: 13px; }
+:global([data-embedded]) .challenge span { display: none; }
+:global([data-embedded]) .result { min-width: 110px; }
+:global([data-embedded]) .result strong { font-size: 18px; }
+:global([data-embedded]) .comparison .controls button { min-height: 30px; padding: 4px 8px; font-size: 11px; }
+:global([data-embedded]) .toolbar { height: 40px; }
+:global([data-embedded]) .toolbar button { min-height: 32px; }
+:global([data-embedded]) .workspace { height: calc(100% - 40px); }
+:global([data-embedded]) .pageTitle { padding-block: 8px; }
+:global([data-embedded]) .pageTitle h3 { font-size: 16px; margin-top: 3px; }
+:global([data-embedded]) .overview { margin-bottom: 8px; gap: 8px; }
+:global([data-embedded]) .info, :global([data-embedded]) .accruals { padding: 8px; }
+:global([data-embedded]) .panelTitle { margin-bottom: 6px; }
+:global([data-embedded]) .info dl { gap: 7px 10px; }
+:global([data-embedded]) .info dt { margin-bottom: 2px; }
+:global([data-embedded]) .balance { padding-block: 4px; }
+:global([data-embedded]) .balance strong { font-size: 14px; }
+:global([data-embedded]) .tableHeading { margin-bottom: 6px; }
+:global([data-embedded]) .tableViewport th { padding-block: 7px; }
+:global([data-embedded]) .tableViewport td { padding-block: 11px; }
+:global([data-embedded]) .tableFooter { padding-block: 6px; }
+:global([data-embedded]) .rail > span { padding-block: 10px; }
+:global([data-embedded]) .caption { margin-top: 6px; }
+:global([data-embedded]) .preview[data-compact="true"] .toolbar { height: 32px; }
+:global([data-embedded]) .preview[data-compact="true"] .workspace { height: calc(100% - 32px); }
+:global([data-embedded]) .preview[data-compact="true"] .pageTitle { padding-block: 5px; }
+:global([data-embedded]) .preview[data-compact="true"] .info, :global([data-embedded]) .preview[data-compact="true"] .accruals { padding: 5px; }
+:global([data-embedded]) .preview[data-compact="true"] .tableViewport td { padding-block: 4px; }
+
+:global([data-embedded]) .comparison { display: none; }
+:global([data-embedded]) .mock { height: max(220px, calc(var(--embedded-preview-height, 500px) - 26px)); }
+:global([data-embedded]) .overview { display: none; }
+:global([data-embedded]) .preview[data-details="true"] .overview { display: grid; }
+:global([data-embedded]) .employeeId { display: none; }
+.detailToggle { flex-shrink: 0; min-height: 30px; padding: 5px 9px; border: 1px solid #a7b6c8; border-radius: 4px; background: #fff; color: #35475f; font: 500 10px system-ui, sans-serif; cursor: pointer; }
+:global([data-embedded]) .pageTitle { padding-block: 8px; gap: 8px; }
+@media (max-width: 767px) {
+  :global([data-embedded]) .brand { font-size: 11px; }
+  :global([data-embedded]) .toolbar { padding-inline: 7px; gap: 4px; }
+  :global([data-embedded]) .toolbar button { padding-inline: 4px; gap: 4px; font-size: 9px; }
+  :global([data-embedded]) .toolbar button > svg { display: none; }
+  :global([data-embedded]) .pageTitle h3 { font-size: 13px; }
+  :global([data-embedded]) .breadcrumb { display: none; }
+  :global([data-embedded]) .detailToggle { font-size: 9px; padding: 4px 6px; }
+}

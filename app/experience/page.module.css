@@ -1,6 +1,6 @@
 .experience { padding-block: 8px 20px; }
 .list { list-style: none; padding: 0; margin: 0; }
-.entry { margin: 0; position: relative; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 32px; padding-block: 12px; }
+.entry { contain: layout paint; margin: 0; position: relative; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 32px; padding-block: 12px; }
 .entry::before { content: ''; position: absolute; left: 132px; top: 0; bottom: 0; width: 2px; background: var(--color-border); }
 .entry::after { content: ''; position: absolute; left: 128px; top: 31px; width: 10px; height: 10px; box-sizing: border-box; border: 2px solid var(--color-background); border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
 .entry:first-child::before { top: 36px; }

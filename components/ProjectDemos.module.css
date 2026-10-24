@@ -113,3 +113,23 @@
 .suggestionCopy small { margin-top: 5px; font-size: 11px; }
 .demo.timely .intervalRow button { min-height: 56px; border-width: 2px; }
 .demo .intervalRow .inspectCue { font-size: 11px; font-weight: 600; margin-top: 5px; }
+
+:global([data-embedded]) .wall { width: min(calc(100% - 32px), max(180px, calc((var(--embedded-preview-height, 500px) - 210px) * 1.5))); margin-inline: auto; }
+:global([data-embedded]) .appBar { min-height: 40px; padding: 5px 12px; }
+:global([data-embedded]) .appBar > strong { font-size: 15px; }
+:global([data-embedded]) .appBar button { min-height: 30px; padding-block: 4px; }
+:global([data-embedded]) .frameTools { padding-block: 7px; }
+:global([data-embedded]) .distanceGrid { margin-top: 8px; }
+:global([data-embedded]) .distanceGrid dd { font-size: 18px; }
+:global([data-embedded]) .positionControls { padding-block: 6px 8px; }
+:global([data-embedded]) .positionControls input { height: 26px; }
+:global([data-embedded]) .timelineBody { padding: 10px 12px; }
+:global([data-embedded]) .timelineTitle h3 { font-size: 16px; margin-bottom: 10px; }
+:global([data-embedded]) .timelineTitle p { display: none; }
+:global([data-embedded]) .timelinePlot { border-width: 8px; padding-block: 12px 8px; }
+:global([data-embedded]) .intervalRow { margin-bottom: 8px; }
+:global([data-embedded]) .timely .intervalRow button { min-height: 44px; padding: 5px; }
+:global([data-embedded]) .month { margin-block: 5px 8px; }
+:global([data-embedded]) .intervalDetail { padding: 8px; }
+:global([data-embedded]) .eventPair { margin-top: 6px; }
+:global([data-embedded]) .duration { font-size: 22px; }

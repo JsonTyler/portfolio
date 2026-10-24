@@ -6,3 +6,5 @@
 .arrow { font-size: 25px; font-weight: 600; }
 @media(max-width: 480px) { .prompt { padding: 10px 12px; gap: 9px; } .prompt div > span { font-size: 12px; } }
 @media print { .prompt { display: none; } }
+
+:global([data-embedded]) .prompt { display: none; }
