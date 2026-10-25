@@ -147,7 +147,7 @@
 .preview { flex: 1; min-height: 0; position: relative; overflow: hidden; }
 .comingSoon { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 15px; color: var(--desk-muted); }
 .comingSoon .folder { width: 72px; height: 60px; opacity: .65; }
-.comingSoon p { font-size: 14px; margin: 0; }
+.comingSoon > p { font-size: 14px; margin: 0; }
 .statusbar { display: flex; justify-content: space-between; gap: 16px; min-height: 27px; align-items: center; padding: 4px 15px; border-top: 1px solid var(--desk-line); background: linear-gradient(var(--desk-top), var(--desk-bottom)); color: var(--desk-muted); font-size: 10px; }
 :global(html:root[data-theme]) .desktop :is(.introduction, .projectHeading) h1 { color: var(--desk-text) !important; }
 :global(html:root[data-theme]) .desktop .projectShelf h2 { color: var(--desk-muted) !important; }

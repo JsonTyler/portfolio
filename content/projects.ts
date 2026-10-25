@@ -20,8 +20,9 @@ export const projects: Project[] = [
   },
   {
     slug: 'as-i-left-it', title: 'As I Left It',
-    tagline: 'Coming soon',
-    description: 'Coming soon.',
+    tagline: 'A place to return to',
+    description: 'A personal exploration of familiar places, small details, and the feeling of returning.',
+    engineeringNote: 'An independent exploration of memory, design, and interaction.',
     technologies: ['Python', 'SQLite', 'HTML', 'CSS', 'JavaScript'],
     status: 'in-development', statusLabel: 'Coming soon', featured: false, comingSoon: true,
   },

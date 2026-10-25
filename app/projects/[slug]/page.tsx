@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getProjectBySlug, projects, projectStatusLabels } from '@/content/projects';
+import { AsILeftItComingSoon } from '@/components/AsILeftItComingSoon';
 import { ProjectVisual } from '@/components/ProjectVisual';
 import { ButtonLink } from '@/components/ui/Button';
 import { DataDustrToolsCaseStudy } from '@/content/case-studies/datadustr-tools';
@@ -30,6 +31,7 @@ export default async function ProjectPage({ params }: Props) {
           {slug === 'datadustr-tools' && <div className="concept-actions"><a className="story-link focus-ring" href="#trailers">Watch the short tours ↓</a><a className="story-link focus-ring" href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer">Try the interactive web preview ↗</a></div>}
         </div>
       </section>
+      {project.comingSoon && <div className="container-max case-study-content"><AsILeftItComingSoon /></div>}
       {!project.comingSoon && <>
         <div className="container-max case-visual"><ProjectVisual slug={project.slug} title={project.title} priority /></div>
         <div className="case-study-content">{slug === 'datadustr-tools' ? <DataDustrToolsCaseStudy /> : slug === 'timely' ? <TimelyCaseStudy /> : slug === 'cirrus' ? <CirrusCaseStudy /> : <FramedCaseStudy />}</div>

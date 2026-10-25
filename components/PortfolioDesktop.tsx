@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type Reac
 import Link from 'next/link';
 import type { Project } from '@/lib/types';
 import { ProjectVisual } from './ProjectVisual';
+import { AsILeftItComingSoon } from './AsILeftItComingSoon';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { Footer } from './layout/Footer';
 import { StoryPager } from './StoryPager';
@@ -141,8 +142,8 @@ export function PortfolioDesktop({ projects, pages, stories }: { projects: Proje
               </div>)}</div>
             </section>
           </> : <>
-            <div className={`${styles.projectHeading} ${styles.previewHeading}`}><p className={styles.kicker}>{project.comingSoon ? 'In progress' : project.slug === 'timely' ? 'Published research · IEEE SoutheastCon 2019' : project.collection === 'college' ? 'College project · archived' : project.slug === 'cirrus' ? 'Independent recreation' : 'Independent concepts'}</p><h1>{project.title}</h1><p>{project.comingSoon ? 'Coming soon.' : project.tagline}</p></div>
-            {project.comingSoon ? <div className={styles.comingSoon}><Folder /><p>Coming soon.</p></div>
+            <div className={`${styles.projectHeading} ${styles.previewHeading}`}><p className={styles.kicker}>{project.comingSoon ? 'In progress' : project.slug === 'timely' ? 'Published research · IEEE SoutheastCon 2019' : project.collection === 'college' ? 'College project · archived' : project.slug === 'cirrus' ? 'Independent recreation' : 'Independent concepts'}</p><h1>{project.title}</h1><p>{project.tagline}</p></div>
+            {project.comingSoon ? <div className={styles.comingSoon}><AsILeftItComingSoon /></div>
               : view === 'story' ? <div key={project.slug} className={`${styles.document} ${styles.story} ${project.slug === 'datadustr-tools' ? styles.singleStory : ''}`}>{project.slug === 'datadustr-tools' ? stories[project.slug] : <StoryPager key={project.slug}>{stories[project.slug]}</StoryPager>}</div>
               : view === 'films' && project.slug === 'datadustr-tools' ? <div className={styles.films}>
                 <div className={styles.filmIntroduction}><h2>Two ways to make cleanup easier to review.</h2><p>These short animated films introduce the product ideas. The full demo lets you explore the interfaces yourself.</p></div>

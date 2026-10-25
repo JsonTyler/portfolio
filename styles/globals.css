@@ -948,3 +948,12 @@ figcaption { margin-top: 1rem; font-size: .875rem; color: var(--color-text-secon
 /* Shared appearance controls also work on the standalone reading pages. */
 .theme-controls .theme-toggle-btn { border: 1px solid transparent; border-radius: 50%; cursor: pointer; }
 .theme-controls .theme-toggle-btn[aria-pressed="true"] { background: var(--color-accent); color: var(--color-background); }
+
+/* As I Left It memory experiment teaser. */
+.aili-coming-soon { width: 100%; max-width: 760px; margin: 0 auto; padding: clamp(24px, 5vw, 56px); border: 1px solid #cad3c0; border-radius: 18px; background: #f5f2e9; color: #2e4237; text-align: left; }
+html:root[data-theme] .aili-coming-soon h2 { margin: 12px 0 20px; font-family: Georgia, serif; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: #2e4237 !important; text-shadow: none; }
+html:root[data-theme] .aili-coming-soon p { color: #2e4237 !important; font-size: 15px; line-height: 1.7; margin: 16px 0; }
+html:root[data-theme] .aili-coming-soon .eyebrow { color: #52654d !important; font-size: 11px; }
+.aili-coming-soon .lead { font-size: 18px; }
+.aili-memory-path { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 28px 0; padding: 18px 0; border-block: 1px solid #cad3c0; font-size: 13px; font-weight: 600; }
+html:root[data-theme] .aili-coming-soon .aili-coming-soon-status { color: #52654d !important; font-size: 14px; }
