@@ -9,13 +9,21 @@ let browser;
 (async () => {
  browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
  const page = await browser.newPage({ reducedMotion: 'reduce' });
+ page.setDefaultTimeout(15000);
+ page.setDefaultNavigationTimeout(30000);
  page.on('pageerror', e => errors.push(String(e)));
- async function check(name, fn) { try { await fn(); results.push({name, pass:true}); } catch(e) { results.push({name, pass:false, error:e.message}); } }
+ async function check(name, fn) { try { await fn(); results.push({name, pass:true}); console.log('PASS '+name); } catch(e) { results.push({name, pass:false, error:e.message}); console.log('FAIL '+name+': '+e.message); } }
+ async function ready() {
+  await page.goto(base, {waitUntil:'domcontentloaded'});
+  await expect(page.locator('#desktop-panel')).toBeVisible();
+  await expect(page.locator('.motion-control')).toHaveCount(1);
+  await page.evaluate(() => document.fonts.ready);
+ }
  async function capture(name) { const file = name + '.png'; await page.screenshot({path:path.join(output,file),fullPage:true}); shots.push(file); }
  async function fit() { expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy(); }
  for (const [width,height] of [[1440,900],[390,844]]) {
   await page.setViewportSize({width,height});
-  await page.goto(base, {waitUntil:'networkidle'});
+  await ready();
   for (const theme of ['hacker','midnight','winter']) {
    await check(`${width}: ${theme} theme`, async()=>{
     if(width<768) {
@@ -62,7 +70,7 @@ let browser;
   }
  }
  await page.setViewportSize({width:1440,height:900});
- await page.goto(base,{waitUntil:'networkidle'});
+ await ready();
  await check('Desktop keyboard tab navigation',async()=>{
   const overview=page.locator('#desktop-tab-overview'); await overview.focus(); await overview.press('ArrowDown');
   await expect(page.locator('#desktop-tab-design-library')).toBeFocused();

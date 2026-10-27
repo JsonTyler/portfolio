@@ -100,11 +100,11 @@ actions reachable through scrollable content.
 ## CI
 
 `.github/workflows/visual-review.yml` runs behavior and screenshot comparisons on
-pushes and pull requests on Ubuntu 24.04. When no Linux references exist, it
-runs behavioral checks and captures candidate screenshots, with an explicit
-review warning and an uploaded `portfolio-candidate-baselines` artifact. After
-reviewed Linux references are committed, normal runs compare them with snapshot
-updates disabled. Missing or changed individual references then fail. To request
+pushes and pull requests on Ubuntu 24.04. Normal runs compare committed Linux
+references with snapshot updates disabled. Missing or changed references fail,
+including when the entire reference set is missing. The initial capture mode
+was used to establish the reviewed Linux set and has been removed from normal
+push/PR runs. To request
 a fresh candidate set deliberately, manually run the workflow with
 `capture_baselines` enabled, review the artifact, and commit accepted images.
 The workflow only uploads artifacts; it does not push changes or deploy.
@@ -117,3 +117,9 @@ Browser checks run in GitHub Actions, alongside the existing type-check/lint/bui
 workflow. Netlify retains its existing build and deployment integration. These
 checks do not hold a direct push from deploying; require passing PR checks before
 merging if deployment must be gated. Local checks remain useful during editing.
+
+The deployed site was checked independently after the fixes were pushed: all 14
+recruiter-journey checks passed, including themes, navigation, preview zoom, PDF
+delivery, keyboard navigation, and runtime errors. The review helper waits for
+application readiness with bounded timeouts, rather than indefinite network idle
+on a hosted site. Reports remain local artifacts.

@@ -27,19 +27,16 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run build -- --webpack
-      - name: Check for reviewed Linux screenshot references
-        id: references
-        run: echo "present=${{ hashFiles('tests/browser/*-snapshots/*-linux.png') != '' }}" >> "$GITHUB_OUTPUT"
       - name: Run behavioral regression tests
         run: npm run test:e2e -- --grep-invert @visual
       - name: Compare approved screenshots
-        if: ${{ !inputs.capture_baselines && steps.references.outputs.present == 'true' }}
+        if: ${{ !inputs.capture_baselines }}
         run: npm run test:visual
       - name: Capture candidate screenshot baselines
-        if: ${{ inputs.capture_baselines || steps.references.outputs.present == 'false' }}
+        if: ${{ inputs.capture_baselines }}
         run: npm run test:visual:update
       - name: Mark candidate screenshots for review
-        if: ${{ inputs.capture_baselines || steps.references.outputs.present == 'false' }}
+        if: ${{ inputs.capture_baselines }}
         run: |
           echo "::warning::Candidate screenshots were captured. Visual comparisons require reviewed Linux references to be committed."
           echo "### Screenshot review required" >> "$GITHUB_STEP_SUMMARY"
@@ -54,7 +51,7 @@ jobs:
             test-results/
           retention-days: 14
       - name: Upload candidate baselines
-        if: ${{ always() && (inputs.capture_baselines || steps.references.outputs.present == 'false') }}
+        if: ${{ always() && inputs.capture_baselines }}
         uses: actions/upload-artifact@v4
         with:
           name: portfolio-candidate-baselines
