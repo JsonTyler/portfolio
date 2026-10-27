@@ -30,8 +30,8 @@ npm run build
 Browser and visual regression checks use Playwright: see
 [the setup, baseline review, and CI instructions](docs/qa/PLAYWRIGHT.md).
 Run `npm run test:e2e` after building; `npm run test:report` opens the HTML report.
-Reviewed macOS screenshot baselines are included. Linux CI baselines still need
-to be captured and reviewed using the documented workflow.
+Reviewed macOS and Linux screenshot baselines are included. GitHub Actions runs
+behavior checks and Linux screenshot comparisons on pushes and pull requests.
 
 ## Content and structure
 

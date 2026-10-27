@@ -33,8 +33,10 @@ and unreachable final actions are fixed. These baselines are new references,
 not comparisons against an earlier approved design. Appearance screenshots use
 explicit keyboard selection and keyboard dialog dismissal so focus outlines are
 deterministic. All 24 cases in two repeated theme runs passed with screenshot
-updates disabled and the original comparison tolerance. Linux references are still
-pending; macOS references do not satisfy Linux CI comparisons.
+updates disabled and the original comparison tolerance. The first GitHub Actions run on Ubuntu 24.04 passed behavior checks and captured
+73 Linux reference images. Those images were downloaded, visually reviewed, and
+committed separately. Linux comparisons now use those references; macOS
+references remain separate because browser rendering differs by environment.
 
 Final normal run with snapshot updates disabled: **80 passed, 4 intentionally
 skipped, 0 failures** in 2.6 minutes. All 73 macOS screenshot references matched.
