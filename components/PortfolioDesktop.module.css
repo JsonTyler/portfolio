@@ -115,8 +115,9 @@
 .projectFile strong + span { display: block; margin-top: 4px; font-size: 12px; line-height: 1.4; color: var(--desk-muted); }
 .openProject { color: var(--desk-accent); }
 .documentPanel { display: flex; }
-.document { flex: 1; min-height: 0; min-width: 0; overflow: hidden; padding: 28px 32px; font-size: 15px; line-height: 1.6; --color-text: var(--desk-text); --color-text-secondary: var(--desk-muted); --color-border: var(--desk-line); --color-accent: var(--desk-accent); }
-.summaryScreen { display: flex; flex-direction: column; justify-content: center; gap: clamp(12px, 2.5cqh, 24px); height: 100%; min-height: 0; }
+.document { flex: 1; min-height: 0; min-width: 0; overflow: hidden auto; overscroll-behavior: contain; padding: 28px 32px; font-size: 15px; line-height: 1.6; --color-text: var(--desk-text); --color-text-secondary: var(--desk-muted); --color-border: var(--desk-line); --color-accent: var(--desk-accent); }
+/* Center short summaries; let longer ones grow from the top and scroll. */
+.summaryScreen { display: flex; flex-direction: column; justify-content: center; gap: clamp(12px, 2.5cqh, 24px); height: auto; min-height: 100%; }
 .summaryScreen h1 { margin: 0; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.15; font-weight: 600; letter-spacing: -.035em; }
 .summaryScreen header > p:last-child:not(.kicker) { margin: 10px 0 0; color: var(--desk-muted); font-size: 16px; }
 .summaryScreen p { margin: 0; }
@@ -287,8 +288,8 @@
   .summaryScreen { height: auto; }
 }
 :global(html:root[data-theme]) .desktop .introduction { background: transparent !important; border: 0; box-shadow: none; }
-.document[data-desktop-document="contact"] { display: flex; align-items: center; }
-.document[data-desktop-document="contact"] > section { width: 100%; }
+.document[data-desktop-document="contact"] { display: flex; align-items: flex-start; }
+.document[data-desktop-document="contact"] > section { width: 100%; flex-shrink: 0; margin-block: auto; }
 @container workspace (max-height: 390px) {
   .overviewActions a, .caseLink { min-height: 28px; }
   .featuredWork .kicker { margin-bottom: 3px; }
@@ -363,6 +364,7 @@
   .overview { display: block; padding: 0; }
   .overview > :not(.mobileHome):not(.mobileWork) { display: none; }
   .mobileHome, .mobileWork { display: block; height: 100%; }
+  .mobileWork { overflow-y: auto; overscroll-behavior: contain; }
   .mobileWorkActive .panel { display: block; padding: 0; }
   .mobileWorkActive .panel > :not(.mobileWork) { display: none; }
   :global(html:root[data-theme]) .desktop.mobileOnHome .mobileHome h1 { color: var(--phone-home-ink) !important; }

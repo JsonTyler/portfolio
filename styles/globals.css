@@ -335,9 +335,15 @@ body {
     text-decoration: none;
   }
 
-  button:focus-visible,
-  [role="button"]:focus-visible,
+  /* Content containers need a focus outline, never decoration propagated to
+     every descendant when navigation moves focus into a panel. */
   [tabindex]:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  button:focus-visible,
+  [role="button"]:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 4px;
     text-decoration-line: underline;

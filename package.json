@@ -10,7 +10,11 @@
     "lint": "eslint app components content lib --max-warnings 0",
     "format": "prettier --write \"app/**/*.{ts,tsx}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
-    "ci": "npm run type-check && npm run lint && npm run build"
+    "ci": "npm run type-check && npm run lint && npm run build",
+    "test:e2e": "playwright test --update-snapshots=none",
+    "test:visual": "playwright test --grep @visual --update-snapshots=none",
+    "test:visual:update": "playwright test --grep @visual --update-snapshots=all",
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "next": "^16.2.10",
@@ -19,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
+    "@playwright/test": "1.64.1",
     "@tailwindcss/postcss": "^4.3.2",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",

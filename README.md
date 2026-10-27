@@ -27,6 +27,12 @@ npm run build
 
 `npm run ci` runs these checks together. `npm run start` serves a production build.
 
+Browser and visual regression checks use Playwright: see
+[the setup, baseline review, and CI instructions](docs/qa/PLAYWRIGHT.md).
+Run `npm run test:e2e` after building; `npm run test:report` opens the HTML report.
+Reviewed macOS screenshot baselines are included. Linux CI baselines still need
+to be captured and reviewed using the documented workflow.
+
 ## Content and structure
 
 - `app/`: pages for projects, experience, resume, about, and contact.

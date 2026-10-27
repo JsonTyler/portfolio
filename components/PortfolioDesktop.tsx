@@ -26,28 +26,28 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
   const document = documents.find(item => item.slug === selected);
   const selectedProjects = projects.filter(item => item.collection !== 'college');
   const overviewProjects = projects.filter(item => !item.comingSoon && item.featured);
-  const select = useCallback((slug: string, nextView: 'preview' | 'films' | 'details' = 'preview', history = true) => {
+  const select = useCallback((slug: string, nextView: 'preview' | 'films' | 'details' = 'preview', history = true, moveFocus = true) => {
     setMobileWorkOpen(false);
     setSelected(slug);
     setView(nextView);
     const index = ['overview', 'design-library', ...projects.map(item => item.slug), ...documents.filter(item => item.slug !== 'design-library').map(item => item.slug)].indexOf(slug);
-    if (globalThis.innerWidth < 768) {
+    if (moveFocus && globalThis.innerWidth < 768) {
       globalThis.requestAnimationFrame(() => {
         const panel = globalThis.document.getElementById('desktop-panel');
         const target = nextView === 'details' ? panel?.querySelector<HTMLElement>('article') ?? panel : panel;
         target?.focus({ preventScroll: true });
       });
-    } else tabs.current[index]?.focus({ preventScroll: true });
+    } else if (moveFocus) tabs.current[index]?.focus({ preventScroll: true });
     if (history) globalThis.history.pushState(null, '', `#${slug}${nextView === 'preview' ? '' : `/${nextView}`}`);
   }, [projects]);
 
   useEffect(() => {
-    const sync = () => {
+    const sync = (event?: globalThis.Event) => {
       const [slug, mode] = globalThis.location.hash.slice(1).split('/');
       if (slug === 'work') { setMobileWorkOpen(true); return; }
       if (slug === 'overview' || projects.some(item => item.slug === slug) || documents.some(item => item.slug === slug)) {
-        select(slug, mode === 'films' ? 'films' : mode === 'details' || mode === 'story' ? 'details' : 'preview', false);
-      } else if (!slug) select('overview', 'preview', false);
+        select(slug, mode === 'films' ? 'films' : mode === 'details' || mode === 'story' ? 'details' : 'preview', false, !!event);
+      } else if (!slug) select('overview', 'preview', false, !!event);
     };
     const navigate = (event: globalThis.MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
