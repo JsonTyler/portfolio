@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/projects/framed',
     '/projects/timely',
     '/projects/cirrus',
+    '/work/enterprise',
     '/experience',
     '/resume',
     '/contact',

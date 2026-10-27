@@ -1,14 +1,17 @@
-import type { Metadata } from 'next';
-import { PortfolioDesktop } from '@/components/PortfolioDesktop';
-import { getCollegeProjects, getSelectedProjects } from '@/content/projects';
 import ExperiencePage from './experience/page';
-import { AboutDesktop } from '@/components/AboutDesktop';
 import ResumePage from './resume/page';
-import ContactPage from './contact/page';
+import AboutPage from './about/page';
+import { DesignLibraryCaseStudy } from '@/content/case-studies/design-library';
 import { DataDustrDesktopStory } from '@/content/case-studies/datadustr-tools';
 import { CirrusCaseStudy } from '@/content/case-studies/cirrus';
 import { FramedCaseStudy } from '@/content/case-studies/framed';
 import { TimelyCaseStudy } from '@/content/case-studies/timely';
+import type { Metadata } from 'next';
+import { PortfolioDesktop } from '@/components/PortfolioDesktop';
+import { getCollegeProjects, getSelectedProjects } from '@/content/projects';
+import { DesktopEnterprise, DesktopExperience, DesktopResume } from '@/components/DesktopDocuments';
+import { AboutDesktop } from '@/components/AboutDesktop';
+import ContactPage from './contact/page';
 
 export const metadata: Metadata = {
   title: 'Senior front-end engineer & UX lead',
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return <PortfolioDesktop
     projects={[...getSelectedProjects(), ...getCollegeProjects()]}
-    pages={{ experience: <ExperiencePage />, about: <AboutDesktop />, resume: <ResumePage />, contact: <ContactPage /> }}
-    stories={{ 'datadustr-tools': <DataDustrDesktopStory />, cirrus: <CirrusCaseStudy />, framed: <FramedCaseStudy />, timely: <TimelyCaseStudy /> }}
+    pages={{ 'design-library': <DesktopEnterprise />, experience: <DesktopExperience />, about: <AboutDesktop />, resume: <DesktopResume />, contact: <ContactPage /> }}
+    details={{ experience: <ExperiencePage />, resume: <ResumePage />, about: <AboutPage />, 'design-library': <DesignLibraryCaseStudy />, 'datadustr-tools': <DataDustrDesktopStory />, cirrus: <CirrusCaseStudy />, framed: <FramedCaseStudy />, timely: <TimelyCaseStudy /> }}
   />;
 }

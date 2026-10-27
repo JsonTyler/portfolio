@@ -17,7 +17,7 @@ export const experience: ExperienceItem[] = [
     technologies: ['Blazor', 'C#', 'SASS', 'TypeScript', 'Azure DevOps', 'Git'],
     highlights: [
       'Served as team lead, guiding frontend implementation and coordinating delivery',
-      'Owned and maintained Design Library (NuGet package)',
+      'Owned and maintained Design Library',
       'Led UX design efforts across product',
       'Established design consistency and best practices',
       'Collaborated with product and engineering teams',

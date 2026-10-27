@@ -34,9 +34,10 @@ export default async function ProjectPage({ params }: Props) {
       {project.comingSoon && <div className="container-max case-study-content"><AsILeftItComingSoon /></div>}
       {!project.comingSoon && <>
         <div className="container-max case-visual"><ProjectVisual slug={project.slug} title={project.title} priority /></div>
-        <div className="case-study-content">{slug === 'datadustr-tools' ? <DataDustrToolsCaseStudy /> : slug === 'timely' ? <TimelyCaseStudy /> : slug === 'cirrus' ? <CirrusCaseStudy /> : <FramedCaseStudy />}</div>
+        <div id="project-story" className="case-study-content"><nav className="container-max" aria-label="Return to portfolio"><a className="story-link focus-ring" href={`/#${slug}`}>← Back to portfolio</a></nav>{slug === 'datadustr-tools' ? <DataDustrToolsCaseStudy /> : slug === 'timely' ? <TimelyCaseStudy /> : slug === 'cirrus' ? <CirrusCaseStudy /> : <FramedCaseStudy />}</div>
       </>}
       <nav className="container-max story-navigation" aria-label="Project navigation">
+        <ButtonLink href={`/#${project.slug}`} variant="secondary">← Back to portfolio</ButtonLink>
         <ButtonLink href={project.collection === 'college' ? '/projects#college-projects' : '/projects'} variant="secondary">{project.collection === 'college' ? '← College archive' : '← All work'}</ButtonLink>
         {links.map((link) => <ButtonLink key={link.href} href={link.href} variant="tertiary" external>{link.label}</ButtonLink>)}
       </nav>

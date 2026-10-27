@@ -1,0 +1,87 @@
+/* Complete appearance palettes shared by the mobile shell and its controls. */
+:root, :root[data-theme="hacker"] {
+  --phone-bg: #080d0b;
+  --phone-card: #101b16;
+  --phone-card-raised: #1b3025;
+  --phone-ink: #eaf7ef;
+  --phone-muted: #9db9aa;
+  --phone-accent: #6cf0aa;
+  --phone-on-accent: #082117;
+  --phone-line: #2a4839;
+  --phone-glass: #0c1812e8;
+  --phone-widget: #10251bd9;
+  --phone-home-ink: #effcf5;
+  --phone-home-muted: #abcdbb;
+  --phone-wallpaper: radial-gradient(ellipse at 0% 0%,#146b4a38,transparent 60%),radial-gradient(ellipse at 100% 100%,#083c3233,transparent 65%),linear-gradient(#030b076b,#030906b3);
+  --phone-icon-blue: linear-gradient(150deg,#189d79,#095c45);
+  --phone-icon-purple: linear-gradient(150deg,#28bca3,#087567);
+  --phone-icon-orange: linear-gradient(150deg,#4b8597,#254d63);
+  --phone-icon-pink: linear-gradient(150deg,#627f9e,#30465f);
+  --phone-icon-cyan: linear-gradient(150deg,#36c99c,#157256);
+  --phone-icon-paper: linear-gradient(150deg,#e5fff0,#bcead0);
+  --phone-icon-paper-ink: #123d2b;
+}
+:root[data-theme="midnight"] {
+  --phone-bg: #0c1120;
+  --phone-card: #182035;
+  --phone-card-raised: #25314c;
+  --phone-ink: #f1f5ff;
+  --phone-muted: #a8b8d1;
+  --phone-accent: #a8c5ff;
+  --phone-on-accent: #142646;
+  --phone-line: #34415e;
+  --phone-glass: #141d33dd;
+  --phone-widget: #1e2946ce;
+  --phone-home-ink: #f6f7ff;
+  --phone-home-muted: #c3cdeb;
+  --phone-wallpaper: radial-gradient(ellipse at 0% 0%,#32549c66,transparent 65%),radial-gradient(ellipse at 100% 100%,#5a327b66,transparent 70%),linear-gradient(#070d2220,#10112e50);
+  --phone-icon-blue: linear-gradient(150deg,#7199f0,#3b5cc0);
+  --phone-icon-purple: linear-gradient(150deg,#a38ee9,#7050b2);
+  --phone-icon-orange: linear-gradient(150deg,#d7a16e,#a56e40);
+  --phone-icon-pink: linear-gradient(150deg,#d08fb3,#9a567f);
+  --phone-icon-cyan: linear-gradient(150deg,#64baca,#347c9a);
+  --phone-icon-paper: linear-gradient(150deg,#e6edff,#b9c8e8);
+  --phone-icon-paper-ink: #314368;
+}
+:root[data-theme="winter"] {
+  --phone-bg: #eaf0f6;
+  --phone-card: #ffffff;
+  --phone-card-raised: #dce8f3;
+  --phone-ink: #1c3048;
+  --phone-muted: #526b83;
+  --phone-accent: #1263b8;
+  --phone-on-accent: #ffffff;
+  --phone-line: #c6d6e5;
+  --phone-glass: #f1f7fbe0;
+  --phone-widget: #f4faffce;
+  --phone-home-ink: #173550;
+  --phone-home-muted: #3d607c;
+  --phone-wallpaper: radial-gradient(ellipse at 0% 0%,#c8e6f4c9,transparent 70%),radial-gradient(ellipse at 100% 100%,#a2c4e1b3,transparent 70%),linear-gradient(#e0edf7b3,#c2d9ecb3);
+  --phone-icon-blue: linear-gradient(150deg,#4b9ee5,#225faf);
+  --phone-icon-purple: linear-gradient(150deg,#9e9ee8,#6863b5);
+  --phone-icon-orange: linear-gradient(150deg,#e8b57d,#b97b43);
+  --phone-icon-pink: linear-gradient(150deg,#d895b5,#af6187);
+  --phone-icon-cyan: linear-gradient(150deg,#61b8cc,#2d879b);
+  --phone-icon-paper: linear-gradient(150deg,#ffffff,#d8e6f5);
+  --phone-icon-paper-ink: #294c74;
+}
+
+/* Hacker uses cool phosphor and black glass, without olive or yellow casts. */
+html:root[data-theme="hacker"] {
+  --color-primary-dark: #eaf7ef;
+  --color-primary: #eaf7ef;
+  --color-text: #d9eae1;
+  --color-text-secondary: #9db9aa;
+  --color-background: #050b08;
+  --color-accent: #6cf0aa;
+  --color-accent-dark: #a3ffd0;
+  --color-accent-light: #132e20;
+  --color-code: #81dfd0;
+  --color-border: #2a4839;
+}
+html:root[data-theme="hacker"] body { background: #050b08; }
+html:root[data-theme="hacker"] .signal-field { background: radial-gradient(ellipse at 90% 20%,#0c2c20,transparent 60%),#050b08; }
+html:root[data-theme="hacker"] .signal-grid { background-image: radial-gradient(#63d99e .6px,transparent .6px); opacity: .13; }
+html:root[data-theme="hacker"] .signal-route { stroke: #40b88b; opacity: .26; }
+html:root[data-theme="hacker"] .signal-light { background: #9fffc7; opacity: .8; box-shadow: 0 0 8px #6cf0aa66; }
+html:root[data-theme="hacker"] .signal-nodes { fill: #050b08; stroke: #4db88f; opacity: .5; }

@@ -7,11 +7,15 @@ export function MotionControl({ paused, subject, onToggle }: { paused: boolean; 
   const [slot, setSlot] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    const sync = () => setSlot(globalThis.document.getElementById('motion-control-slot'));
+    const sync = () => {
+      const mobileSlot = globalThis.innerWidth < 768 ? globalThis.document.getElementById('mobile-motion-control-slot') : null;
+      setSlot(mobileSlot ?? globalThis.document.getElementById('motion-control-slot'));
+    };
     sync();
+    globalThis.addEventListener('resize', sync);
     const observer = new globalThis.MutationObserver(sync);
     observer.observe(globalThis.document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); globalThis.removeEventListener('resize', sync); };
   }, []);
 
   return (

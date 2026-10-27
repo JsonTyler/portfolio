@@ -4,6 +4,7 @@ import { ThemeEffects } from '@/components/ThemeEffects';
 import { SiteHeader, SiteFooter } from '@/components/layout/SiteChrome';
 import { SITE_METADATA } from '@/lib/constants';
 import '@/styles/globals.css';
+import '@/styles/portfolio-themes.css';
 import densityStyles from '@/styles/density.module.css';
 
 export const metadata: Metadata = {
