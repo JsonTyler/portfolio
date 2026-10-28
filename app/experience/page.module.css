@@ -45,3 +45,4 @@
 .page .company, .page .description, .page .highlights { color: var(--career-text); }
 .page .description a { color: var(--career-accent); text-decoration: underline; text-underline-offset: 3px; }
 @media(max-width: 600px) { .heading h1 { font-size: 28px; } }
+@media(max-width: 767px) { :global(html:root[data-theme="winter"]) .page.embedded .heading p { color: var(--career-muted) !important; } }

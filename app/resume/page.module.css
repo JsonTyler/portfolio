@@ -40,3 +40,8 @@
 @media(max-width: 600px) { .heading h1 { font-size: 28px; } }
 
 @media(max-width: 767px) { .embedded { --resume-button-text: var(--phone-on-accent, #101819); } }
+@media(max-width: 767px) {
+  :global(html:root[data-theme="winter"]) .page.embedded :global(.text-slate-700) { color: var(--desk-text) !important; }
+  :global(html:root[data-theme="winter"]) .page.embedded :global(.text-slate-600),
+  :global(html:root[data-theme="winter"]) .page.embedded .heading p { color: var(--desk-muted) !important; }
+}

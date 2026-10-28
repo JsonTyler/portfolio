@@ -20,6 +20,7 @@ const base=process.env.PORTFOLIO_URL || 'http://127.0.0.1:3017';
      for(const el of [history.locator('article h2').first(),history.locator('article p').first(),history.locator('article a').first(),history.locator('time').first()]){const ratio=await contrast(el);minimum=Math.min(minimum,ratio);if(ratio<4.5)throw Error(`${width} ${route} ${theme} text contrast ${ratio}`);}
     }
     if(route.includes('resume')){
+     const body=page.getByRole('heading',{name:'Professional Summary',exact:true}).locator('..').locator('p').first();const bodyRatio=await contrast(body);minimum=Math.min(minimum,bodyRatio);if(bodyRatio<4.5)throw Error(`${theme} resume body contrast ${bodyRatio}`);
      const link=page.locator('a[download]').filter({visible:true}).first();await expect(link).toBeVisible();
      for(const state of ['normal','hover','focus']){if(state==='hover')await link.hover();if(state==='focus'){await page.mouse.move(0,0);await page.keyboard.press('Tab');await link.focus();}const ratio=await contrast(link);minimum=Math.min(minimum,ratio);if(ratio<4.5)throw Error(`${theme} PDF ${state} contrast ${ratio}`);}
     }
