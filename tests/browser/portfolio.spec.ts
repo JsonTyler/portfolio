@@ -224,6 +224,12 @@ test('curated work keeps enterprise, Threadkeep and research clear', async ({ pa
   await expect(preview.getByRole('img')).toHaveAttribute('src', /return-to-work/);
   await preview.getByRole('button', { name: 'Active session', exact: true }).click();
   await expect(preview.getByRole('img')).toHaveAttribute('src', /active-session/);
+  const zoom = page.getByRole('group', { name: 'Preview zoom', exact: true });
+  await zoom.getByRole('button', { name: '100%', exact: true }).click();
+  const beforeZoom = (await preview.getByRole('img').boundingBox())!.width;
+  await zoom.getByRole('button', { name: 'Zoom in', exact: true }).click();
+  await expect.poll(async () => (await preview.getByRole('img').boundingBox())!.width).toBeGreaterThan(beforeZoom);
+  await zoom.getByRole('button', { name: 'Fit', exact: true }).click();
   await page.getByRole('button', { name: 'Read details', exact: true }).click();
   await expect(page.locator('#desktop-panel article')).toContainText('stale write is rejected');
   await expect(page.locator('#desktop-panel article')).toContainText('fictional projects');

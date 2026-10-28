@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 
 import styles from './ProjectViewport.module.css';
 import { previewGeometry } from '@/lib/preview-geometry';
 
-export function ProjectViewport({ children, embedded = false }: { children: ReactNode; embedded?: boolean }) {
+export function ProjectViewport({ children, embedded = false, reflowOnZoom = true }: { children: ReactNode; embedded?: boolean; reflowOnZoom?: boolean }) {
   const viewport = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLDivElement>(null);
   const stage = useRef<HTMLDivElement>(null);
@@ -47,9 +47,9 @@ export function ProjectViewport({ children, embedded = false }: { children: Reac
   }, [embedded, zoom]);
 
   const scale = embedded ? zoom ?? fit.scale : fullSize ? 1 : fit.scale;
-  const geometry = previewGeometry(fit.width, fit.available, fit.height, scale, embedded && zoom !== null);
+  const geometry = previewGeometry(fit.width, fit.available, fit.height, scale, embedded && zoom !== null && reflowOnZoom);
   if (embedded) return <div ref={viewport} className={styles.viewport} data-ready={fit.height > 0} data-embedded data-project-viewport data-fitted={zoom === null}>
-    <div className={styles.canvas} data-preview-canvas tabIndex={0} aria-label="Interactive project preview. Zoom out to expand the workspace; zoom in for larger controls.">
+    <div className={styles.canvas} data-preview-canvas tabIndex={0} aria-label={reflowOnZoom ? "Interactive project preview. Zoom out to expand the workspace; zoom in for larger controls." : "Application screenshots. Zoom in to inspect screenshot details."}>
       <div ref={stage} className={styles.scaledSurface} style={{ width: geometry.surfaceWidth, height: geometry.surfaceHeight }}>
         <div ref={content} className={styles.embeddedContent} style={{ width: geometry.layoutWidth, transform: `scale(${scale})`, '--embedded-preview-height': `${geometry.layoutHeight}px` } as CSSProperties}>{children}</div>
       </div>

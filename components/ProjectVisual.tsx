@@ -21,7 +21,7 @@ const visuals: Record<string, { src: string; alt: string; caption?: string }> = 
 };
 
 export function ProjectVisual({ slug, title, priority = false, embedded = false }: { slug: string; title: string; priority?: boolean; embedded?: boolean }) {
-  return <ProjectViewport embedded={embedded}><ProjectContent slug={slug} title={title} priority={priority} embedded={embedded} /></ProjectViewport>;
+  return <ProjectViewport embedded={embedded} reflowOnZoom={slug !== 'threadkeep'}><ProjectContent slug={slug} title={title} priority={priority} embedded={embedded} /></ProjectViewport>;
 }
 
 function ProjectContent({ slug, title, priority = false, embedded = false }: { slug: string; title: string; priority?: boolean; embedded?: boolean }) {

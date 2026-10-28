@@ -9,7 +9,7 @@ export function DesktopEnterprise() {
       <div><dt>Design & delivery</dt><dd>Documented standards and guided front-end delivery.</dd></div>
       <div><dt>Production example</dt><dd>Compact mode shipped; try the independent recreation.</dd></div>
     </dl>
-    <nav className={styles.summaryActions} aria-label="Enterprise work links"><a href="#design-library/details">Read details →</a><a href="#cirrus">Try compact mode →</a><a href="https://sprbrk.design.com/" target="_blank" rel="noopener noreferrer">Design Library ↗</a></nav>
+    <nav className={styles.summaryActions} aria-label="Enterprise work links"><a href="#design-library/details">Read details →</a><a href="#cirrus">Try compact mode →</a><a href="https://design.sprbrk.com/" target="_blank" rel="noopener noreferrer">Design Library ↗</a></nav>
   </section>;
 }
 

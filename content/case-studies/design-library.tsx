@@ -18,7 +18,7 @@ export function DesignLibraryCaseStudy() {
       <h2>My contribution</h2>
       <p>I maintained the existing library rather than starting a new system. Alongside component ownership, I led UX design efforts and guided front-end implementation, working with product and engineering teams to coordinate delivery.</p>
       <p>The work covered both reusable interface patterns and their use in the product. The public Design Library playground provides a way to explore the controls and patterns.</p>
-      <p><a className="story-link focus-ring" href="https://sprbrk.design.com/" target="_blank" rel="noopener noreferrer">Explore the public component playground ↗<span className="sr-only"> (new tab)</span></a></p>
+      <p><a className="story-link focus-ring" href="https://design.sprbrk.com/" target="_blank" rel="noopener noreferrer">Explore the public component playground ↗<span className="sr-only"> (new tab)</span></a></p>
     </section>
     <section>
       <h2>A concrete example: compact mode</h2>
