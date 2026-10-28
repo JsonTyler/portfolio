@@ -2,12 +2,17 @@
 
 Use current production Resume HTML as content: build first when copy changes.
 Requires BeautifulSoup and WeasyPrint; preserves the legacy PDF.
+Use --html PATH to export the print document for browser preview or PDF printing.
 """
 from pathlib import Path
 from html import escape
 import re
 from bs4 import BeautifulSoup
-from weasyprint import HTML
+import argparse
+
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--html", type=Path, help="Export print HTML instead of rendering with WeasyPrint")
+args=parser.parse_args()
 
 ROOT=Path(__file__).resolve().parents[2]
 soup=BeautifulSoup((ROOT/'.next/server/app/resume.html').read_text(),'html.parser')
@@ -26,12 +31,10 @@ for heading in card('Experience').find_all('h3'):
     for item in role.find_all('li'):body+='<li>'+text(item)+'</li>'
     body+='</ul></article>'
 body+='</section><section><h2>Skills</h2>'
-for label in card('Skills').find_all('p'):
-    values=label.find_next_sibling('div')
+for label in card('Skills').find_all('dt'):
+    values=label.find_next_sibling('dd')
     if values:
-        badges=values.find_all('span',recursive=False)
-        skills=', '.join(text(item) for item in badges) if badges else text(values)
-        body+='<p class="skills"><strong>'+text(label)+':</strong> '+skills+'</p>'
+        body+='<p class="skills"><strong>'+text(label)+':</strong> '+text(values)+'</p>'
 body+='</section><section><h2>Education</h2><p>'+text(card('Education').find('p'))+'</p></section>'
 style='''
 @page { size: Letter; margin: 12mm 15mm; }
@@ -47,9 +50,18 @@ article { break-inside:avoid; } .skills { margin:2pt 0; }
 a { color:#1e526d; text-decoration:none; } strong { font-weight:700; }
 '''
 output=ROOT/'public/resume/Jason-Tyler-Rodriguez-Resume-2026.pdf'
-document=HTML(string=f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Jason Tyler Rodriguez - Resume</title><style>{style}</style></head><body>{body}</body></html>').render()
-document.write_pdf(output)
+print_html=f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Jason Tyler Rodriguez - Resume</title><style>{style}</style></head><body>{body}</body></html>'
+if args.html:
+    args.html.write_text(print_html)
+    print(args.html)
+    raise SystemExit(0)
+
+from weasyprint import HTML
+document=HTML(string=print_html).render()
 all_text=' '.join(box.text for page in document.pages for box in page._page_box.descendants() if hasattr(box,'text'))
 assert 'Team Lead' in all_text and 'eight years' in all_text and '7+ years' not in all_text
+assert len(document.pages) == 1, 'Recruiter resume must fit one US Letter page'
+assert 'AI-assisted' in all_text and 'Azure DevOps' in all_text and 'TypeScript' in all_text
 assert 'Print / save' not in all_text and 'Open résumé' not in all_text
+document.write_pdf(output)
 print(output);print(f'{len(document.pages)} page(s), US Letter, selectable text')

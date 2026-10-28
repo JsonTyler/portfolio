@@ -28,7 +28,7 @@ export function DesktopResume() {
   return <section className={styles.summaryScreen}>
     <header><p className={styles.kicker}>Résumé</p><h1>Jason Tyler Rodriguez</h1><p>Senior front-end engineer & UX lead</p></header>
 
-    <ul className={styles.resumeHighlights}><li>Enterprise components & UX leadership.</li><li>Internal web application development.</li><li>Aerospace software & published research.</li></ul>
+    <ul className={styles.resumeHighlights}><li>Enterprise components & UX leadership.</li><li>Built AI-assisted PR review & workflow automation.</li><li>Aerospace software & published research.</li></ul>
     <div className={styles.resumeCredentials}><p><strong>Stack</strong> Blazor · C# · TypeScript · HTML / CSS · Python</p><p><strong>Education</strong> B.S. Computer Science · Jackson State · Honors</p></div>
     <nav className={styles.summaryActions} aria-label="Résumé links"><a className={styles.primaryAction} href="/resume/download" download="Jason-Tyler-Rodriguez-Resume.pdf">Download résumé · PDF ↓</a><a href="#resume/details">View full résumé →</a></nav>
   </section>;

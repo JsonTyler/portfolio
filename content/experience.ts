@@ -29,7 +29,7 @@ export const experience: ExperienceItem[] = [
     title: 'Front-End Web Developer / UX Designer',
     period: {
       start: '2020-03',
-      end: '2022-01',
+      end: '2021-12',
     },
     description: 'Designed and developed UI for various internal web applications. Focused on user experience, iterating with clients to understand needs and deliver intuitive interfaces.',
     technologies: ['ASP.NET WebForms', 'Blazor', 'HTML', 'CSS', 'JavaScript', 'jQuery', 'Bootstrap'],
