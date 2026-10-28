@@ -1,18 +1,36 @@
+.page {
+  --career-surface: var(--desk-surface, var(--color-background));
+  --career-text: var(--desk-text, var(--color-text));
+  --career-muted: var(--desk-muted, var(--color-text-secondary));
+  --career-line: var(--desk-line, var(--color-border));
+  --career-accent: var(--desk-accent, var(--color-accent));
+  color: var(--career-text);
+}
+:global(html[data-theme="midnight"]) .page {
+  --career-surface: var(--desk-surface, #0c1126);
+  --career-line: var(--desk-line, #33465f);
+  --career-accent: var(--desk-accent, #93c5fd);
+}
+:global(html[data-theme="winter"]) .page { --career-surface: var(--desk-surface, #152635); }
+.heading { padding: 0 0 16px; border-bottom: 1px solid var(--career-line); }
+.heading h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; }
+.heading p { margin: 0; color: var(--career-muted); font-size: 15px; line-height: 1.5; }
+.embedded .experience { max-width: none; padding-inline: 0; }
 .experience { padding-block: 8px 20px; }
 .list { list-style: none; padding: 0; margin: 0; }
 .entry { contain: layout paint; margin: 0; position: relative; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 32px; padding-block: 12px; }
-.entry::before { content: ''; position: absolute; left: 132px; top: 0; bottom: 0; width: 2px; background: var(--color-border); }
-.entry::after { content: ''; position: absolute; left: 128px; top: 31px; width: 10px; height: 10px; box-sizing: border-box; border: 2px solid var(--color-background); border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
+.entry::before { content: ''; position: absolute; left: 132px; top: 0; bottom: 0; width: 2px; background: var(--career-line); }
+.entry::after { content: ''; position: absolute; left: 128px; top: 31px; width: 10px; height: 10px; box-sizing: border-box; border: 2px solid var(--career-surface); border-radius: 50%; background: var(--career-accent); box-shadow: 0 0 0 1px var(--career-accent); }
 .entry:first-child::before { top: 36px; }
 .entry:last-child::before { bottom: calc(100% - 36px); }
-.entry article { min-width: 0; padding: 12px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-background); }
-.entry h2 { margin: 0 0 3px; font-size: 17px; line-height: 1.35; }
-.dates { margin: 14px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
+.entry article { color: var(--career-text); min-width: 0; padding: 12px; border: 1px solid var(--career-line); border-radius: 8px; background: var(--career-surface); }
+.entry h2 { color: var(--career-text); margin: 0 0 3px; font-size: 17px; line-height: 1.35; }
+.dates { margin: 14px 0 0; color: var(--career-muted); font-size: 12px; line-height: 1.5; }
 .company { margin: 0 0 6px; font-size: 14px; font-weight: 600; line-height: 1.45; }
 .description { margin: 0 0 6px; font-size: 14px; line-height: 1.5; }
 .highlights { list-style: disc; margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.5; }
 .highlights li { list-style: disc; margin: 2px 0; }
-.stack { margin: 7px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
+.stack { margin: 7px 0 0; color: var(--career-muted); font-size: 12px; line-height: 1.5; }
 .stack > span { font-weight: 600; }
 @media(max-width: 600px) {
   .entry { grid-template-columns: 1fr; gap: 5px; padding: 12px 0 12px 24px; }
@@ -23,3 +41,7 @@
   .dates { margin: 0; }
   .entry h2 { font-size: 16px; }
 }
+
+.page .company, .page .description, .page .highlights { color: var(--career-text); }
+.page .description a { color: var(--career-accent); text-decoration: underline; text-underline-offset: 3px; }
+@media(max-width: 600px) { .heading h1 { font-size: 28px; } }

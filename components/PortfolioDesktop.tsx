@@ -28,6 +28,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
   const navigation = useMemo(() => ['overview', 'design-library', ...projects.filter(item => !item.collection || item.collection === 'research').map(item => item.slug), ...documents.filter(item => item.slug !== 'design-library').map(item => item.slug)], [projects]);
   const overviewProjects = projects.filter(item => !item.comingSoon && item.featured);
   const select = useCallback((slug: string, nextView: 'preview' | 'films' | 'details' = 'preview', history = true, moveFocus = true) => {
+    if (['experience', 'resume', 'about'].includes(slug)) nextView = 'preview';
     setMobileWorkOpen(false);
     setSelected(slug);
     setView(nextView);
@@ -47,6 +48,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
       const [slug, mode] = globalThis.location.hash.slice(1).split('/');
       if (slug === 'as-i-left-it') { select('threadkeep', 'preview', false, !!event); return; }
       if (slug === 'framed') { globalThis.location.replace('/projects/framed'); return; }
+      if (['experience', 'resume', 'about'].includes(slug) && mode) { globalThis.history.replaceState(null, '', `#${slug}`); select(slug, 'preview', false, !!event); return; }
       if (slug === 'work') { setMobileWorkOpen(true); return; }
       if (slug === 'overview' || projects.some(item => item.slug === slug) || documents.some(item => item.slug === slug)) {
         select(slug, mode === 'films' ? 'films' : mode === 'details' || mode === 'story' ? 'details' : 'preview', false, !!event);

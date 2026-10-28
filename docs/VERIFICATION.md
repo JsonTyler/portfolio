@@ -358,3 +358,12 @@ Removed Inbox’s separate Preview action. A suggestion immediately selects/high
 - Linux candidate workflow 40613594467 passed its build, behavioral tests and visual capture. Changed Linux and macOS candidates were visually reviewed before acceptance; obsolete Framed/coming-soon references were removed. Capture mode establishes references rather than comparing them. An earlier local capture worker stalled; the final fixed-build comparison run completed successfully.
 - After the comparison run, corrected the reversed Design Library domain in the three existing links to the owner-supplied `https://design.sprbrk.com/`; verified the resulting source URLs. The correct destination identifies itself as Springbrook Design. This URL-only correction does not change rendered text or layout.
 - The local context-memory checkout is now `../Threadkeep`, with updated launchers and installed local integration paths. Workspace identity is preserved across that move; the Threadkeep repository's 42 Python tests passed. Personal records, the house-recreation project, and the business website were not modified by this portfolio pass.
+
+
+## October 27, 2026 — direct career pages and contrast repair
+
+Experience, Résumé and About now open their full content directly in the workspace. Their old `/details` hashes normalize to the same page. Removed the redundant summary components. Shared Experience/Resume content also serves the standalone routes.
+
+Experience cards pair theme-specific surfaces with text colours instead of keeping a light surface under dark-theme text. The PDF download button overrides generic link hover/focus rules and uses the mobile palette's matching on-accent text, including Winter. Narrow résumé layouts respond to the pane's width.
+
+TypeScript, ESLint and production build passed. The focused `node docs/qa/career-focus.cjs` check passed for all three themes, desktop/mobile entry points, five career cards, PDF default/hover/keyboard-focus states, standalone Experience/Resume, old links and runtime errors. Minimum sampled text contrast was 4.83:1. Representative Midnight career and résumé-focus screenshots were visually reviewed.

@@ -1,4 +1,7 @@
+.page { container-type: inline-size; }
 .about { display: grid; grid-template-columns: minmax(240px, .85fr) minmax(0, 1.55fr); align-items: center; gap: 24px; padding-block: 16px; }
 .introduction h1 { margin: 6px 0 14px; font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.12; }
 .introduction p { margin: 0 0 12px; line-height: 1.55; font-size: 15px; }
 @media(max-width: 700px) { .about { grid-template-columns: 1fr; gap: 10px; } .introduction h1 { font-size: 1.5rem; } }
+
+@container (max-width: 700px) { .about { grid-template-columns: 1fr; gap: 16px; padding-inline: 0; } }

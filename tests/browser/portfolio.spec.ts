@@ -89,7 +89,8 @@ for (const slug of ['design-library', 'experience', 'about', 'resume', 'contact'
     await expect(page).toHaveScreenshot(`${slug}.png`);
     const document = page.locator(`[data-desktop-document="${slug}"]`);
     if (await document.count() && await document.evaluate(element => element.scrollHeight > element.clientHeight)) {
-      await document.getByRole('link').last().scrollIntoViewIfNeeded();
+      if (['experience', 'resume', 'about'].includes(slug)) await document.evaluate(element => { element.scrollTop = element.scrollHeight; });
+      else await document.getByRole('link').last().scrollIntoViewIfNeeded();
       await expect(page).toHaveScreenshot(`${slug}-end.png`);
     }
   });
