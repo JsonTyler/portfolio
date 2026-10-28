@@ -5,7 +5,7 @@ import type { Project } from '@/lib/types';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import styles from './PortfolioMobile.module.css';
 
-type IconName = 'home' | 'work' | 'library' | 'experience' | 'resume' | 'about' | 'contact' | 'cirrus' | 'timely' | 'framed';
+type IconName = 'home' | 'work' | 'library' | 'experience' | 'resume' | 'about' | 'contact' | 'cirrus' | 'timely' | 'threadkeep';
 const paths: Record<IconName, string> = {
   home: 'm3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7',
   work: 'M8 7V4h8v3M3 8h18v12H3V8Zm0 5 9 3 9-3M10 13h4',
@@ -15,7 +15,7 @@ const paths: Record<IconName, string> = {
   about: 'M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 22v-3a8 8 0 0 1 16 0v3',
   contact: 'M2 5h20v15H2V5Zm0 0 10 8L22 5',
   timely: 'M4 3v18m0-5h16M8 5v6m5-3v9m5-12v7M6 8h4m1 6h4m1-6h4',
-  framed: 'M3 3h18v18H3V3Zm3 3h12v12H6V6Zm0 10 4-5 3 3 2-2 3 4',
+  threadkeep: 'M6 3h12v18H6V3Zm3 4h6m-6 4h6m-6 4h4M3 7h3m-3 5h3m-3 5h3',
   cirrus: 'M3 4h18v16H3V4Zm0 5h18M8 9v11m4-7h6m-6 4h6',
 };
 function Icon({ name }: { name: IconName }) {
@@ -50,9 +50,9 @@ export function MobileHome({ onOpen, onWork }: { onOpen: (slug: string) => void;
     { slug: 'experience', label: 'Experience', icon: 'experience' },
     { slug: 'about', label: 'About me', icon: 'about' },
     { slug: 'datadustr-tools', label: 'Inbox & File Dustr', icon: 'contact' },
-    { slug: 'cirrus', label: 'Cirrus', icon: 'cirrus' },
+    { slug: 'threadkeep', label: 'Threadkeep', icon: 'threadkeep' },
     { slug: 'timely', label: 'Timely', icon: 'timely' },
-    { slug: 'framed', label: 'Framed', icon: 'framed' },
+    { slug: 'resume', label: 'Résumé', icon: 'resume' },
   ];
   return <section className={styles.home} aria-label="Portfolio home">
     <div className={styles.widgets}>
@@ -67,7 +67,10 @@ export function MobileHome({ onOpen, onWork }: { onOpen: (slug: string) => void;
 export function MobileWorkList({ projects, onOpen }: { projects: Project[]; onOpen: (slug: string) => void }) {
   return <section className={styles.workList} aria-label="Work and projects"><h1>Explore the work</h1><p>Professional experience and interactive projects.</p>
     <div className={styles.listGroup}><button type="button" onClick={() => onOpen('design-library')}><span className={styles.listIcon} data-icon="library"><Icon name="library" /></span><span><strong>Enterprise UX</strong><small>Springbrook · Shared components & workflows</small></span><span aria-hidden="true">›</span></button></div>
-    <div className={styles.listGroup}>{projects.map(project => <button type="button" key={project.slug} onClick={() => onOpen(project.slug)}><span className={styles.listIcon} data-icon={project.slug === 'cirrus' ? 'cirrus' : 'work'}><Icon name={project.slug === 'cirrus' ? 'cirrus' : 'work'} /></span><span><strong>{project.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : project.title}</strong><small>{project.comingSoon ? 'Coming soon' : project.slug === 'timely' ? 'Published research · IEEE' : project.collection === 'college' ? 'College project' : 'Interactive preview'}</small></span><span aria-hidden="true">›</span></button>)}</div>
+    <h2>Independent projects</h2>
+    <div className={styles.listGroup}>{projects.filter(project => !project.collection).map(project => <button type="button" key={project.slug} onClick={() => onOpen(project.slug)}><span className={styles.listIcon} data-icon={project.slug === 'threadkeep' ? 'threadkeep' : 'work'}><Icon name={project.slug === 'threadkeep' ? 'threadkeep' : 'work'} /></span><span><strong>{project.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : project.title}</strong><small>{project.slug === 'threadkeep' ? 'Working local app · Codex context memory' : 'Interactive product concepts'}</small></span><span aria-hidden="true">›</span></button>)}</div>
+    <h2>Published research</h2>
+    <div className={styles.listGroup}>{projects.filter(project => project.collection === 'research').map(project => <button type="button" key={project.slug} onClick={() => onOpen(project.slug)}><span className={styles.listIcon} data-icon="timely"><Icon name="timely" /></span><span><strong>{project.title}</strong><small>Published research · IEEE SoutheastCon 2019</small></span><span aria-hidden="true">›</span></button>)}</div>
   </section>;
 }
 

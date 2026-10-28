@@ -364,7 +364,7 @@
   .overview { display: block; padding: 0; }
   .overview > :not(.mobileHome):not(.mobileWork) { display: none; }
   .mobileHome, .mobileWork { display: block; height: 100%; }
-  .mobileWork { overflow-y: auto; overscroll-behavior: contain; }
+  .mobileWork { overflow-y: auto; overscroll-behavior: contain; scroll-padding-block: 8px; }
   .mobileWorkActive .panel { display: block; padding: 0; }
   .mobileWorkActive .panel > :not(.mobileWork) { display: none; }
   :global(html:root[data-theme]) .desktop.mobileOnHome .mobileHome h1 { color: var(--phone-home-ink) !important; }

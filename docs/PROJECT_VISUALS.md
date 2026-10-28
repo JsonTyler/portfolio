@@ -23,3 +23,10 @@ The three project demos replace static illustrations on both Work and their case
 Interaction cues are on the actionable objects: Drag on the selected frame, Select messages/Selected on cleanup suggestions, View details on timeline bars, and Try compact mode on the Cirrus toolbar. Inbox has no separate Preview button and starts without a selection; Apply is disabled until a suggestion selects matches. Apply and Undo clear selection.
 
 Discoverability follow-up: all four interactive figures now start with a prominent pale-green “Try this demo” strip, pointer icon, downward arrow and a specific instruction. Action targets are stronger at rest: larger Drag badge/dashed selection outline, larger bordered suggestion cards, larger underlined timeline View details labels and a bordered/filled Cirrus toolbar toggle. These cues do not depend on hover or animation and keep their own palette across themes.
+
+
+## October 27, 2026 — curated work and Threadkeep
+
+Enterprise work, Threadkeep, and DataDustr lead the portfolio. Timely sits under published research. Cirrus is reached through enterprise work, and Framed remains available only at its standalone URL. The former coming-soon project URL redirects to Threadkeep.
+
+Threadkeep uses two actual application screenshots, `public/projects/threadkeep/return-to-work.png` and `active-session.png`. They were captured from a temporary, isolated instance of the local Threadkeep app using its seeded fictional Checkout accessibility project, at 1280×820 in Field Notes dark/compact mode. The second view follows the real Resume action. No personal records, authentication keys, or browser tokens appear in the assets. The portfolio labels these as screenshots and allows visitors to switch views; it does not simulate a hosted Threadkeep application.

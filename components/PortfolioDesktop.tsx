@@ -1,9 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import type { Project } from '@/lib/types';
 import { ProjectVisual } from './ProjectVisual';
-import { AsILeftItComingSoon } from './AsILeftItComingSoon';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { Footer } from './layout/Footer';
 import { MobileDock, MobileHeader, MobileHome, MobileWorkList } from './PortfolioMobile';
@@ -24,13 +23,15 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
   const tabs = useRef<Array<HTMLButtonElement | null>>([]);
   const project = projects.find(item => item.slug === selected);
   const document = documents.find(item => item.slug === selected);
-  const selectedProjects = projects.filter(item => item.collection !== 'college');
+  const selectedProjects = projects.filter(item => !item.collection);
+  const researchProjects = projects.filter(item => item.collection === 'research');
+  const navigation = useMemo(() => ['overview', 'design-library', ...projects.filter(item => !item.collection || item.collection === 'research').map(item => item.slug), ...documents.filter(item => item.slug !== 'design-library').map(item => item.slug)], [projects]);
   const overviewProjects = projects.filter(item => !item.comingSoon && item.featured);
   const select = useCallback((slug: string, nextView: 'preview' | 'films' | 'details' = 'preview', history = true, moveFocus = true) => {
     setMobileWorkOpen(false);
     setSelected(slug);
     setView(nextView);
-    const index = ['overview', 'design-library', ...projects.map(item => item.slug), ...documents.filter(item => item.slug !== 'design-library').map(item => item.slug)].indexOf(slug);
+    const index = navigation.indexOf(slug === 'cirrus' ? 'design-library' : slug);
     if (moveFocus && globalThis.innerWidth < 768) {
       globalThis.requestAnimationFrame(() => {
         const panel = globalThis.document.getElementById('desktop-panel');
@@ -39,11 +40,13 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
       });
     } else if (moveFocus) tabs.current[index]?.focus({ preventScroll: true });
     if (history) globalThis.history.pushState(null, '', `#${slug}${nextView === 'preview' ? '' : `/${nextView}`}`);
-  }, [projects]);
+  }, [navigation]);
 
   useEffect(() => {
     const sync = (event?: globalThis.Event) => {
       const [slug, mode] = globalThis.location.hash.slice(1).split('/');
+      if (slug === 'as-i-left-it') { select('threadkeep', 'preview', false, !!event); return; }
+      if (slug === 'framed') { globalThis.location.replace('/projects/framed'); return; }
       if (slug === 'work') { setMobileWorkOpen(true); return; }
       if (slug === 'overview' || projects.some(item => item.slug === slug) || documents.some(item => item.slug === slug)) {
         select(slug, mode === 'films' ? 'films' : mode === 'details' || mode === 'story' ? 'details' : 'preview', false, !!event);
@@ -83,12 +86,12 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
   const mobileBack = () => {
     if (mobileWorkOpen) select('overview');
     else if (view !== 'preview') select(selected);
+    else if (project?.collection === 'enterprise') select('design-library');
     else if (project) openMobileWork();
     else select('overview');
   };
 
   const onTabKey = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
-    const navigation = ['overview', 'design-library', ...projects.map(item => item.slug), ...documents.filter(item => item.slug !== 'design-library').map(item => item.slug)];
     const count = navigation.length;
     const next = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? (index + 1) % count
       : event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? (index + count - 1) % count
@@ -99,24 +102,25 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
     tabs.current[next]?.focus();
   };
   const tab = (slug: string, label: string, index: number) => <button
-    type="button" role="tab" id={`desktop-tab-${slug}`} aria-selected={selected === slug}
-    aria-controls="desktop-panel" tabIndex={selected === slug ? 0 : -1}
+    type="button" role="tab" id={`desktop-tab-${slug}`} aria-selected={selected === slug || (selected === 'cirrus' && slug === 'design-library')}
+    aria-controls="desktop-panel" tabIndex={selected === slug || (selected === 'cirrus' && slug === 'design-library') ? 0 : -1}
     ref={element => { tabs.current[index] = element; }}
     className={styles.sidebarItem} onClick={() => select(slug)} onKeyDown={event => onTabKey(event, index)}
   >{slug === 'overview' ? <span className={styles.homeIcon} aria-hidden="true">⌂</span> : <Folder />}<span>{label}</span>{slug === 'timely' && <small aria-hidden="true" className={styles.researchBadge}>IEEE</small>}</button>;
 
   return <div data-portfolio-desktop className={`${styles.desktop} ${expanded ? styles.expanded : ''} ${mobileWorkOpen ? styles.mobileWorkActive : ''} ${selected === 'overview' && !mobileWorkOpen ? styles.mobileOnHome : ''}`}>
     <section className={styles.window} aria-label="Portfolio workspace">
-      <MobileHeader title={mobileTitle} backLabel={mobileWorkOpen ? 'Home' : selected === 'overview' ? undefined : view !== 'preview' ? 'Back' : project ? 'Work' : 'Home'} onBack={mobileBack} />
+      <MobileHeader title={mobileTitle} backLabel={mobileWorkOpen ? 'Home' : selected === 'overview' ? undefined : view !== 'preview' ? 'Back' : project?.collection === 'enterprise' ? 'Enterprise UX' : project ? 'Work' : 'Home'} onBack={mobileBack} />
       <div className={styles.titlebar}>
         <div className={styles.windowControls}><span className={styles.close} aria-hidden="true"/><span className={styles.minimize} aria-hidden="true"/><button type="button" className={styles.resize} onClick={() => setExpanded(value => !value)} aria-label={expanded ? 'Restore window size' : 'Enlarge workspace'} aria-pressed={expanded}><span aria-hidden="true">{expanded ? '−' : '+'}</span></button></div>
         <span className={styles.windowTitle}><Folder />Jason Tyler Rodriguez</span>
         <div className={styles.windowTheme}><ThemeSwitcher /></div>
       </div>
       <div className={`${styles.toolbar} ${project && !project.comingSoon && !mobileWorkOpen ? styles.mobileProjectToolbar : ''}`}>
-        <button type="button" className={styles.back} onClick={() => select('overview')} disabled={selected === 'overview'} aria-label="Back to overview">‹</button>
+        <button type="button" className={styles.back} onClick={() => select(project?.collection === 'enterprise' ? 'design-library' : 'overview')} disabled={selected === 'overview'} aria-label={project?.collection === 'enterprise' ? 'Back to enterprise work' : 'Back to overview'}>‹</button>
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <a href="#overview" aria-current={selected === 'overview' ? 'page' : undefined}>Portfolio</a>
+          {project?.collection === 'enterprise' && <><span aria-hidden="true">›</span><a href="#design-library">Enterprise UX</a></>}
           {selected !== 'overview' && <><span aria-hidden="true">›</span><a href={`#${selected}`} aria-current={view === 'preview' ? 'page' : undefined}>{project?.title ?? document?.title}</a></>}
           {(project || document) && view !== 'preview' && <><span aria-hidden="true">›</span><a href={`#${selected}/${view}`} aria-current="page">{view === 'details' ? 'Details' : 'Films'}</a></>}
         </nav>
@@ -133,7 +137,8 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
             <select value={selected} onChange={event => select(event.target.value)}>
               <option value="overview">Overview</option>
               <option value="design-library">Enterprise UX</option>
-              <optgroup label="Projects">{projects.map(item => <option key={item.slug} value={item.slug}>{item.title}</option>)}</optgroup>
+              <optgroup label="Selected work">{selectedProjects.map(item => <option key={item.slug} value={item.slug}>{item.title}</option>)}</optgroup>
+              <optgroup label="Research">{researchProjects.map(item => <option key={item.slug} value={item.slug}>{item.title}</option>)}</optgroup>
               <optgroup label="More">{documents.filter(item => item.slug !== 'design-library').map(item => <option key={item.slug} value={item.slug}>{item.title}</option>)}</optgroup>
             </select>
           </label>
@@ -142,13 +147,15 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
             {tab('overview', 'Overview', 0)}
             {tab('design-library', 'Enterprise UX', 1)}
             <p className={styles.sidebarLabel}>Selected work</p>
-            {projects.map((item, index) => <div key={item.slug}>{tab(item.slug, item.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : item.slug === 'cirrus' ? 'Cirrus' : item.title, index + 2)}</div>)}
+            {selectedProjects.map(item => <div key={item.slug}>{tab(item.slug, item.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : item.title, navigation.indexOf(item.slug))}</div>)}
+            <p className={styles.sidebarLabel}>Research</p>
+            {researchProjects.map(item => <div key={item.slug}>{tab(item.slug, item.title, navigation.indexOf(item.slug))}</div>)}
             <p className={styles.sidebarLabel}>More</p>
-            {documents.map((item, index) => item.slug === 'design-library' ? null : <div key={item.slug}>{tab(item.slug, item.title, projects.length + index + 1)}</div>)}
+            {documents.map(item => item.slug === 'design-library' ? null : <div key={item.slug}>{tab(item.slug, item.title, navigation.indexOf(item.slug))}</div>)}
           </div>
           <div className={styles.owner}><span className={styles.avatar} aria-hidden="true">JR</span><div><strong>Jason Rodriguez</strong><span>Front-end / UX</span></div></div>
         </aside>
-        <div role="tabpanel" id="desktop-panel" aria-labelledby={mobileWorkOpen ? undefined : `desktop-tab-${selected}`} aria-label={mobileWorkOpen ? 'Work' : undefined} tabIndex={0} className={`${styles.panel} ${view === 'details' && details[selected] ? styles.documentPanel : document ? styles.documentPanel : project ? styles.projectPanel : styles.overview}`}>
+        <div role="tabpanel" id="desktop-panel" aria-labelledby={mobileWorkOpen ? undefined : `desktop-tab-${selected === 'cirrus' ? 'design-library' : selected}`} aria-label={mobileWorkOpen ? 'Work' : undefined} tabIndex={0} className={`${styles.panel} ${view === 'details' && details[selected] ? styles.documentPanel : document ? styles.documentPanel : project ? styles.projectPanel : styles.overview}`}>
           {mobileWorkOpen && <div className={styles.mobileWork}><MobileWorkList projects={projects} onOpen={select} /></div>}
           {view === 'details' && details[selected] ? <article key={selected} tabIndex={0} className={`${styles.document} ${styles.detailDocument}`} aria-label={`${project?.title ?? document?.title} details`}>{details[selected]}</article> : document ? <div key={selected} data-desktop-document={selected} className={styles.document}>{pages[selected]}</div> : !project ? <>
             <div className={styles.mobileHome}><MobileHome onOpen={select} onWork={openMobileWork} /></div>
@@ -163,12 +170,12 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
               <a className={styles.caseLink} href="#design-library">Explore enterprise work →</a>
             </section>
             <section className={styles.projectShelf} aria-labelledby="desktop-projects-heading">
-              <h2 id="desktop-projects-heading">Selected explorations</h2>
-              <div className={styles.projectFiles}>{overviewProjects.map(item => <button key={item.slug} type="button" onClick={() => select(item.slug)} className={styles.projectFile}><Folder /><span><strong>{item.slug === 'cirrus' ? 'Cirrus compact mode' : 'Inbox & File Dustr'}</strong><span>{item.slug === 'cirrus' ? 'One density setting across a workspace.' : 'Reviewable inbox and file cleanup.'}</span></span><span className={styles.openProject} aria-hidden="true">↗</span></button>)}</div>
+              <h2 id="desktop-projects-heading">Independent projects</h2>
+              <div className={styles.projectFiles}>{overviewProjects.map(item => <button key={item.slug} type="button" onClick={() => select(item.slug)} className={styles.projectFile}><Folder /><span><strong>{item.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : item.title}</strong><span>{item.slug === 'threadkeep' ? 'Shared context for Codex and interrupted work.' : 'Reviewable inbox and file cleanup.'}</span></span><span className={styles.openProject} aria-hidden="true">↗</span></button>)}</div>
             </section>
           </> : <>
-            <div className={styles.projectHeading}><p className={styles.kicker}>{project.comingSoon ? 'In progress' : project.slug === 'timely' ? 'Published research · IEEE SoutheastCon 2019' : project.collection === 'college' ? 'College project · archived' : project.slug === 'cirrus' ? 'Independent recreation' : 'Independent concepts'}</p><h1>{project.title}</h1><p>{project.tagline}</p></div>
-            {project.comingSoon ? <div className={styles.comingSoon}><AsILeftItComingSoon /></div>
+            <div className={styles.projectHeading}><p className={styles.kicker}>{project.comingSoon ? 'In progress' : project.slug === 'timely' ? 'Published research · IEEE SoutheastCon 2019' : project.slug === 'threadkeep' ? 'Working local application' : project.slug === 'cirrus' ? 'Independent recreation' : 'Independent concepts'}</p><h1>{project.title}</h1><p>{project.tagline}</p></div>
+            {project.comingSoon ? <div className={styles.comingSoon}><p>More to share soon.</p></div>
               : view === 'films' && project.slug === 'datadustr-tools' ? <div className={styles.films}>
                 <section className={styles.filmIntroduction}><h2>Two ways to make cleanup easier to review.</h2><p>These short animated films introduce the product ideas. The full demo lets you explore the interfaces yourself.</p></section>
                 <section><h3>Inbox Dustr</h3><TrailerPlayer id="inbox" title="Inbox Dustr" /><p>Messages become groups you can review. The story follows keeping what matters, choosing a cleanup action, and undoing a change.</p></section>
@@ -180,7 +187,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
         </div>
       </div>
       <MobileDock selected={selected} workOpen={mobileWorkOpen} isProject={!!project} onOpen={select} onWork={openMobileWork} />
-      <div className={styles.statusbar}><span>{document ? document.title : project ? project.comingSoon ? 'Coming soon' : view === 'details' ? 'Project details' : view === 'films' ? 'Concept films' : 'Interactive preview · sample data' : `${selectedProjects.length} projects · enterprise experience`}</span><Footer embedded /></div>
+      <div className={styles.statusbar}><span>{document ? document.title : project ? project.comingSoon ? 'Coming soon' : view === 'details' ? 'Project details' : view === 'films' ? 'Concept films' : project.slug === 'threadkeep' ? 'Application screenshots · fictional data' : 'Interactive preview · sample data' : 'Enterprise work · 2 independent projects · research'}</span><Footer embedded /></div>
     </section>
   </div>;
 }

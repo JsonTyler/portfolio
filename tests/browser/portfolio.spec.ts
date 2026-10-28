@@ -16,7 +16,7 @@ async function ready(page: Page, hash = '') {
   await expect(page.locator('#desktop-panel')).toBeVisible();
   // Hydration installs the appearance observer and motion control portal.
   await expect(page.locator('.motion-control')).toHaveCount(1);
-  await expect(page.locator(`#desktop-tab-${hash || 'overview'}`)).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator(`#desktop-tab-${hash === 'cirrus' ? 'design-library' : hash || 'overview'}`)).toHaveAttribute('aria-selected', 'true');
   await page.evaluate(() => document.fonts.ready);
   await page.locator('img:visible').evaluateAll(async images => {
     await Promise.all(images.map(image => (image as HTMLImageElement).decode()));
@@ -36,6 +36,13 @@ async function fits(page: Page) {
 }
 
 async function open(page: Page, slug: string) {
+  if (slug === 'cirrus') {
+    await open(page, 'design-library');
+    await page.getByRole('link', { name: 'Try compact mode →', exact: true }).click();
+    await expect(page).toHaveURL(/#cirrus$/);
+    await fits(page);
+    return;
+  }
   if (page.viewportSize()!.width < 768) {
     const dock = page.getByRole('navigation', { name: 'Main navigation', exact: true });
     const labels: Record<string, string> = { overview: 'Home', resume: 'Résumé', contact: 'Contact' };
@@ -45,7 +52,7 @@ async function open(page: Page, slug: string) {
       const work = page.getByRole('region', { name: 'Work and projects', exact: true });
       const names: Record<string, RegExp> = {
         'design-library': /^Enterprise UX/, 'datadustr-tools': /^Inbox & File Dustr/,
-        cirrus: /^Cirrus/, timely: /^Timely/, framed: /^Framed/,
+        threadkeep: /^Threadkeep/, timely: /^Timely/,
       };
       await work.getByRole('button', { name: names[slug] }).click();
     }
@@ -75,7 +82,7 @@ for (const theme of ['hacker', 'midnight', 'winter']) {
   });
 }
 
-for (const slug of ['design-library', 'experience', 'about', 'resume', 'contact', 'datadustr-tools', 'cirrus', 'timely', 'framed', 'as-i-left-it']) {
+for (const slug of ['design-library', 'experience', 'about', 'resume', 'contact', 'datadustr-tools', 'cirrus', 'timely', 'threadkeep']) {
   test(`@visual workspace: ${slug}`, async ({ page }) => {
     await ready(page, slug);
     await fits(page);
@@ -95,7 +102,7 @@ test('@visual mobile work list', async ({ page }) => {
   await expect(page.getByRole('region', { name: 'Work and projects', exact: true })).toBeVisible();
   await fits(page);
   await expect(page).toHaveScreenshot('work-list.png');
-  const lastProject = page.getByRole('region', { name: 'Work and projects', exact: true }).getByRole('button', { name: /^Framed/ });
+  const lastProject = page.getByRole('region', { name: 'Work and projects', exact: true }).getByRole('button', { name: /^Timely/ });
   await expect(lastProject).toBeVisible();
   await lastProject.scrollIntoViewIfNeeded();
   await expect(lastProject).toBeInViewport({ ratio: 1 });
@@ -144,7 +151,7 @@ test('phone work list can scroll to the final project above the dock', async ({ 
   await ready(page);
   await page.getByRole('navigation', { name: 'Main navigation', exact: true }).getByRole('button', { name: 'Work', exact: true }).click();
   const work = page.getByRole('region', { name: 'Work and projects', exact: true });
-  const lastProject = work.getByRole('button', { name: /^Framed/ });
+  const lastProject = work.getByRole('button', { name: /^Timely/ });
   // A hidden overflow container can be scrolled programmatically but not by users.
   const userCanScroll = await lastProject.evaluate(element => {
     for (let parent = element.parentElement; parent; parent = parent.parentElement) {
@@ -156,7 +163,7 @@ test('phone work list can scroll to the final project above the dock', async ({ 
   await lastProject.scrollIntoViewIfNeeded();
   await expect(lastProject).toBeInViewport({ ratio: 1 });
   await lastProject.click();
-  await expect(page).toHaveURL(/#framed$/);
+  await expect(page).toHaveURL(/#timely$/);
 });
 
 test('@visual project details', async ({ page }) => {
@@ -170,7 +177,7 @@ test('@visual project details', async ({ page }) => {
 
 test('navigation, details, history and contact work', async ({ page }) => {
   await ready(page);
-  for (const slug of ['design-library', 'datadustr-tools', 'cirrus', 'timely', 'framed', 'resume', 'contact']) {
+  for (const slug of ['design-library', 'threadkeep', 'datadustr-tools', 'cirrus', 'timely', 'resume', 'contact']) {
     await open(page, slug);
   }
   await expect(page.locator('#desktop-panel a[href^="mailto:"]').first()).toBeVisible();
@@ -204,4 +211,28 @@ test('keyboard navigation and appearance focus return', async ({ page }) => {
     await expect(page.locator('#desktop-tab-design-library')).toBeFocused();
     await expect(page.locator('#desktop-tab-design-library')).toHaveAttribute('aria-selected', 'true');
   }
+});
+
+
+test('curated work keeps enterprise, Threadkeep and research clear', async ({ page }) => {
+  await ready(page);
+  await expect(page.locator('#desktop-tab-framed')).toHaveCount(0);
+  await expect(page.locator('#desktop-tab-cirrus')).toHaveCount(0);
+  await expect(page.locator('#desktop-tab-as-i-left-it')).toHaveCount(0);
+  await open(page, 'threadkeep');
+  const preview = page.getByRole('figure', { name: 'Threadkeep application screenshots' });
+  await expect(preview.getByRole('img')).toHaveAttribute('src', /return-to-work/);
+  await preview.getByRole('button', { name: 'Active session', exact: true }).click();
+  await expect(preview.getByRole('img')).toHaveAttribute('src', /active-session/);
+  await page.getByRole('button', { name: 'Read details', exact: true }).click();
+  await expect(page.locator('#desktop-panel article')).toContainText('stale write is rejected');
+  await expect(page.locator('#desktop-panel article')).toContainText('fictional projects');
+  await open(page, 'cirrus');
+  await expect(page.locator('#desktop-tab-design-library')).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tabpanel')).toHaveAccessibleName('Enterprise UX');
+  await page.goto('/projects/framed');
+  await expect(page.getByRole('heading', { name: 'Framed', exact: true })).toBeVisible();
+  await page.goto('/projects/as-i-left-it');
+  await expect(page).toHaveURL(/\/projects\/threadkeep$/);
+  await expect(page.getByRole('heading', { name: 'Threadkeep', exact: true })).toBeVisible();
 });

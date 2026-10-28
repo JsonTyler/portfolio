@@ -3,6 +3,7 @@ import { CirrusScreens } from './CirrusScreens';
 import { FramedDemo } from './FramedDemo';
 import { InboxDemo } from './InboxDemo';
 import { TimelyDemo } from './TimelyDemo';
+import { ThreadkeepPreview } from './ThreadkeepPreview';
 import { ProjectViewport } from './ProjectViewport';
 
 const visuals: Record<string, { src: string; alt: string; caption?: string }> = {
@@ -24,6 +25,7 @@ export function ProjectVisual({ slug, title, priority = false, embedded = false 
 }
 
 function ProjectContent({ slug, title, priority = false, embedded = false }: { slug: string; title: string; priority?: boolean; embedded?: boolean }) {
+  if (slug === 'threadkeep') return <ThreadkeepPreview priority={priority} />;
   if (slug === 'framed') return <FramedDemo />;
   if (slug === 'datadustr-tools') return <InboxDemo />;
   if (slug === 'timely') return <TimelyDemo />;

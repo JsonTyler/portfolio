@@ -1,0 +1,7 @@
+.preview { margin: 0; overflow: hidden; border: 1px solid var(--desk-line, var(--color-border)); border-radius: 8px; background: #1c211b; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; background: var(--desk-surface, #111b15); }
+.controls button { min-height: 40px; padding: 8px 12px; border: 1px solid var(--desk-line, #52614f); border-radius: 5px; background: transparent; color: var(--desk-text, #edf4e9); font: inherit; font-size: 13px; cursor: pointer; }
+.controls button[aria-pressed="true"] { background: var(--desk-selected, #314c35); color: var(--desk-selection-text, #fff); }
+.controls button:focus-visible { outline: 2px solid var(--desk-accent, #bee4a0); outline-offset: 2px; }
+.preview img { display: block; width: 100%; height: auto; }
+.preview figcaption { padding: 9px 12px; color: var(--desk-muted, #c3d0bd); background: var(--desk-surface, #111b15); font-size: 12px; line-height: 1.5; }

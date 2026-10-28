@@ -13,7 +13,7 @@ export interface Project {
   status: 'active' | 'archived' | 'in-development';
   featured: boolean;
   comingSoon?: boolean;
-  collection?: 'college';
+  collection?: 'enterprise' | 'research' | 'archive';
   statusLabel?: string;
   contribution?: string;
   engineeringNote?: string;

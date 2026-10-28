@@ -209,3 +209,6 @@
 .appearanceDialog :global([data-theme-choice="hacker"] .theme-wallpaper-preview) i { background: #35ba94; }
 .appearanceDialog :global([data-theme-choice="hacker"] .theme-wallpaper-preview) i:nth-child(3) { background: #4a8597; }
 .appearanceDialog :global([data-theme-choice="hacker"] .theme-wallpaper-preview) i:nth-child(4) { background: #bcead0; }
+
+@media(max-width: 767px) { .workList h2 { margin: 18px 4px 8px; color: var(--phone-muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; } }
+@media(max-width: 767px) { .workList { height: auto; min-height: 100%; padding-bottom: 24px; } .listGroup button { scroll-margin-block: 8px; } }
