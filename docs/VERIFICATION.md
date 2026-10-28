@@ -367,3 +367,5 @@ Experience, Résumé and About now open their full content directly in the works
 Experience cards pair theme-specific surfaces with text colours instead of keeping a light surface under dark-theme text. The PDF download button overrides generic link hover/focus rules and uses the mobile palette's matching on-accent text, including Winter. Narrow résumé layouts respond to the pane's width.
 
 TypeScript, ESLint and production build passed. The focused `node docs/qa/career-focus.cjs` check passed for all three themes, desktop/mobile entry points, five career cards, PDF default/hover/keyboard-focus states, standalone Experience/Resume, old links and runtime errors. Minimum sampled text contrast was 4.83:1. Representative Midnight career and résumé-focus screenshots were visually reviewed.
+
+The 12 focused career-page screenshot cases passed on macOS. Their initial/scrolled views and the matching Linux candidates from workflow 40616629460 were visually reviewed before accepting references. Winter mobile résumé body text also received a scoped dark-text override for its light palette; the focused check now samples that body text as well as PDF states.
