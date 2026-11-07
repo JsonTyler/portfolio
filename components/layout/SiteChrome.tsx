@@ -1,13 +1,15 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 
 import { usePathname } from 'next/navigation';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
 export function SiteHeader() {
-  return usePathname() === '/' ? null : <Header />;
+  return <LocalizedContent>{usePathname() === '/' ? null : <Header />}</LocalizedContent>;
 }
 
 export function SiteFooter() {
-  return usePathname() === '/' ? null : <Footer />;
+  return <LocalizedContent>{usePathname() === '/' ? null : <Footer />}</LocalizedContent>;
 }

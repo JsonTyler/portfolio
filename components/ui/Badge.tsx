@@ -1,3 +1,5 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -26,7 +28,7 @@ export function Badge({
   className,
   ...props
 }: BadgeProps) {
-  return (
+  return <LocalizedContent>{(
     <span
       className={cn(
         'inline-flex items-center font-medium rounded-full whitespace-nowrap',
@@ -36,5 +38,5 @@ export function Badge({
       )}
       {...props}
     />
-  );
+  )}</LocalizedContent>;
 }

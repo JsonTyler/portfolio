@@ -1,3 +1,5 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -27,7 +29,7 @@ export function Card({
   className,
   ...props
 }: CardProps) {
-  return (
+  return <LocalizedContent>{(
     <Component
       className={cn(
         'rounded-lg p-3 md:p-3.5 transition-standard',
@@ -37,38 +39,38 @@ export function Card({
       )}
       {...props}
     />
-  );
+  )}</LocalizedContent>;
 }
 
 export function CardHeader({ className, ...props }: CardHeaderProps) {
-  return (
+  return <LocalizedContent>{(
     <div className={cn('mb-3', className)} {...props} />
-  );
+  )}</LocalizedContent>;
 }
 
 export function CardTitle({ className, ...props }: CardTitleProps) {
-  return (
+  return <LocalizedContent>{(
     <h3
       className={cn('text-xl font-bold text-slate-900', className)}
       {...props}
     />
-  );
+  )}</LocalizedContent>;
 }
 
 export function CardDescription({ className, ...props }: CardDescriptionProps) {
-  return (
+  return <LocalizedContent>{(
     <p className={cn('text-slate-600 text-sm', className)} {...props} />
-  );
+  )}</LocalizedContent>;
 }
 
 export function CardContent({ className, ...props }: CardContentProps) {
-  return (
+  return <LocalizedContent>{(
     <div className={cn('text-slate-700', className)} {...props} />
-  );
+  )}</LocalizedContent>;
 }
 
 export function CardFooter({ className, ...props }: CardFooterProps) {
-  return (
+  return <LocalizedContent>{(
     <div className={cn('mt-3 flex flex-wrap gap-2.5', className)} {...props} />
-  );
+  )}</LocalizedContent>;
 }

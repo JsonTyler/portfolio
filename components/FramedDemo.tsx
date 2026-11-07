@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 import { useRef, useState } from 'react';
 import { framePosition, wallDistances } from '@/lib/project-demos';
 import { DemoPrompt } from './DemoPrompt';
@@ -10,7 +12,7 @@ export function FramedDemo() {
   const distances = wallDistances(position.x, position.y);
   const px = position.x * 10, py = position.y * 10;
   const dimensionX = px > 580 ? px - 80 : px + 80;
-  return <figure className={`project-visual ${styles.demo} ${styles.framed}`} aria-label="Interactive Framed wall planner">
+  return <LocalizedContent>{<figure className={`project-visual ${styles.demo} ${styles.framed}`} aria-label="Interactive Framed wall planner">
     <DemoPrompt instruction="Drag the outlined frame. Watch all four measurements change."/>
     <div className={styles.surface}>
       <div className={styles.appBar}><strong>Framed</strong><span>Plan a gallery wall</span><button type="button" onClick={() => setPosition({ x: 32, y: 10 })}>Reset</button></div>
@@ -33,5 +35,5 @@ export function FramedDemo() {
       <dl className={styles.distanceGrid}>{Object.entries(distances).map(([side, value]) => <div key={side}><dt>{side}</dt><dd><output>{value}</output> <small>in</small></dd></div>)}</dl>
       <div className={styles.positionControls}><label>From left <input type="range" min="5.5" max="66.5" step="0.1" value={position.x} onChange={event => setPosition(framePosition(Number(event.target.value), position.y))}/></label><label>From top <input type="range" min="1" max="33.2" step="0.1" value={position.y} onChange={event => setPosition(framePosition(position.x, Number(event.target.value)))}/></label></div>
     </div><figcaption>Move the frame · drag, use the sliders, or focus it and use arrow keys.<span>Hanging-point distances · interactive concept</span></figcaption>
-  </figure>;
+  </figure>}</LocalizedContent>;
 }

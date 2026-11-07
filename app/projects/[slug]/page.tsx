@@ -1,3 +1,5 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getProjectBySlug, projects, projectStatusLabels } from '@/content/projects';
@@ -20,7 +22,7 @@ export default async function ProjectPage({ params }: Props) {
   const project = getProjectBySlug(slug);
   if (!project) notFound();
   const links = slug === 'timely' ? [{ label: 'Timely source', href: 'https://github.com/JsonTyler/Timely' }] : slug === 'framed' ? [{ label: 'Framed source', href: 'https://github.com/JsonTyler/Framed' }] : [];
-  return (
+  return <LocalizedContent>{(
     <>
       <section className="gradient-bg hero-padding border-b">
         <div className="container-max">
@@ -42,5 +44,5 @@ export default async function ProjectPage({ params }: Props) {
         {links.map((link) => <ButtonLink key={link.href} href={link.href} variant="tertiary" external>{link.label}</ButtonLink>)}
       </nav>
     </>
-  );
+  )}</LocalizedContent>;
 }

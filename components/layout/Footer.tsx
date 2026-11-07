@@ -1,9 +1,11 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import { SITE_METADATA, SOCIAL_LINKS } from '@/lib/constants';
 
 export function Footer({ embedded = false }: { embedded?: boolean }) {
   const currentYear = new Date().getFullYear();
 
-  return (
+  return <LocalizedContent>{(
     <footer className="border-t border-slate-200 bg-white" style={{ padding: 0 }}>
       <div className="container-max py-2.5 md:py-3">
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-center">
@@ -35,5 +37,5 @@ export function Footer({ embedded = false }: { embedded?: boolean }) {
         </div>
       </div>
     </footer>
-  );
+  )}</LocalizedContent>;
 }

@@ -1,10 +1,12 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getResearchProjects, getSelectedProjects } from '@/content/projects';
 import { ProjectPreview } from '@/components/ProjectPreview';
 export const metadata: Metadata = { title: 'Selected work', description: 'Enterprise engineering and UX, Threadkeep context memory, DataDustr product concepts, and published research.', alternates: { canonical: '/projects' } };
 export default function ProjectsPage() {
-  return <div className="work-page">
+  return <LocalizedContent>{<div className="work-page">
     <section className="gradient-bg hero-padding border-b"><div className="container-max">
       <p className="eyebrow">Portfolio</p><h1 className="hero-title">Selected work</h1>
       <p className="hero-subtitle reading-measure">Enterprise engineering and UX, a working context-memory app, and interactive product concepts.</p>
@@ -21,5 +23,5 @@ export default function ProjectsPage() {
         <Link className="story-link focus-ring" href={`/projects/${project.slug}`}>Explore {project.title} ↗</Link>
       </article>)}</div>
     </div></section>
-  </div>;
+  </div>}</LocalizedContent>;
 }

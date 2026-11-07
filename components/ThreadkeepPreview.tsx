@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 
 import Image from 'next/image';
 import { useState } from 'react';
@@ -12,11 +14,11 @@ const screens = [
 export function ThreadkeepPreview({ priority = false }: { priority?: boolean }) {
   const [selected, setSelected] = useState(0);
   const screen = screens[selected];
-  return <figure className={styles.preview} aria-label="Threadkeep application screenshots">
+  return <LocalizedContent>{<figure className={styles.preview} aria-label="Threadkeep application screenshots">
     <div className={styles.controls} role="group" aria-label="Threadkeep screenshot">
       {screens.map((item, index) => <button key={item.id} type="button" aria-pressed={selected === index} onClick={() => setSelected(index)}>{item.label}</button>)}
     </div>
     <Image src={`/projects/threadkeep/${screen.id}.png`} alt={screen.alt} width={1280} height={820} sizes="(min-width: 900px) 1000px, 100vw" priority={priority} unoptimized />
     <figcaption>Working application · fictional demo records · screenshot</figcaption>
-  </figure>;
+  </figure>}</LocalizedContent>;
 }

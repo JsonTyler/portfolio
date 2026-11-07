@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 
 import { useEffect, useState } from 'react';
 
@@ -25,7 +27,7 @@ export function ThemeSwitcher({ previews = false }: { previews?: boolean }) {
     try { globalThis.localStorage.setItem('portfolio-theme-v2', next); } catch { /* Selection works without storage. */ }
   }
 
-  return <div className={`theme-controls flex items-center border rounded-full p-1 ${previews ? 'theme-previews' : ''}`} role="group" aria-label="Appearance">
+  return <LocalizedContent>{<div className={`theme-controls flex items-center border rounded-full p-1 ${previews ? 'theme-previews' : ''}`} role="group" aria-label="Appearance">
     {themes.map(value => <button key={value} data-theme-choice={value} type="button" className="theme-toggle-btn focus-ring" aria-label={`Switch to ${value} theme`} aria-pressed={theme === value} title={value.charAt(0).toUpperCase() + value.slice(1)} onClick={() => choose(value)}>
       {previews && <span className="theme-wallpaper-preview" aria-hidden="true"><span /><i /><i /><i /></span>}
       {!previews && <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -33,5 +35,5 @@ export function ThemeSwitcher({ previews = false }: { previews?: boolean }) {
       </svg>}
       {previews && <><strong>{value.charAt(0).toUpperCase() + value.slice(1)}</strong><span className="theme-preview-check" aria-hidden="true">{theme === value ? '✓' : '○'}</span></>}
     </button>)}
-  </div>;
+  </div>}</LocalizedContent>;
 }

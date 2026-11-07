@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -18,12 +20,12 @@ export function MotionControl({ paused, subject, onToggle }: { paused: boolean; 
     return () => { observer.disconnect(); globalThis.removeEventListener('resize', sync); };
   }, []);
 
-  return (
+  return <LocalizedContent>{(
     <>
       {slot && createPortal(
-        <button className="motion-control focus-ring" type="button" aria-pressed={paused} onClick={onToggle}>
-          {paused ? 'Resume' : 'Pause'} {subject}
-        </button>,
+        <LocalizedContent><button className="motion-control focus-ring" type="button" aria-pressed={paused} onClick={onToggle}>
+          {`${paused ? 'Resume' : 'Pause'} ${subject}`}
+        </button></LocalizedContent>,
         slot,
       )}
       <style jsx global>{`
@@ -33,5 +35,5 @@ export function MotionControl({ paused, subject, onToggle }: { paused: boolean; 
         @media print { .motion-control { display: none !important; } }
       `}</style>
     </>
-  );
+  )}</LocalizedContent>;
 }

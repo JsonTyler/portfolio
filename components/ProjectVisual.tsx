@@ -1,3 +1,5 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import Image from 'next/image';
 import { CirrusScreens } from './CirrusScreens';
 import { FramedDemo } from './FramedDemo';
@@ -21,21 +23,21 @@ const visuals: Record<string, { src: string; alt: string; caption?: string }> = 
 };
 
 export function ProjectVisual({ slug, title, priority = false, embedded = false }: { slug: string; title: string; priority?: boolean; embedded?: boolean }) {
-  return <ProjectViewport embedded={embedded} reflowOnZoom={slug !== 'threadkeep'}><ProjectContent slug={slug} title={title} priority={priority} embedded={embedded} /></ProjectViewport>;
+  return <LocalizedContent>{<ProjectViewport embedded={embedded} reflowOnZoom={slug !== 'threadkeep'}><ProjectContent slug={slug} title={title} priority={priority} embedded={embedded} /></ProjectViewport>}</LocalizedContent>;
 }
 
 function ProjectContent({ slug, title, priority = false, embedded = false }: { slug: string; title: string; priority?: boolean; embedded?: boolean }) {
-  if (slug === 'threadkeep') return <ThreadkeepPreview priority={priority} />;
-  if (slug === 'framed') return <FramedDemo />;
-  if (slug === 'datadustr-tools') return <InboxDemo />;
-  if (slug === 'timely') return <TimelyDemo />;
-  if (slug === 'cirrus') return <CirrusScreens priority={priority} embedded={embedded} />;
+  if (slug === 'threadkeep') return <LocalizedContent>{<ThreadkeepPreview priority={priority} />}</LocalizedContent>;
+  if (slug === 'framed') return <LocalizedContent>{<FramedDemo />}</LocalizedContent>;
+  if (slug === 'datadustr-tools') return <LocalizedContent>{<InboxDemo />}</LocalizedContent>;
+  if (slug === 'timely') return <LocalizedContent>{<TimelyDemo />}</LocalizedContent>;
+  if (slug === 'cirrus') return <LocalizedContent>{<CirrusScreens priority={priority} embedded={embedded} />}</LocalizedContent>;
   const visual = visuals[slug];
   if (!visual) return null;
-  return <figure className="project-visual" aria-label={`${title} preview`} style={{ position: 'relative', zIndex: 3 }}>
+  return <LocalizedContent>{<figure className="project-visual" aria-label={`${title} preview`} style={{ position: 'relative', zIndex: 3 }}>
     <div className="project-visual-frame" style={{ backgroundColor: '#0f172a' }}>
       <Image src={visual.src} alt={visual.alt} width={1200} height={780} sizes="(min-width: 900px) 760px, 100vw" unoptimized priority={priority} />
     </div>
     <figcaption><span>{visual.caption ?? 'Source-based illustration · sample data'}</span></figcaption>
-  </figure>;
+  </figure>}</LocalizedContent>;
 }

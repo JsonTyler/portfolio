@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 import { useEffect, useRef, useState } from 'react';
 import styles from './CirrusScreens.module.css';
 const deductions = [
@@ -27,7 +29,7 @@ function Icon({ kind, size = 18 }: { kind: 'person' | 'wallet' | 'clock' | 'shie
     home: 'm3 11 9-8 9 8M5 9v12h14V9m-10 12v-7h6v7',
     density: 'M3 3h6M3 3v6m18-6h-6m6-0v6M3 21h6m-6 0v-6m18 6h-6m6 0v-6M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6',
   };
-  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[kind]}/></svg>;
+  return <LocalizedContent>{<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[kind]}/></svg>}</LocalizedContent>;
 }
 export function CirrusScreens({ priority = false, embedded = false }: { priority?: boolean; embedded?: boolean }) {
   const [details, setDetails] = useState(false);
@@ -64,7 +66,7 @@ export function CirrusScreens({ priority = false, embedded = false }: { priority
     return () => { observer.disconnect(); globalThis.clearTimeout(timer); };
   }, [compact]);
   const extraRows = compact && capacity.spacious !== null ? capacity.visible - capacity.spacious : 0;
-  return <figure className={`project-visual ${styles.preview}`} data-compact={compact} data-details={details} data-priority={priority || undefined}>
+  return <LocalizedContent>{<figure className={`project-visual ${styles.preview}`} data-compact={compact} data-details={details} data-priority={priority || undefined}>
     <div className={styles.comparison}>
       <div className={styles.challenge}><strong>Fit more records.</strong><span>Switch density. Keep the same workspace.</span></div>
       <div role="group" aria-label="Compare interface density" className={styles.controls}><button type="button" aria-pressed={!compact} onClick={() => setCompact(false)}>Spacious</button><button type="button" aria-pressed={compact} onClick={() => setCompact(true)}>Compact</button></div>
@@ -89,5 +91,5 @@ export function CirrusScreens({ priority = false, embedded = false }: { priority
       </div>
     </div>
     <figcaption className={styles.caption}><span className={styles.note}>Independent recreation based on publicly available product imagery. Uses fictional data; not affiliated with or endorsed by Springbrook. Row counts describe this demo.</span></figcaption>
-  </figure>;
+  </figure>}</LocalizedContent>;
 }

@@ -1,5 +1,7 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 export function FramedCaseStudy() {
-  return (
+  return <LocalizedContent>{(
     <div className="container-max case-story">
       <section className="story-summary">
         <p className="eyebrow">College project · archived</p>
@@ -24,5 +26,5 @@ export function FramedCaseStudy() {
         <a className="story-link" href="https://github.com/JsonTyler/Framed/blob/master/assets/js/script.js">View the canvas interaction source ↗</a>
       </section>
     </div>
-  );
+  )}</LocalizedContent>;
 }

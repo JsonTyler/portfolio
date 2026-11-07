@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 'react';
 import styles from './ProjectViewport.module.css';
@@ -48,7 +50,7 @@ export function ProjectViewport({ children, embedded = false, reflowOnZoom = tru
 
   const scale = embedded ? zoom ?? fit.scale : fullSize ? 1 : fit.scale;
   const geometry = previewGeometry(fit.width, fit.available, fit.height, scale, embedded && zoom !== null && reflowOnZoom);
-  if (embedded) return <div ref={viewport} className={styles.viewport} data-ready={fit.height > 0} data-embedded data-project-viewport data-fitted={zoom === null}>
+  if (embedded) return <LocalizedContent>{<div ref={viewport} className={styles.viewport} data-ready={fit.height > 0} data-embedded data-project-viewport data-fitted={zoom === null}>
     <div className={styles.canvas} data-preview-canvas tabIndex={0} aria-label={reflowOnZoom ? "Interactive project preview. Zoom out to expand the workspace; zoom in for larger controls." : "Application screenshots. Zoom in to inspect screenshot details."}>
       <div ref={stage} className={styles.scaledSurface} style={{ width: geometry.surfaceWidth, height: geometry.surfaceHeight }}>
         <div ref={content} className={styles.embeddedContent} style={{ width: geometry.layoutWidth, transform: `scale(${scale})`, '--embedded-preview-height': `${geometry.layoutHeight}px` } as CSSProperties}>{children}</div>
@@ -62,12 +64,12 @@ export function ProjectViewport({ children, embedded = false, reflowOnZoom = tru
       <button type="button" onClick={() => setZoom(null)} aria-pressed={zoom === null}>Fit</button>
       <button type="button" onClick={() => setZoom(1)} aria-pressed={zoom === 1}>100%</button>
     </div>
-  </div>;
+  </div>}</LocalizedContent>;
 
-  return <div ref={viewport} className={styles.viewport} data-project-viewport data-fitted={scale < 1}>
+  return <LocalizedContent>{<div ref={viewport} className={styles.viewport} data-project-viewport data-fitted={scale < 1}>
     <div ref={stage} className={styles.stage} style={scale < 1 ? { height: fit.height * scale } : undefined}>
       <div ref={content} className={styles.content} style={scale < 1 ? { position: 'absolute', transform: `scale(${scale})` } : undefined}>{children}</div>
     </div>
     {fit.scale < 1 && <div className={styles.controls}><button type="button" className="focus-ring" aria-pressed={fullSize} onClick={() => setFullSize(value => !value)}>{fullSize ? 'Fit to screen' : 'Full size'}</button></div>}
-  </div>;
+  </div>}</LocalizedContent>;
 }

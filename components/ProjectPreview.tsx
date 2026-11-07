@@ -1,10 +1,12 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import Link from 'next/link';
 import type { Project } from '@/lib/types';
 import { projectStatusLabels } from '@/content/projects';
 import { ProjectVisual } from './ProjectVisual';
 
 export function ProjectPreview({ project, index }: { project: Project; index: number }) {
-  return (
+  return <LocalizedContent>{(
     <article className={`project-preview${project.comingSoon || project.slug === 'design-library' ? ' project-preview-text' : ''}`}>
       {!project.comingSoon && <ProjectVisual slug={project.slug} title={project.title} priority={index === 0} />}
       <div className="project-preview-copy">
@@ -19,5 +21,5 @@ export function ProjectPreview({ project, index }: { project: Project; index: nu
         </Link>
       </div>
     </article>
-  );
+  )}</LocalizedContent>;
 }

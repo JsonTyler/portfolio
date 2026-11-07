@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 
 import { useRef, useState, type FormEvent, type ComponentRef } from 'react';
 import { timelyPublication } from '@/content/timely';
@@ -49,7 +51,7 @@ export function TimelyDemo() {
     const span = Math.max(3, Math.min(90, range.span * factor));
     setRange({ start: range.start + (range.span - span) / 2, span });
   }
-  return <figure className={`project-visual ${styles.demo}`} aria-label="Interactive Timely chain-of-custody research preview">
+  return <LocalizedContent>{<figure className={`project-visual ${styles.demo}`} aria-label="Interactive Timely chain-of-custody research preview">
     <div className={styles.surface}>
       <div className={styles.brand}><strong>Timely</strong><span>Chain of custody</span><a href={timelyPublication.url} target="_blank" rel="noopener noreferrer">IEEE SoutheastCon 2019 ↗</a></div>
       <div className={styles.navigation} role="group" aria-label="Timely views">{['Questions', 'Timeline', 'Table'].map(name => <button key={name} type="button" aria-pressed={view === name} onClick={() => setView(name)}>{name}</button>)}<button type="button" className={styles.export} onClick={exportCsv}>Export CSV</button></div>
@@ -73,5 +75,5 @@ export function TimelyDemo() {
       <p className={styles.status} role="status">{message}</p>
     </div>
     <figcaption>Recreated from the original Questions → Timeline → Table workflow.<span>Fictional sample records · edits stay in this preview session</span></figcaption>
-  </figure>;
+  </figure>}</LocalizedContent>;
 }

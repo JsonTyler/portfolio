@@ -1,4 +1,6 @@
  'use client';
+import { LanguageSwitcher, LocalizedContent } from '@/components/LanguageProvider';
+
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -18,7 +20,7 @@ export function Header() {
       : currentPath === href || currentPath.startsWith(`${href}/`);
 
 
-  return (
+  return <LocalizedContent>{(
     <header onKeyDown={(event) => { if (event.key === 'Escape' && isMobileMenuOpen) { setIsMobileMenuOpen(false); menuButtonRef.current?.focus(); } }} className="border-b border-slate-200 bg-white sticky top-0 z-40 transition-standard">
       <div className="container-max site-header-row py-3">
         <Link
@@ -45,7 +47,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="desktop-theme-controls"><ThemeSwitcher /></div>
+        <div className="desktop-theme-controls"><LanguageSwitcher /><ThemeSwitcher /></div>
 
         <button
           type="button"
@@ -82,9 +84,9 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <div className="mobile-theme-controls"><span>Theme</span><ThemeSwitcher /></div>
+          <div className="mobile-theme-controls"><LanguageSwitcher /><span>Theme</span><ThemeSwitcher /></div>
         </nav>
       )}
     </header>
-  );
+  )}</LocalizedContent>;
 }

@@ -1,9 +1,11 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import { InboxDemo } from '@/components/InboxDemo';
 import { ProjectViewport } from '@/components/ProjectViewport';
 import { DataDustrTrailers } from '@/components/DataDustrTrailers';
 
 export function DataDustrDesktopStory() {
-  return <div className="case-story compact-project-story">
+  return <LocalizedContent>{<div className="case-story compact-project-story">
     <section>
       <p className="eyebrow">Independent product design &amp; engineering</p>
       <h2>Cleanup starts with a decision you can review.</h2>
@@ -16,11 +18,11 @@ export function DataDustrDesktopStory() {
       <p><a className="story-link focus-ring" href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer">Explore the full interactive demo ↗</a></p>
       <p className="compact-story-note">The embedded preview is a small sample; the full demo explores more of the product. Portfolio examples use fictional data.</p>
     </section>
-  </div>;
+  </div>}</LocalizedContent>;
 }
 
 export function DataDustrToolsCaseStudy() {
-  return (
+  return <LocalizedContent>{(
     <div className="container-max case-story">
       <section className="story-summary">
         <p className="eyebrow">Independent product concepts</p>
@@ -49,5 +51,5 @@ export function DataDustrToolsCaseStudy() {
       </section>
       <section className="story-limits"><h2>Where the prototype stops</h2><p>The demonstrations show interaction design and implementation, not proven cleanup accuracy, guaranteed safety or measured customer outcomes. Counts and savings belong to fictional datasets. No purchase, real inbox connection or desktop download is offered through this portfolio.</p><p className="text-sm text-slate-600">Application source remains private. The animated films illustrate the concepts with fictional messages and files; no personal account data is included.</p></section>
     </div>
-  );
+  )}</LocalizedContent>;
 }

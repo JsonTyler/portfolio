@@ -1,4 +1,6 @@
 'use client';
+import { LanguageSwitcher, LocalizedContent } from '@/components/LanguageProvider';
+
 
 import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import type { Project } from '@/lib/types';
@@ -10,7 +12,7 @@ import { TrailerPlayer } from './TrailerPlayer';
 import styles from './PortfolioDesktop.module.css';
 
 function Folder({ className = '' }: { className?: string }) {
-  return <svg className={`${styles.folder} ${className}`} viewBox="0 0 48 40" fill="none" aria-hidden="true"><path d="M3 8a3 3 0 0 1 3-3h12l5 5h19a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8Z" fill="var(--folder-back)" stroke="var(--folder-edge)"/><path d="M3 16a3 3 0 0 1 3-3h36a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V16Z" fill="var(--folder-front)" stroke="var(--folder-edge)"/><path d="M6 15h36" stroke="#fff" strokeOpacity=".45"/></svg>;
+  return <LocalizedContent>{<svg className={`${styles.folder} ${className}`} viewBox="0 0 48 40" fill="none" aria-hidden="true"><path d="M3 8a3 3 0 0 1 3-3h12l5 5h19a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8Z" fill="var(--folder-back)" stroke="var(--folder-edge)"/><path d="M3 16a3 3 0 0 1 3-3h36a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V16Z" fill="var(--folder-front)" stroke="var(--folder-edge)"/><path d="M6 15h36" stroke="#fff" strokeOpacity=".45"/></svg>}</LocalizedContent>;
 }
 
 const documents = [{ slug: 'design-library', title: 'Springbrook overview' }, { slug: 'experience', title: 'Experience' }, { slug: 'about', title: 'About me' }, { slug: 'resume', title: 'Résumé' }, { slug: 'contact', title: 'Contact' }];
@@ -111,13 +113,13 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
     className={styles.sidebarItem} onClick={() => select(slug)} onKeyDown={event => onTabKey(event, index)}
   >{slug === 'overview' ? <span className={styles.homeIcon} aria-hidden="true">⌂</span> : <Folder />}<span>{label}</span>{slug === 'timely' && <small aria-hidden="true" className={styles.researchBadge}>IEEE</small>}</button>;
 
-  return <div data-portfolio-desktop className={`${styles.desktop} ${expanded ? styles.expanded : ''} ${mobileWorkOpen ? styles.mobileWorkActive : ''} ${selected === 'overview' && !mobileWorkOpen ? styles.mobileOnHome : ''}`}>
+  return <LocalizedContent>{<div data-portfolio-desktop className={`${styles.desktop} ${expanded ? styles.expanded : ''} ${mobileWorkOpen ? styles.mobileWorkActive : ''} ${selected === 'overview' && !mobileWorkOpen ? styles.mobileOnHome : ''}`}>
     <section className={styles.window} aria-label="Portfolio workspace">
       <MobileHeader title={mobileTitle} backLabel={mobileWorkOpen ? 'Home' : selected === 'overview' ? undefined : view !== 'preview' ? 'Back' : project?.collection === 'enterprise' ? 'Back' : project ? 'Work' : 'Home'} onBack={mobileBack} />
       <div className={styles.titlebar}>
         <div className={styles.windowControls}><span className={styles.close} aria-hidden="true"/><span className={styles.minimize} aria-hidden="true"/><button type="button" className={styles.resize} onClick={() => setExpanded(value => !value)} aria-label={expanded ? 'Restore window size' : 'Enlarge workspace'} aria-pressed={expanded}><span aria-hidden="true">{expanded ? '−' : '+'}</span></button></div>
         <span className={styles.windowTitle}><Folder />Jason Tyler Rodriguez</span>
-        <div className={styles.windowTheme}><ThemeSwitcher /></div>
+        <div className={styles.windowTheme}><LanguageSwitcher /><ThemeSwitcher /></div>
       </div>
       <div className={`${styles.toolbar} ${project && !project.comingSoon && !mobileWorkOpen ? styles.mobileProjectToolbar : ''}`}>
         <button type="button" className={styles.back} onClick={() => select(project?.collection === 'enterprise' ? 'design-library' : 'overview')} disabled={selected === 'overview'} aria-label={project?.collection === 'enterprise' ? 'Back to enterprise work' : 'Back to overview'}>‹</button>
@@ -152,7 +154,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
             {tab('design-library', 'Work overview', 1)}
             <nav className={styles.enterpriseLinks} aria-label="Springbrook work">
               <a href="#design-library/details" aria-current={selected === 'design-library' && view === 'details' ? 'page' : undefined}>Design system</a>
-              {enterpriseProjects.map(item => <a key={item.slug} href={`#${item.slug}`} aria-current={selected === item.slug ? 'page' : undefined}>{item.title}</a>)}
+              {enterpriseProjects.map(item => <a key={item.slug} href={`#${item.slug}`} aria-current={selected === item.slug ? 'page' : undefined}>{item.slug === 'cirrus' ? 'Compact mode' : item.title}</a>)}
             </nav>
             <p className={styles.sidebarLabel}>Selected work</p>
             {selectedProjects.map(item => <div key={item.slug}>{tab(item.slug, item.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : item.title, navigation.indexOf(item.slug))}</div>)}
@@ -197,5 +199,5 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
       <MobileDock selected={selected} workOpen={mobileWorkOpen} isProject={!!project} onOpen={select} onWork={openMobileWork} />
       <div className={styles.statusbar}><span>{document ? document.title : project ? project.comingSoon ? 'Coming soon' : view === 'details' ? 'Project details' : view === 'films' ? 'Concept films' : project.slug === 'threadkeep' ? 'Application screenshots · fictional data' : 'Interactive preview · sample data' : 'Enterprise work · 2 independent projects · research'}</span><Footer embedded /></div>
     </section>
-  </div>;
+  </div>}</LocalizedContent>;
 }

@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 import { useState } from 'react';
 import styles from './AboutStory.module.css';
 const details = {
@@ -18,7 +20,7 @@ function Cat({ x, y, kind }: { x: number; y: number; kind: 'tabby' | 'siamese' |
   const siamese = kind === 'siamese', fluffy = kind === 'fluffy';
   const coat = siamese ? '#8b795e' : fluffy ? '#37302f' : '#918b76';
   const dark = siamese ? '#4f392d' : fluffy ? '#252729' : '#343b32';
-  return <g transform={`translate(${x} ${y}) scale(${siamese ? .85 : 1.1})`} className={styles.cat} data-kind={kind}>
+  return <LocalizedContent>{<g transform={`translate(${x} ${y}) scale(${siamese ? .85 : 1.1})`} className={styles.cat} data-kind={kind}>
     <ellipse cx="0" cy="35" rx="32" ry="5" fill="#172a2d" opacity=".6"/>
     <path className={styles.tail} d="M-17 28C-53 41-57 9-43-1" fill="none" stroke={coat} strokeWidth={fluffy ? 13 : 8} strokeLinecap="round"/>
     <path d={fluffy ? 'M-24 31Q-30 26-25 19L-29 14-23 7-25 1-15-5Q0-16 15-5L25 1 23 7 29 14 25 19Q30 26 24 31Z' : 'M-21 30Q-25 16-14-5Q0-15 14-5Q25 16 21 30Z'} fill={coat}/>
@@ -38,7 +40,7 @@ function Cat({ x, y, kind }: { x: number; y: number; kind: 'tabby' | 'siamese' |
     <path d="M-12 21v12M12 21v12" stroke={siamese ? dark : coat} strokeWidth="10" strokeLinecap="round"/>
     {siamese && <path d="M-12 28v5M12 28v5" stroke="#e2ded0" strokeWidth="10" strokeLinecap="round"/>}
     <path d="M-15 34h6M9 34h6" stroke={dark} strokeWidth="1"/>
-  </g>;
+  </g>}</LocalizedContent>;
 }
 export function AboutStory() {
   const [active, setActive] = useState<Detail | null>(null);
@@ -54,7 +56,7 @@ export function AboutStory() {
     { key: 'siamese', label: 'Meet the small Siamese', left: 44, top: 80, width: 10, height: 14 },
     { key: 'fluffy', label: 'Meet the fluffy dark cat', left: 55, top: 77, width: 11, height: 16 },
   ];
-  return <section className={styles.story} aria-label="An illustrated profile of Jason" data-active={active ?? 'idle'} onPointerLeave={() => setActive(null)} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setActive(null); }} onKeyDown={event => { if (event.key === 'Escape') setActive(null); }}>
+  return <LocalizedContent>{<section className={styles.story} aria-label="An illustrated profile of Jason" data-active={active ?? 'idle'} onPointerLeave={() => setActive(null)} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setActive(null); }} onKeyDown={event => { if (event.key === 'Escape') setActive(null); }}>
     <div className={styles.canvas}>
     <svg className={styles.scene} viewBox="0 0 900 600" role="img" aria-label="Jason, with a blue cap, dark beard and smile, shares a workspace with his curly-haired girlfriend and three cats: a striped tabby, a small Siamese with a white chest and paws, and a fluffy dark cat. A red truck camper and mountains are outside the window.">
       <rect width="900" height="600" rx="18" fill="#172a31"/>
@@ -189,5 +191,5 @@ export function AboutStory() {
     {hotspots.map(spot => <button key={spot.key} type="button" className={styles.hotspot} style={{ left: `${spot.left}%`, top: `${spot.top}%`, width: `${spot.width}%`, height: `${spot.height}%` }} aria-label={spot.label} aria-describedby="about-scene-detail" onPointerEnter={() => setActive(spot.key)} onFocus={() => setActive(spot.key)} onClick={() => setActive(spot.key)} />)}
     </div>
     <p className={styles.caption} id="about-scene-detail">{active ? details[active] : 'A little curiosity goes a long way. Explore the desk, the view, or the cats.'}</p>
-  </section>;
+  </section>}</LocalizedContent>;
 }

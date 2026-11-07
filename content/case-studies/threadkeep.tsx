@@ -1,6 +1,8 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 export function ThreadkeepCaseStudy({ embedded = false }: { embedded?: boolean }) {
   const Heading = embedded ? 'h1' : 'h2';
-  return <div className="container-max case-story">
+  return <LocalizedContent>{<div className="container-max case-story">
     <section className="story-summary">
       <p className="eyebrow">Threadkeep · Independent application</p>
       <Heading>A useful place to return to.</Heading>
@@ -15,5 +17,5 @@ export function ThreadkeepCaseStudy({ embedded = false }: { embedded?: boolean }
     <section><h2>Designing for interrupted work</h2><p>The return view pairs where work stopped with the next move. Resume opens a durable session; captures build a working notebook. Wrap-up assembles an editable handoff with source references. Browser drafts survive reloads, while original handoffs remain in history.</p></section>
     <section><h2>Engineering the boundaries</h2><p>The app runs on loopback with local authentication, short-lived single-use launch links, and revocable sessions. Revision checks and idempotent retries protect saves. Automated tests cover storage, CLI/browser round trips, conflict recovery, and the work-session lifecycle.</p></section>
     <section className="story-limits"><h2>What is shown here</h2><p>These are screenshots of the working application using isolated fictional projects. They are not an interactive hosted instance. Source and personal working records remain private. Threadkeep shares context through explicit reads and writes; it does not inject updates into an active Codex conversation.</p></section>
-  </div>;
+  </div>}</LocalizedContent>;
 }

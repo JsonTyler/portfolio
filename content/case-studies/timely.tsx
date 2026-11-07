@@ -1,7 +1,9 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import { timelyPublication } from '@/content/timely';
 
 export function TimelyCaseStudy() {
-  return <div className="container-max case-story">
+  return <LocalizedContent>{<div className="container-max case-story">
     <section className="story-summary">
       <p className="eyebrow">Published research · {timelyPublication.venue}</p>
       <h2>{timelyPublication.title}</h2>
@@ -17,5 +19,5 @@ export function TimelyCaseStudy() {
       <p>The portfolio recreation follows that workflow: select a sample case, inspect its fields, add a fictional record, compare the table and timeline, and export the sample as CSV.</p>
       <p className="text-sm text-slate-600">The original is preserved on GitHub. This recreation uses fictional records and keeps edits in the current preview session.</p>
     </section>
-  </div>;
+  </div>}</LocalizedContent>;
 }

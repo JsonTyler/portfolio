@@ -1,3 +1,5 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import { ExperienceContent } from '@/components/ExperienceContent';
 import { ResumeContent } from '@/components/ResumeContent';
 import AboutPage from './about/page';
@@ -18,9 +20,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 export default function Home() {
-  return <PortfolioDesktop
+  return <LocalizedContent>{<PortfolioDesktop
     projects={getWorkspaceProjects()}
     pages={{ 'design-library': <DesktopEnterprise />, experience: <ExperienceContent embedded />, about: <AboutPage />, resume: <ResumeContent embedded />, contact: <ContactPage /> }}
     details={{ 'design-library': <DesignLibraryCaseStudy />, 'datadustr-tools': <DataDustrDesktopStory />, cirrus: <CirrusCaseStudy />, threadkeep: <ThreadkeepCaseStudy embedded />, timely: <TimelyCaseStudy /> }}
-  />;
+  />}</LocalizedContent>;
 }

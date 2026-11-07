@@ -1,3 +1,5 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import { PrintResume } from '@/components/PrintResume';
 import styles from '@/app/resume/page.module.css';
 import { SITE_METADATA } from '@/lib/constants';
@@ -11,7 +13,7 @@ const skills = {
 };
 
 export function ResumeContent({ embedded = false }: { embedded?: boolean }) {
-  return (
+  return <LocalizedContent>{(
     <div className={`${styles.page} ${embedded ? styles.embedded : ''}`}>
       <section className={embedded ? styles.heading : "gradient-bg text-white hero-padding border-b"}>
         <div className="container-max max-w-4xl">
@@ -100,5 +102,5 @@ export function ResumeContent({ embedded = false }: { embedded?: boolean }) {
         </aside>
       </div>
     </div>
-  );
+  )}</LocalizedContent>;
 }

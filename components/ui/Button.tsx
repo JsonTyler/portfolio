@@ -1,3 +1,5 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import React from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -40,7 +42,7 @@ export function Button({
   className,
   ...props
 }: ButtonProps) {
-  return (
+  return <LocalizedContent>{(
     <button
       className={cn(
         baseStyles,
@@ -50,7 +52,7 @@ export function Button({
       )}
       {...props}
     />
-  );
+  )}</LocalizedContent>;
 }
 
 export function ButtonLink({
@@ -64,7 +66,7 @@ export function ButtonLink({
   const linkClass = cn(baseStyles, variants[variant], sizes[size], className);
 
   if (external) {
-    return (
+    return <LocalizedContent>{(
       <a
         href={href}
         target="_blank"
@@ -72,10 +74,10 @@ export function ButtonLink({
         className={linkClass}
         {...props}
       />
-    );
+    )}</LocalizedContent>;
   }
 
-  return (
+  return <LocalizedContent>{(
     <Link href={href} className={linkClass} {...props} />
-  );
+  )}</LocalizedContent>;
 }

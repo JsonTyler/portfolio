@@ -212,3 +212,8 @@
 
 @media(max-width: 767px) { .workList h2 { margin: 18px 4px 8px; color: var(--phone-muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; } }
 @media(max-width: 767px) { .workList { height: auto; min-height: 100%; padding-bottom: 24px; } .listGroup button { scroll-margin-block: 8px; } }
+
+@media (max-width: 767px) {
+  .headerControls { display: flex; align-items: center; justify-content: flex-end; gap: 2px; }
+  .headerControls :global(.language-switch) { min-width: 30px; padding: 0 3px; font-size: 11px; }
+}

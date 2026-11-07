@@ -1,3 +1,5 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import { Metadata } from 'next';
 import { ResumeContent } from '@/components/ResumeContent';
 
@@ -7,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function ResumePage() {
-  return <ResumeContent />;
+  return <LocalizedContent>{<ResumeContent />}</LocalizedContent>;
 }

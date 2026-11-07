@@ -1,5 +1,7 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 export function AsILeftItCaseStudy() {
-  return (
+  return <LocalizedContent>{(
     <div className="container-max case-story">
       <section className="story-summary">
         <p className="eyebrow">Local-first application prototype</p>
@@ -21,5 +23,5 @@ export function AsILeftItCaseStudy() {
         <p>This case study presents a working local prototype and its pause → return → continue workflow. The project is being preserved as portfolio work; a commercial release is not currently planned.</p>
       </section>
     </div>
-  );
+  )}</LocalizedContent>;
 }

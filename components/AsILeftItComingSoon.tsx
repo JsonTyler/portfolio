@@ -1,5 +1,7 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 export function AsILeftItComingSoon() {
-  return (
+  return <LocalizedContent>{(
     <section className="aili-coming-soon" aria-labelledby="aili-coming-soon-heading">
       <p className="eyebrow">As I Left It · In progress</p>
       <h2 id="aili-coming-soon-heading">Some places stay with us.</h2>
@@ -10,5 +12,5 @@ export function AsILeftItComingSoon() {
       <p>An independent project taking shape at the intersection of memory, design, and interaction.</p>
       <p className="aili-coming-soon-status">Coming soon. More to share when it’s ready.</p>
     </section>
-  );
+  )}</LocalizedContent>;
 }

@@ -1,8 +1,10 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 import { experience } from '@/content/experience';
 import styles from '@/app/experience/page.module.css';
 
 export function ExperienceContent({ embedded = false }: { embedded?: boolean }) {
-  return <div className={`${styles.page} ${embedded ? styles.embedded : ''}`}>
+  return <LocalizedContent>{<div className={`${styles.page} ${embedded ? styles.embedded : ''}`}>
     <section className={embedded ? styles.heading : "gradient-bg hero-padding border-b"}>
       <div className="container-max">
         <h1 className="hero-title">Experience</h1>
@@ -22,5 +24,5 @@ export function ExperienceContent({ embedded = false }: { embedded?: boolean }) 
         </article>
       </li>)}</ol>
     </section>
-  </div>;
+  </div>}</LocalizedContent>;
 }

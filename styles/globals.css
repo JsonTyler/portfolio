@@ -990,3 +990,10 @@ html:root[data-theme] .aili-coming-soon .aili-coming-soon-status { color: #52654
     overflow: hidden;
   }
 }
+
+.language-switch { display: inline-flex; align-items: center; justify-content: center; min-height: 32px; padding: 4px 8px; border: 1px solid currentColor; border-radius: 5px; background: transparent; color: inherit; font: inherit; font-size: 12px; cursor: pointer; }
+.language-switch:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+@media (max-width: 767px) { .language-switch { min-height: 44px; color: var(--phone-accent); border: 0; } }
+@media (min-width: 768px) {
+  .desktop-theme-controls { display: flex; align-items: center; gap: 8px; }
+}

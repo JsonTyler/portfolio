@@ -1,3 +1,4 @@
+import { LanguageProvider, LocalizedContent } from '@/components/LanguageProvider';
 import type { Metadata, Viewport } from 'next';
 import { URL } from 'node:url';
 import { ThemeEffects } from '@/components/ThemeEffects';
@@ -67,6 +68,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('portfolio-theme-v2');if(t==='winter'||t==='midnight'||t==='hacker')document.documentElement.dataset.theme=t}catch{}` }} />
       </head>
       <body>
+        <LanguageProvider><LocalizedContent>
         <a className="skip-link" href="#main-content">Skip to content</a>
         <ThemeEffects />
         <div className={`site-shell flex flex-col min-h-screen bg-slate-50 ${densityStyles.shell}`} style={{ zIndex: 'auto' }}>
@@ -76,6 +78,7 @@ export default function RootLayout({
           </main>
           <SiteFooter />
         </div>
+        </LocalizedContent></LanguageProvider>
       </body>
     </html>
   );

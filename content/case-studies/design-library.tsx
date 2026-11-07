@@ -1,5 +1,7 @@
+
+import { LocalizedContent } from '@/components/LanguageProvider';
 export function DesignLibraryCaseStudy() {
-  return <div className="container-max case-story">
+  return <LocalizedContent>{<div className="container-max case-story">
     <section className="story-summary">
       <p className="eyebrow">Springbrook Software · 2022–present</p>
       <h1>Consistency through shared components.</h1>
@@ -29,5 +31,5 @@ export function DesignLibraryCaseStudy() {
       <h2>Related work</h2>
       <p><a className="story-link focus-ring" href="/#cirrus/details">Read the compact-mode case study →</a></p>
     </section>
-  </div>;
+  </div>}</LocalizedContent>;
 }

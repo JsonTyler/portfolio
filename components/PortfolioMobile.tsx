@@ -1,4 +1,6 @@
 'use client';
+import { LanguageSwitcher, LocalizedContent } from '@/components/LanguageProvider';
+
 
 import { useRef } from 'react';
 import type { Project } from '@/lib/types';
@@ -19,16 +21,17 @@ const paths: Record<IconName, string> = {
   cirrus: 'M3 4h18v16H3V4Zm0 5h18M8 9v11m4-7h6m-6 4h6',
 };
 function Icon({ name }: { name: IconName }) {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>;
+  return <LocalizedContent>{<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>}</LocalizedContent>;
 }
 
 export function MobileHeader({ title, backLabel, onBack }: { title: string; backLabel?: string; onBack: () => void }) {
   const appearance = useRef<globalThis.HTMLDialogElement>(null);
-  return <>
+  return <LocalizedContent>{<>
     <div className={styles.header}>
       {backLabel ? <button type="button" className={styles.back} onClick={onBack}><span aria-hidden="true">‹</span>{backLabel}</button> : <span />}
       <span className={styles.title}>{title}</span>
-      <button type="button" className={styles.appearanceButton} aria-label="Choose appearance" aria-haspopup="dialog" onClick={() => appearance.current?.showModal()}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2" /></svg></button>
+      <div className={styles.headerControls}><LanguageSwitcher compact /><button type="button" className={styles.appearanceButton} aria-label="Choose appearance" aria-haspopup="dialog" onClick={() => appearance.current?.showModal()}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2" /></svg></button>
+      </div>
     </div>
     <dialog ref={appearance} className={styles.appearanceDialog} aria-labelledby="mobile-appearance-title" onClick={event => {
       if (event.target !== event.currentTarget) return;
@@ -40,7 +43,7 @@ export function MobileHeader({ title, backLabel, onBack }: { title: string; back
       <div id="mobile-motion-control-slot" className={styles.motionSlot} />
       <button type="button" className={styles.done} onClick={() => appearance.current?.close()}>Done</button>
     </dialog>
-  </>;
+  </>}</LocalizedContent>;
 }
 
 export function MobileHome({ onOpen, onWork }: { onOpen: (slug: string) => void; onWork: () => void }) {
@@ -54,25 +57,25 @@ export function MobileHome({ onOpen, onWork }: { onOpen: (slug: string) => void;
     { slug: 'timely', label: 'Timely', icon: 'timely' },
     { slug: 'resume', label: 'Résumé', icon: 'resume' },
   ];
-  return <section className={styles.home} aria-label="Portfolio home">
+  return <LocalizedContent>{<section className={styles.home} aria-label="Portfolio home">
     <div className={styles.widgets}>
       <div className={styles.introduction}><p>Front-end & UX</p><h1>Jason<br />Rodriguez</h1><span className={styles.widgetMonogram} aria-hidden="true">JR</span></div>
       <button type="button" className={styles.featuredWidget} onClick={() => onOpen('design-library')}><span>Featured work</span><strong>Enterprise<br />interfaces.</strong><span>Springbrook Software</span><span className={styles.widgetLink}>Explore the work <b aria-hidden="true">↗</b></span></button>
     </div>
     <nav className={styles.apps} aria-label="Explore portfolio">{apps.map(app => <button type="button" key={app.slug} onClick={() => app.slug === 'work' ? onWork() : onOpen(app.slug)}><span className={styles.appIcon} data-icon={app.icon}><Icon name={app.icon} /></span><span>{app.label}</span></button>)}</nav>
     <p className={styles.homeNote}>Complex software, made easier to use.</p>
-  </section>;
+  </section>}</LocalizedContent>;
 }
 
 export function MobileWorkList({ projects, onOpen }: { projects: Project[]; onOpen: (slug: string) => void }) {
-  return <section className={styles.workList} aria-label="Work and projects"><h1>Explore the work</h1><p>Professional experience and interactive projects.</p>
+  return <LocalizedContent>{<section className={styles.workList} aria-label="Work and projects"><h1>Explore the work</h1><p>Professional experience and interactive projects.</p>
     <div className={styles.listGroup}><button type="button" onClick={() => onOpen('design-library')}><span className={styles.listIcon} data-icon="library"><Icon name="library" /></span><span><strong>Springbrook overview</strong><small>Springbrook · Shared components & workflows</small></span><span aria-hidden="true">›</span></button></div>
     <div className={styles.listGroup}>{projects.filter(project => project.collection === 'enterprise').map(project => <button type="button" key={project.slug} onClick={() => onOpen(project.slug)}><span className={styles.listIcon} data-icon="cirrus"><Icon name="cirrus" /></span><span><strong>{project.title}</strong><small>Springbrook · Interactive density demo & documentation</small></span><span aria-hidden="true">›</span></button>)}</div>
     <h2>Independent projects</h2>
     <div className={styles.listGroup}>{projects.filter(project => !project.collection).map(project => <button type="button" key={project.slug} onClick={() => onOpen(project.slug)}><span className={styles.listIcon} data-icon={project.slug === 'threadkeep' ? 'threadkeep' : 'work'}><Icon name={project.slug === 'threadkeep' ? 'threadkeep' : 'work'} /></span><span><strong>{project.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : project.title}</strong><small>{project.slug === 'threadkeep' ? 'Working local app · Codex context memory' : 'Interactive product concepts'}</small></span><span aria-hidden="true">›</span></button>)}</div>
     <h2>Published research</h2>
     <div className={styles.listGroup}>{projects.filter(project => project.collection === 'research').map(project => <button type="button" key={project.slug} onClick={() => onOpen(project.slug)}><span className={styles.listIcon} data-icon="timely"><Icon name="timely" /></span><span><strong>{project.title}</strong><small>Published research · IEEE SoutheastCon 2019</small></span><span aria-hidden="true">›</span></button>)}</div>
-  </section>;
+  </section>}</LocalizedContent>;
 }
 
 export function MobileDock({ selected, workOpen, isProject, onOpen, onWork }: { selected: string; workOpen: boolean; isProject: boolean; onOpen: (slug: string) => void; onWork: () => void }) {
@@ -82,5 +85,5 @@ export function MobileDock({ selected, workOpen, isProject, onOpen, onWork }: { 
     { slug: 'resume', label: 'Résumé', icon: 'resume', active: selected === 'resume' && !workOpen },
     { slug: 'contact', label: 'Contact', icon: 'contact', active: selected === 'contact' && !workOpen },
   ];
-  return <nav className={styles.dock} aria-label="Main navigation">{items.map(item => <button key={item.slug} type="button" aria-current={item.active ? 'page' : undefined} onClick={() => item.slug === 'work' ? onWork() : onOpen(item.slug)}><span className={styles.dockIcon} data-icon={item.icon}><Icon name={item.icon} /></span><span>{item.label}</span></button>)}</nav>;
+  return <LocalizedContent>{<nav className={styles.dock} aria-label="Main navigation">{items.map(item => <button key={item.slug} type="button" aria-current={item.active ? 'page' : undefined} onClick={() => item.slug === 'work' ? onWork() : onOpen(item.slug)}><span className={styles.dockIcon} data-icon={item.icon}><Icon name={item.icon} /></span><span>{item.label}</span></button>)}</nav>}</LocalizedContent>;
 }

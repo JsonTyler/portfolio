@@ -1,4 +1,6 @@
 'use client';
+import { LocalizedContent } from '@/components/LanguageProvider';
+
 import { useState } from 'react';
 import Image from 'next/image';
 import { cleanupCandidates, sampleMail } from '@/lib/project-demos';
@@ -21,7 +23,7 @@ export function InboxDemo() {
     setStatus(`${matches.length} sample messages moved to trash. The 2 protected messages stayed. Undo is available.`);
   }
 
-  return <figure className={`project-visual ${styles.demo}`} aria-label="Interactive Inbox Dustr demonstration">
+  return <LocalizedContent>{<figure className={`project-visual ${styles.demo}`} aria-label="Interactive Inbox Dustr demonstration">
     <DemoPrompt instruction="Filter the sample inbox, then try Safe Mass Delete. Protected messages stay." />
     <div className={styles.surface}>
       <div className={styles.brandBar}><strong><Image src="/brand/as-i-left-it/mascot/brain-happy-v2.png" alt="" width={36} height={30} /> DataDustr <small>Concept</small></strong><span className={styles.product}>Inbox Dustr</span><span className={styles.edition}>Mock data</span></div>
@@ -39,5 +41,5 @@ export function InboxDemo() {
       </div>
     </div>
     <figcaption>Interactive sample of the Inbox Dustr concept.<span>Reduced interactive demo · synthetic messages · local changes only</span></figcaption>
-  </figure>;
+  </figure>}</LocalizedContent>;
 }
