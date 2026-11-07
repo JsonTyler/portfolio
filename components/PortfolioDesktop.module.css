@@ -427,27 +427,48 @@
   .window, .panel, .sidebar, .titlebar, .toolbar, .statusbar { background: white; backdrop-filter: none; }
   .mobileHome, .mobileWork { display: none; }
 }
-@media(min-width: 768px) {
-  :global(html:root[data-theme="hacker"]) .desktop {
-    --desk-text: #eaf7ef;
-    --desk-muted: #9db9aa;
-    --desk-surface: #0a100d;
-    --desk-sidebar: #0c1812;
-    --desk-line: #284637;
-    --desk-top: #173025;
-    --desk-bottom: #09150e;
-    --desk-toolbar: #10241a;
-    --desk-selected: #17412b;
-    --desk-accent: #6cf0aa;
-    --desk-selection-text: #effcf5;
-    --folder-back: #247554;
-    --folder-front: #62b791;
-    --folder-edge: #245d45;
-  }
-  :global(html:root[data-theme="hacker"]) .sidebarLabel,
-  :global(html:root[data-theme="hacker"]) .kicker,
-  :global(html:root[data-theme="hacker"]) .breadcrumb,
-  :global(html:root[data-theme="hacker"]) .statusbar { font-family: var(--font-mono); }
-  :global(html:root[data-theme="hacker"]) .sidebarItem[aria-selected="true"] { border-left: 2px solid var(--desk-accent); }
-  :global(html:root[data-theme="hacker"]) .featuredWork { background: linear-gradient(130deg,#153b282e,transparent); border-color: #31563f; }
+/* Share Hacker colors with the mobile palette. */
+:global(html:root[data-theme="hacker"]) .desktop {
+  --desk-text: var(--phone-ink);
+  --desk-muted: var(--phone-muted);
+  --desk-surface: var(--phone-bg);
+  --desk-sidebar: var(--phone-card);
+  --desk-line: var(--phone-line);
+  --desk-top: var(--phone-card-raised);
+  --desk-bottom: var(--phone-card);
+  --desk-toolbar: var(--phone-card);
+  --desk-selected: var(--phone-card-raised);
+  --desk-accent: var(--phone-accent);
+  --desk-selection-text: var(--phone-ink);
+  --folder-back: #095c45;
+  --folder-front: #189d79;
+  --folder-edge: #087567;
 }
+
+.enterpriseLinks { display: grid; gap: 2px; padding: 2px 0 6px 28px; }
+.enterpriseLinks a { display: flex; align-items: center; min-height: 34px; padding: 4px 6px; border-radius: 4px; font-size: 12px; line-height: 1.4; text-decoration: none; }
+.enterpriseLinks a:hover, .enterpriseLinks a[aria-current="page"] { background: var(--desk-selected); }
+.tabs { overflow-y: auto; min-height: 0; }
+
+@media (min-width: 768px) {
+  :global(html:root[data-theme="hacker"]) .desktop {
+    --desk-text: #e8eaea;
+    --desk-muted: #a6acab;
+    --desk-surface: #121415;
+    --desk-sidebar: #181b1c;
+    --desk-line: #323738;
+    --desk-top: #282d2e;
+    --desk-bottom: #1b1f20;
+    --desk-toolbar: #1c2021;
+    --desk-selected: #293632;
+    --desk-selection-text: #edf5f1;
+    --desk-accent: #86c6ac;
+    --folder-back: #536b62;
+    --folder-front: #91afa2;
+    --folder-edge: #607c70;
+  }
+  :global(html:root[data-theme="hacker"]) .featuredWork { background: var(--desk-sidebar); }
+}
+
+/* Moving keyboard focus into a document must not decorate all its text. */
+.document:focus-visible { text-decoration: none; }

@@ -8,7 +8,7 @@ export function ThreadkeepCaseStudy({ embedded = false }: { embedded?: boolean }
       <dl className="story-facts">
         <div><dt>My role</dt><dd>Product design and end-to-end implementation</dd></div>
         <div><dt>Stack</dt><dd>Python, SQLite, JavaScript, HTML, and CSS; no runtime packages</dd></div>
-        <div><dt>Scope</dt><dd>Working local app with a Codex integration</dd></div>
+        <div><dt>Delivered</dt><dd>Working local app and Codex integration sharing one revisioned context store</dd></div>
       </dl>
     </section>
     <section><h2>One source of context</h2><p>The browser workspace and Codex adapter read and write the same revisioned SQLite store. Load and save are explicit. If another session saves first, a stale write is rejected so the newer direction can be reviewed before merging.</p></section>

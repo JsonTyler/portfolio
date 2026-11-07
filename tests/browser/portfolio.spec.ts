@@ -51,7 +51,7 @@ async function open(page: Page, slug: string) {
       await dock.getByRole('button', { name: 'Work', exact: true }).click();
       const work = page.getByRole('region', { name: 'Work and projects', exact: true });
       const names: Record<string, RegExp> = {
-        'design-library': /^Enterprise UX/, 'datadustr-tools': /^Inbox & File Dustr/,
+        'design-library': /^Springbrook overview/, 'datadustr-tools': /^Inbox & File Dustr/,
         threadkeep: /^Threadkeep/, timely: /^Timely/,
       };
       await work.getByRole('button', { name: names[slug] }).click();
@@ -236,10 +236,22 @@ test('curated work keeps enterprise, Threadkeep and research clear', async ({ pa
   await expect(page.locator('#desktop-panel article')).toContainText('fictional projects');
   await open(page, 'cirrus');
   await expect(page.locator('#desktop-tab-design-library')).toHaveAttribute('aria-selected', 'true');
-  await expect(page.getByRole('tabpanel')).toHaveAccessibleName('Enterprise UX');
+  await expect(page.getByRole('tabpanel')).toHaveAccessibleName('Springbrook overview');
   await page.goto('/projects/framed');
   await expect(page.getByRole('heading', { name: 'Framed', exact: true })).toBeVisible();
   await page.goto('/projects/as-i-left-it');
   await expect(page).toHaveURL(/\/projects\/threadkeep$/);
   await expect(page.getByRole('heading', { name: 'Threadkeep', exact: true })).toBeVisible();
+});
+
+test('case-study focus preserves readable text and summary links', async ({ page }) => {
+  await page.goto('/#design-library/details');
+  const article = page.locator('#desktop-panel article');
+  await expect(article).toBeVisible();
+  await article.focus();
+  await expect(article).toHaveCSS('text-decoration-line', 'none');
+  await expect(article).toContainText('Production result');
+  const demo = article.getByRole('link', { name: 'Read the compact-mode case study', exact: false });
+  await demo.click();
+  await expect(page).toHaveURL(/#cirrus\/details$/);
 });

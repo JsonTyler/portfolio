@@ -85,3 +85,12 @@ html:root[data-theme="hacker"] .signal-grid { background-image: radial-gradient(
 html:root[data-theme="hacker"] .signal-route { stroke: #40b88b; opacity: .26; }
 html:root[data-theme="hacker"] .signal-light { background: #9fffc7; opacity: .8; box-shadow: 0 0 8px #6cf0aa66; }
 html:root[data-theme="hacker"] .signal-nodes { fill: #050b08; stroke: #4db88f; opacity: .5; }
+
+@media (min-width: 768px) {
+  html:root[data-theme="hacker"] body { background: #0d0f10; }
+  html:root[data-theme="hacker"] .signal-field { background: radial-gradient(ellipse at 90% 20%, #202627, transparent 60%), #0d0f10; }
+  html:root[data-theme="hacker"] .signal-grid { opacity: .04; }
+  html:root[data-theme="hacker"] .signal-route { stroke: #82988d; opacity: .1; }
+  html:root[data-theme="hacker"] .signal-light { background: #a3c4b3; box-shadow: none; opacity: .4; }
+  html:root[data-theme="hacker"] .signal-nodes { fill: #0d0f10; stroke: #82988d; opacity: .2; }
+}

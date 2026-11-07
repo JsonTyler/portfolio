@@ -13,7 +13,7 @@ function Folder({ className = '' }: { className?: string }) {
   return <svg className={`${styles.folder} ${className}`} viewBox="0 0 48 40" fill="none" aria-hidden="true"><path d="M3 8a3 3 0 0 1 3-3h12l5 5h19a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8Z" fill="var(--folder-back)" stroke="var(--folder-edge)"/><path d="M3 16a3 3 0 0 1 3-3h36a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V16Z" fill="var(--folder-front)" stroke="var(--folder-edge)"/><path d="M6 15h36" stroke="#fff" strokeOpacity=".45"/></svg>;
 }
 
-const documents = [{ slug: 'design-library', title: 'Enterprise UX' }, { slug: 'experience', title: 'Experience' }, { slug: 'about', title: 'About me' }, { slug: 'resume', title: 'Résumé' }, { slug: 'contact', title: 'Contact' }];
+const documents = [{ slug: 'design-library', title: 'Springbrook overview' }, { slug: 'experience', title: 'Experience' }, { slug: 'about', title: 'About me' }, { slug: 'resume', title: 'Résumé' }, { slug: 'contact', title: 'Contact' }];
 
 export function PortfolioDesktop({ projects, pages, details }: { projects: Project[]; pages: Record<string, ReactNode>; details: Record<string, ReactNode> }) {
   const [selected, setSelected] = useState('overview');
@@ -24,6 +24,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
   const project = projects.find(item => item.slug === selected);
   const document = documents.find(item => item.slug === selected);
   const selectedProjects = projects.filter(item => !item.collection);
+  const enterpriseProjects = projects.filter(item => item.collection === 'enterprise');
   const researchProjects = projects.filter(item => item.collection === 'research');
   const navigation = useMemo(() => ['overview', 'design-library', ...projects.filter(item => !item.collection || item.collection === 'research').map(item => item.slug), ...documents.filter(item => item.slug !== 'design-library').map(item => item.slug)], [projects]);
   const overviewProjects = projects.filter(item => !item.comingSoon && item.featured);
@@ -84,7 +85,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
     globalThis.requestAnimationFrame(() => globalThis.document.getElementById('desktop-panel')?.focus({ preventScroll: true }));
     if (globalThis.location.hash !== '#work') globalThis.history.pushState(null, '', '#work');
   };
-  const mobileTitle = mobileWorkOpen ? 'Work' : selected === 'overview' ? 'Jason’s Portfolio' : project?.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : project?.title ?? document?.title ?? 'Portfolio';
+  const mobileTitle = mobileWorkOpen ? 'Work' : selected === 'overview' ? 'Jason’s Portfolio' : selected === 'design-library' ? view === 'details' ? 'Design system' : 'Springbrook' : project?.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : project?.title ?? document?.title ?? 'Portfolio';
   const mobileBack = () => {
     if (mobileWorkOpen) select('overview');
     else if (view !== 'preview') select(selected);
@@ -104,7 +105,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
     tabs.current[next]?.focus();
   };
   const tab = (slug: string, label: string, index: number) => <button
-    type="button" role="tab" id={`desktop-tab-${slug}`} aria-selected={selected === slug || (selected === 'cirrus' && slug === 'design-library')}
+    type="button" role="tab" id={`desktop-tab-${slug}`} aria-label={slug === 'design-library' ? 'Springbrook overview' : undefined} aria-selected={selected === slug || (selected === 'cirrus' && slug === 'design-library')}
     aria-controls="desktop-panel" tabIndex={selected === slug || (selected === 'cirrus' && slug === 'design-library') ? 0 : -1}
     ref={element => { tabs.current[index] = element; }}
     className={styles.sidebarItem} onClick={() => select(slug)} onKeyDown={event => onTabKey(event, index)}
@@ -112,7 +113,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
 
   return <div data-portfolio-desktop className={`${styles.desktop} ${expanded ? styles.expanded : ''} ${mobileWorkOpen ? styles.mobileWorkActive : ''} ${selected === 'overview' && !mobileWorkOpen ? styles.mobileOnHome : ''}`}>
     <section className={styles.window} aria-label="Portfolio workspace">
-      <MobileHeader title={mobileTitle} backLabel={mobileWorkOpen ? 'Home' : selected === 'overview' ? undefined : view !== 'preview' ? 'Back' : project?.collection === 'enterprise' ? 'Enterprise UX' : project ? 'Work' : 'Home'} onBack={mobileBack} />
+      <MobileHeader title={mobileTitle} backLabel={mobileWorkOpen ? 'Home' : selected === 'overview' ? undefined : view !== 'preview' ? 'Back' : project?.collection === 'enterprise' ? 'Back' : project ? 'Work' : 'Home'} onBack={mobileBack} />
       <div className={styles.titlebar}>
         <div className={styles.windowControls}><span className={styles.close} aria-hidden="true"/><span className={styles.minimize} aria-hidden="true"/><button type="button" className={styles.resize} onClick={() => setExpanded(value => !value)} aria-label={expanded ? 'Restore window size' : 'Enlarge workspace'} aria-pressed={expanded}><span aria-hidden="true">{expanded ? '−' : '+'}</span></button></div>
         <span className={styles.windowTitle}><Folder />Jason Tyler Rodriguez</span>
@@ -122,7 +123,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
         <button type="button" className={styles.back} onClick={() => select(project?.collection === 'enterprise' ? 'design-library' : 'overview')} disabled={selected === 'overview'} aria-label={project?.collection === 'enterprise' ? 'Back to enterprise work' : 'Back to overview'}>‹</button>
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <a href="#overview" aria-current={selected === 'overview' ? 'page' : undefined}>Portfolio</a>
-          {project?.collection === 'enterprise' && <><span aria-hidden="true">›</span><a href="#design-library">Enterprise UX</a></>}
+          {project?.collection === 'enterprise' && <><span aria-hidden="true">›</span><a href="#design-library">Springbrook overview</a></>}
           {selected !== 'overview' && <><span aria-hidden="true">›</span><a href={`#${selected}`} aria-current={view === 'preview' ? 'page' : undefined}>{project?.title ?? document?.title}</a></>}
           {(project || document) && view !== 'preview' && <><span aria-hidden="true">›</span><a href={`#${selected}/${view}`} aria-current="page">{view === 'details' ? 'Details' : 'Films'}</a></>}
         </nav>
@@ -138,7 +139,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
           <label className={styles.mobileNavigation}>Navigate
             <select value={selected} onChange={event => select(event.target.value)}>
               <option value="overview">Overview</option>
-              <option value="design-library">Enterprise UX</option>
+              <option value="design-library">Springbrook overview</option>
               <optgroup label="Selected work">{selectedProjects.map(item => <option key={item.slug} value={item.slug}>{item.title}</option>)}</optgroup>
               <optgroup label="Research">{researchProjects.map(item => <option key={item.slug} value={item.slug}>{item.title}</option>)}</optgroup>
               <optgroup label="More">{documents.filter(item => item.slug !== 'design-library').map(item => <option key={item.slug} value={item.slug}>{item.title}</option>)}</optgroup>
@@ -147,12 +148,17 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
           <div role="tablist" aria-label="Portfolio views" aria-orientation="vertical" className={styles.tabs}>
             <p className={styles.sidebarLabel}>Portfolio</p>
             {tab('overview', 'Overview', 0)}
-            {tab('design-library', 'Enterprise UX', 1)}
+            <p className={styles.sidebarLabel}>Springbrook Software</p>
+            {tab('design-library', 'Work overview', 1)}
+            <nav className={styles.enterpriseLinks} aria-label="Springbrook work">
+              <a href="#design-library/details" aria-current={selected === 'design-library' && view === 'details' ? 'page' : undefined}>Design system</a>
+              {enterpriseProjects.map(item => <a key={item.slug} href={`#${item.slug}`} aria-current={selected === item.slug ? 'page' : undefined}>{item.title}</a>)}
+            </nav>
             <p className={styles.sidebarLabel}>Selected work</p>
             {selectedProjects.map(item => <div key={item.slug}>{tab(item.slug, item.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : item.title, navigation.indexOf(item.slug))}</div>)}
             <p className={styles.sidebarLabel}>Research</p>
             {researchProjects.map(item => <div key={item.slug}>{tab(item.slug, item.title, navigation.indexOf(item.slug))}</div>)}
-            <p className={styles.sidebarLabel}>More</p>
+            <p className={styles.sidebarLabel}>About & contact</p>
             {documents.map(item => item.slug === 'design-library' ? null : <div key={item.slug}>{tab(item.slug, item.title, navigation.indexOf(item.slug))}</div>)}
           </div>
           <div className={styles.owner}><span className={styles.avatar} aria-hidden="true">JR</span><div><strong>Jason Rodriguez</strong><span>Front-end / UX</span></div></div>
@@ -165,7 +171,7 @@ export function PortfolioDesktop({ projects, pages, details }: { projects: Proje
               <p className={styles.kicker}>Senior front-end engineer · UX lead</p>
               <h1>Jason Tyler Rodriguez</h1>
               <p className={styles.introText}>I make complex software easier to use.</p>
-              <nav className={styles.overviewActions} aria-label="Introduction links"><a href="#experience">View experience →</a><a href="#contact">Get in touch →</a></nav>
+              <nav className={styles.overviewActions} aria-label="Introduction links"><a href="#resume">View résumé →</a><a href="#experience">View experience →</a><a href="#contact">Get in touch →</a></nav>
             </header>
             <section className={styles.featuredWork} aria-labelledby="enterprise-heading">
               <div><p className={styles.kicker}>Enterprise work · Springbrook Software</p><h2 id="enterprise-heading">Shared components. Consistent workflows.</h2><p>Component-library ownership, UX standards, and front-end leadership for an ERP platform.</p></div>

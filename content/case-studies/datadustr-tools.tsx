@@ -28,7 +28,7 @@ export function DataDustrToolsCaseStudy() {
         <p className="lead">Inbox Dustr and File Dustr explore how people could organize email and files without losing sight of what changes. These are portfolio prototypes, with interactive demonstrations using fictional data. They are not products for sale.</p>
         <dl className="story-facts">
           <div><dt>My role</dt><dd>Independent product design and engineering</dd></div>
-          <div><dt>Exploration</dt><dd>Inbox organization, file review and clear action feedback</dd></div>
+          <div><dt>Delivered</dt><dd>Interactive prototypes for inbox cleanup and file review, using fictional data</dd></div>
           <div><dt>Built with</dt><dd>React, TypeScript, Next.js, Tauri and Rust</dd></div>
         </dl>
         <p><a className="story-link focus-ring" href="https://tools.datadustr.com/" target="_blank" rel="noopener noreferrer">Open the interactive web preview ↗</a></p>

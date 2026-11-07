@@ -46,7 +46,7 @@ export function MobileHeader({ title, backLabel, onBack }: { title: string; back
 export function MobileHome({ onOpen, onWork }: { onOpen: (slug: string) => void; onWork: () => void }) {
   const apps: { slug: string; label: string; icon: IconName }[] = [
     { slug: 'work', label: 'Work', icon: 'work' },
-    { slug: 'design-library', label: 'Enterprise UX', icon: 'library' },
+    { slug: 'design-library', label: 'Springbrook', icon: 'library' },
     { slug: 'experience', label: 'Experience', icon: 'experience' },
     { slug: 'about', label: 'About me', icon: 'about' },
     { slug: 'datadustr-tools', label: 'Inbox & File Dustr', icon: 'contact' },
@@ -66,7 +66,8 @@ export function MobileHome({ onOpen, onWork }: { onOpen: (slug: string) => void;
 
 export function MobileWorkList({ projects, onOpen }: { projects: Project[]; onOpen: (slug: string) => void }) {
   return <section className={styles.workList} aria-label="Work and projects"><h1>Explore the work</h1><p>Professional experience and interactive projects.</p>
-    <div className={styles.listGroup}><button type="button" onClick={() => onOpen('design-library')}><span className={styles.listIcon} data-icon="library"><Icon name="library" /></span><span><strong>Enterprise UX</strong><small>Springbrook · Shared components & workflows</small></span><span aria-hidden="true">›</span></button></div>
+    <div className={styles.listGroup}><button type="button" onClick={() => onOpen('design-library')}><span className={styles.listIcon} data-icon="library"><Icon name="library" /></span><span><strong>Springbrook overview</strong><small>Springbrook · Shared components & workflows</small></span><span aria-hidden="true">›</span></button></div>
+    <div className={styles.listGroup}>{projects.filter(project => project.collection === 'enterprise').map(project => <button type="button" key={project.slug} onClick={() => onOpen(project.slug)}><span className={styles.listIcon} data-icon="cirrus"><Icon name="cirrus" /></span><span><strong>{project.title}</strong><small>Springbrook · Interactive density demo & documentation</small></span><span aria-hidden="true">›</span></button>)}</div>
     <h2>Independent projects</h2>
     <div className={styles.listGroup}>{projects.filter(project => !project.collection).map(project => <button type="button" key={project.slug} onClick={() => onOpen(project.slug)}><span className={styles.listIcon} data-icon={project.slug === 'threadkeep' ? 'threadkeep' : 'work'}><Icon name={project.slug === 'threadkeep' ? 'threadkeep' : 'work'} /></span><span><strong>{project.slug === 'datadustr-tools' ? 'Inbox & File Dustr' : project.title}</strong><small>{project.slug === 'threadkeep' ? 'Working local app · Codex context memory' : 'Interactive product concepts'}</small></span><span aria-hidden="true">›</span></button>)}</div>
     <h2>Published research</h2>
